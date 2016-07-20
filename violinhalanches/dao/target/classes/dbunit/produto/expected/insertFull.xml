@@ -1,0 +1,9 @@
+<dataset>
+
+	<produto nome="Cachorro-Quente" valor="2.50" tipo="2" categoria="-1" descricao="ABCDEFG123" />
+	
+	<item_produto item="-4" qtd="1" qtd_max="1" valor="2.73" />
+	<item_produto item="-3" qtd="1" qtd_max="1" valor="2.73" />
+	<item_produto item="-2" qtd="1" qtd_max="1" valor="2.73" />
+	<item_produto item="-1" qtd="1" qtd_max="1" valor="2.73" />
+</dataset>

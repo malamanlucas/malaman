@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%C{1} %t - %m  %n" />
+        </layout>
+	</appender>
+
+	<appender name="emailAppender" class="org.apache.log4j.net.SMTPAppender">
+<!-- 		<param name="SMTPProtocol" value="smtps" />  -->
+	    <param name="SMTPHost" value="" />
+	    <param name="SMTPUsername" value="" />
+	    <param name="SMTPPassword" value="" />
+	    <param name="SMTPPort" value="587" />
+	    <param name="From" value="" />
+	    <param name="To" value="" />
+	    <param name="Subject" value="Erro na Aplicação Violinha" />
+	    <param name="BufferSize" value="1" />
+	    <layout class="org.apache.log4j.PatternLayout">
+	        <param name="ConversionPattern" value="%C{1} %t - %m  %n"/>
+	    </layout>
+	</appender>
+	
+	<root>
+        <priority value="info" />
+		<appender-ref ref="emailAppender" />
+        <appender-ref ref="consoleAppender" />
+    </root>
+    
+</log4j:configuration>

@@ -1,0 +1,12 @@
+#assunto {
+	width:100%;
+}
+
+#painel-acoes {
+	width:100%;
+}
+
+.produto-confirm td img {
+	max-width: 300px;
+	max-height: 300px;
+}

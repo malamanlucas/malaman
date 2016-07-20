@@ -1,0 +1,36 @@
+
+.painel-item {
+	position: relative;
+}
+
+.generic-img {
+	height:200px;
+}
+
+	.valor {
+		position:absolute;
+		z-index: 5;
+		top:19px;
+		color: black;
+		background-color: rgb(229, 240, 99);
+		font-weight: bolder;
+		border-radius: 10px;	
+		padding: 0px 5px;
+	}
+	
+	.personalizar, .comprar {
+		position:absolute;
+		border-radius: 10px;
+	}
+	
+	.comprar {
+		top:220px;
+		margin-top:-40px;
+	}
+	
+	.personalizar {
+		top:220px;
+		left:100%;
+		margin-top:-40px;
+		margin-left:-35px;
+	}

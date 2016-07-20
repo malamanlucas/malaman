@@ -1,0 +1,46 @@
+ALTER TABLE usuario ADD CONSTRAINT usuario_pk PRIMARY KEY(id);
+ALTER TABLE usuario ADD CONSTRAINT usuario_telefone_unique UNIQUE(telefone);
+ALTER TABLE usuario ADD CONSTRAINT usuario_email_unique UNIQUE(email);
+
+ALTER TABLE usuario_papel ADD CONSTRAINT usuario_papel_pk PRIMARY KEY(usuario,papel);
+ALTER TABLE usuario_papel ADD CONSTRAINT up_fk_usuario FOREIGN KEY(usuario) REFERENCES usuario(id) ON DELETE CASCADE;
+
+ALTER TABLE endereco ADD CONSTRAINT endereco_pk PRIMARY KEY(id);
+ALTER TABLE endereco ADD CONSTRAINT e_usuario_fk FOREIGN KEY (usuario) REFERENCES usuario(id) ON DELETE CASCADE;
+
+
+
+ALTER TABLE categoria ADD CONSTRAINT categoria_pk          PRIMARY KEY(id);
+ALTER TABLE categoria ADD CONSTRAINT categoria_nome_unique UNIQUE(nome);
+
+ALTER TABLE produto ADD CONSTRAINT produto_pk     PRIMARY KEY(id);
+ALTER TABLE produto ADD CONSTRAINT produto_unique UNIQUE(nome, tipo);
+ALTER TABLE produto ADD CONSTRAINT produto_fk     FOREIGN KEY(categoria) REFERENCES categoria(id) ON DELETE CASCADE;  
+
+/*
+ALTER TABLE produto_categoria ADD CONSTRAINT produto_categoria_pk PRIMARY KEY(categoria, produto, tipo);
+ALTER TABLE produto_categoria ADD CONSTRAINT pc_produto_fk        FOREIGN KEY(produto) REFERENCES produto(id) ON DELETE CASCADE;
+ALTER TABLE produto_categoria ADD CONSTRAINT pc_categoria_fk      FOREIGN KEY(categoria) REFERENCES categoria(id) ON DELETE CASCADE;
+*/
+
+ALTER TABLE item ADD CONSTRAINT item_pk          PRIMARY KEY(id);
+ALTER TABLE item ADD CONSTRAINT item_nome_unique UNIQUE(nome);
+
+ALTER TABLE item_produto ADD CONSTRAINT item_produto_pk PRIMARY KEY(item,produto);
+ALTER TABLE item_produto ADD CONSTRAINT ip_item_fk      FOREIGN KEY(item) REFERENCES item(id) ON DELETE CASCADE;
+ALTER TABLE item_produto ADD CONSTRAINT ip_produto_fk   FOREIGN KEY(produto) REFERENCES produto(id) ON DELETE CASCADE;
+
+
+ALTER TABLE novidade     ADD CONSTRAINT novidade_pk PRIMARY KEY(produto);
+ALTER TABLE novidade     ADD CONSTRAINT novidade_fk FOREIGN KEY(produto) REFERENCES produto(id) ON DELETE CASCADE;
+
+
+ALTER TABLE meio_recebimento ADD CONSTRAINT meio_recebimento_pk PRIMARY KEY(id);
+ALTER TABLE meio_pagamento   ADD CONSTRAINT meio_pagamento_pk   PRIMARY KEY(id);
+
+ALTER TABLE pedido ADD CONSTRAINT pedido_pk        PRIMARY KEY(id);
+ALTER TABLE pedido ADD CONSTRAINT p_pagamento_fk   FOREIGN KEY(pagamento) REFERENCES   meio_pagamento(id);
+ALTER TABLE pedido ADD CONSTRAINT p_recebimento_fk FOREIGN KEY(recebimento) REFERENCES meio_recebimento(id);
+ALTER TABLE pedido ADD CONSTRAINT p_usuario_fk     FOREIGN KEY(user_logged) REFERENCES usuario(telefone) ON UPDATE CASCADE ON DELETE CASCADE;
+
+ALTER TABLE carousel ADD CONSTRAINT carousel_pk PRIMARY KEY(id);

@@ -1,0 +1,30 @@
+<html>
+	<body>
+		<h1>${user.name} está requisitando desbloqueio do número dele ${user.phone}</h1>
+		<br/>
+		
+		<table border="1">
+			<tr>
+				<td style="font-weight:bolder">Nome</td>
+				<td>${user.name}</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bolder">Email</td>
+				<td>${user.email}</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bolder">Telefone/Celular</td>
+				<td>${user.phone}</td>
+			</tr>
+			<tr>
+				<td style="font-weight:bolder">Confiável</td>
+				<td>${user.enable}</td>
+			</tr>
+		</table>
+		
+		<br/><br/>
+		
+		<a href="${urlUnblock}?&phone=${user.phone}"> Desbloquear usuário </a>
+		
+	</body>
+</html>

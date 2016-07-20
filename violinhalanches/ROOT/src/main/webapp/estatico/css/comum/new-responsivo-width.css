@@ -1,0 +1,268 @@
+/* branco, laranja, azul, verde, amarelo */
+@media ( min-width : 1em) { /* 16 ~ 563 branco */
+	.item {
+		width: 74% !important;
+		display: inline-block !important;
+		float: none !important;
+	}
+	
+	.sub_item {
+		left: 0 !important;
+	}
+	
+	#painel-lanche-preco {
+		text-align: center !important;
+		margin-top: 37px !important;
+	}
+	
+	#menu li {
+		/*width: 33% !important;*/
+	}
+	
+	body {
+/* 		background-color: white !important; */
+		font-size: 45% !important;
+	}
+	
+	.wrapper-form {
+		width: 90% !important;
+	}
+	
+	.wrapper-form form {
+		width: 100% !important;
+	}
+	
+	#carousel {
+		width: 100% !important;
+		height: 60% !important;
+	}
+	
+	#areaLogin {
+		width: 100% !important;
+		height: 40% !important;
+		margin-top: 6px !important;
+	}
+	
+	#northLogin,#southLogin {
+		float: left !important;
+		height: 100% !important;
+	}
+	
+	#southLogin {
+		width: 70% !important;
+	}
+	
+	#northLogin {
+		width: 30% !important;
+	}
+	
+	#area-login {
+		display: table !important;
+		height: 100% !important;
+		width: 100% !important;
+		text-align: center !important;
+	}
+	
+	#wrapper-area-login {
+		display: table-cell !important;
+		vertical-align: middle !important;
+	}
+	
+	#wrapper-area-login .wrapper-login {
+		width: auto !important;
+		display: inline-block !important;
+		margin: 0px 10px !important;
+		border: none !important;
+	}
+	
+	.painel-gestor fieldset {
+		float: none !important;
+		width: 70% !important;
+	}
+	
+	.painel-item {
+		width: 96.5% !important;
+	}
+	
+	#menu .txt-menu {
+		display: none !important;
+	}
+	
+	#menu li {
+		margin: 0 1% !important;
+	}
+	
+	.painel-info {
+		float:none !important;
+		width:100% !important;
+	}
+	
+	#painel-novidade {
+		float:none !important;
+		width:100% !important;
+	}
+		.novidade {
+			height: 240px !important;
+			width:98% !important;
+		}
+		
+		.novidade .nome {
+			height:25px !important;
+		}
+		
+		.novidade img {
+			height: 215px !important;
+		}
+}
+
+@media ( min-width : 35em) { /* 564 ~ 805 laranja */
+	.item {
+		width: 47% !important;
+	}
+	
+	.novidade {
+		height: 190px !important;
+		width:49% !important;
+	}
+	
+		.novidade .nome {
+			height:15px !important;
+		}
+		
+		.novidade img {
+			height: 175px !important;
+		}
+	
+	body {
+/* 		background-color: orange !important; */
+		font-size: 50% !important;
+	}
+	.wrapper-form {
+		width: 80% !important;
+		margin: 0 auto;
+	}
+	.wrapper-form form {
+		width: 100% !important;
+	}
+	#carousel {
+		width: 100% !important;
+		height: 75% !important;
+	}
+	.painel-item {
+		width: 47.5% !important;
+	}
+	
+	#carousel {
+		height: 75% !important;
+	}
+	
+	#areaLogin {
+		height: 25% !important;
+	}
+}
+
+@media ( min-width : 50em) { /* 806 ~ 1192 azul */
+	
+	.novidade {
+		width:32% !important;
+		height: 200px !important;
+	}
+		.novidade .nome {
+			height:20px !important;
+		}
+		
+		.novidade img {
+			height: 180px !important;
+		}
+	
+	#menu .txt-menu {
+		display: inline-block !important;
+	}
+	.painel-gestor fieldset {
+		float: left !important;
+		width: 40% !important;
+	}
+	#painel-lanche-preco {
+		text-align: none !important;
+		margin-top: 0px !important;
+	}
+	body {
+/* 		background-color: blue !important; */
+		font-size: 53% !important;
+	}
+	.wrapper-form,.wrapper-form form {
+		width: 70% !important;
+	}
+	.painel-item {
+		width: 30.5% !important;
+	}
+	#menu li {
+		margin: 0 !important;
+	}
+}
+
+@media ( min-width : 74em) { /* 1193 ~ 1612 verde */
+	
+	.painel-info {
+		float:left !important;
+		width:60% !important;
+	}
+	
+	#painel-novidade {
+		float:right !important;
+		width:39% !important;
+	}
+		.novidade {
+			width:49% !important;
+			height: 180px !important;
+		}
+			.novidade .nome {
+				height:20px !important;
+			}
+			
+			.novidade img {
+				height: 160px !important;
+			}
+	
+	#carousel {
+		width: 84.5% !important;
+		height: 100% !important;
+	}
+	#areaLogin {
+		width: 15% !important;
+		height: 100% !important;
+		margin-top: 0px !important;
+	}
+	#northLogin,#southLogin {
+		float: none !important;
+		height: 48% !important;
+		width: 100% !important;
+	}
+	.item {
+		width: 22% !important;
+	}
+	#menu li {
+		margin: 0 2% !important;
+	}
+	body {
+/* 		background-color: green !important; */
+		font-size: 57% !important;
+	}
+	.painel-item {
+		width: 22.5% !important;
+	}
+	
+	#wrapper-area-login .wrapper-login {
+		margin: 8px 0px !important;
+	}
+}
+
+@media ( min-width : 100em) { /* 1613px amarelo */
+	.item {
+		width: 18% !important;
+	}
+	body {
+		font-size: 62.5% !important;
+/* 		background-color: yellow !important; */
+	}
+}

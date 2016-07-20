@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="lanche/inicio" extends="template">
+		<put-attribute name="body" value="/WEB-INF/views/lanche/lanche.jsp" />
+		<put-attribute name="titulo" value="Cadastro de Lanche" />
+		
+		<put-list-attribute name="css_person">
+			<add-attribute value="/estatico/css/lanche/lanche.css" />
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="lanche/itens" extends="template">
+		<put-attribute name="body" value="/WEB-INF/views/lanche/itens.jsp" />
+		<put-attribute name="titulo" value="Cadastro dos Itens do Lanche" />
+
+		<put-list-attribute name="css_person">
+			<add-attribute value="/estatico/css/lanche/itens.css" />
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/lanche/itens.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="lanche/itensExtras" extends="template">
+		<put-attribute name="body" value="/WEB-INF/views/lanche/itensExtras.jsp" />
+		<put-attribute name="titulo" value="Cadastro dos Itens Extras do Lanche" />
+
+		<put-list-attribute name="css_person">
+			<add-attribute value="/estatico/css/lanche/itensExtras.css" />
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/lanche/itensExtras.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="lanche/detail" extends="template">
+		<put-attribute name="body" value="/WEB-INF/views/lanche/personalizar/personalizar.jsp" />
+		<put-attribute name="titulo" value="Detalhes do Lanche" />
+
+		<put-list-attribute name="css_person">
+			<add-attribute value="/estatico/css/lanche/personalizar.css" />
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/lanche/personalizar.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="lanche/detail/paginate" template="/WEB-INF/views/lanche/personalizar/paginate.jsp" />
+	
+	<definition name="lanche/gerenciar" extends="template">
+		<put-attribute name="body"
+			value="/WEB-INF/views/lanche/gerenciar.jsp" />
+		<put-attribute name="titulo" value="Gerenciar Lanches" />
+
+		<put-list-attribute name="css_person">
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/gestor/gerenciar.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="lanche/gerenciar/paginate" template="/WEB-INF/views/lanche/gerenciar/paginate.jsp" />
+	
+</tiles-definitions>

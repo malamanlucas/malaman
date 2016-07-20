@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="carrinho/inicio" extends="template">
+		<put-attribute name="body"   value="/WEB-INF/views/carrinho/carrinho.jsp" />
+		<put-attribute name="titulo" value="Meu Carrinho de Compras" />
+
+		<put-list-attribute name="css_person">
+			<add-attribute value="/estatico/css/carrinho/carrinho.css" />
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/carrinho/carrinho.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="pedido/confirm" extends="template">
+		<put-attribute name="body" value="/WEB-INF/views/carrinho/confirm.jsp" />
+
+		<put-list-attribute name="css_person">
+			<add-attribute value="/estatico/css/carrinho/pedido/confirm.css" />
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/carrinho/pedido/confirm.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="carrinho/ajax/pagamento"   template="/WEB-INF/views/carrinho/ajax/meios_pagamento.jsp" />
+	<definition name="carrinho/ajax/recebimento" template="/WEB-INF/views/carrinho/ajax/meios_recebimento.jsp" />
+	<definition name="carrinho/ajax/itens"       template="/WEB-INF/views/carrinho/ajax/itens_cart.jsp" />
+	
+</tiles-definitions>

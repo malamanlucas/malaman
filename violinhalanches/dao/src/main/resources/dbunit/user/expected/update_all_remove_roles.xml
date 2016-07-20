@@ -1,0 +1,12 @@
+<dataset>
+
+	<usuario id="-1" telefone="938362991" nome="Lucas1" 
+			 senha="1234561" 
+			 email="malamanlucas@gmail.com1"  
+			 confiavel="false" habilitado="false" qt_pedido="0" qt_pago="0" qt_nao_pago="0"/>
+	
+	<usuario_papel />
+	
+	<endereco id="-1" usuario="-1" logradouro="Rua Alberto Lotto1" nro="3151"  complemento="Casa1"  bairro="Jardim dos Ypês" cep="13609253" />
+	
+</dataset>

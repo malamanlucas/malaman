@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+mode: development
+Package: br.com.main
+Built-By: lucas
+Build-Jdk: 1.8.0_91
+Created-By: Maven Integration for Eclipse
+url: 
+Main-Class: br.com.main.Main
+

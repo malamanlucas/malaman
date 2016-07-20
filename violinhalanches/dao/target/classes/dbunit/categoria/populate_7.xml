@@ -1,0 +1,9 @@
+<dataset>
+	<categoria id="-1" nome="Hot-Dog1" descricao="Lanches só com hot-dog" tipo="1" />
+	<categoria id="-2" nome="Hot-Dog2" descricao="Lanches só com hot-dog" tipo="1" />
+	<categoria id="-3" nome="Hot-Dog3" descricao="Lanches só com hot-dog" tipo="1" />
+	<categoria id="-4" nome="Hot-Dog4" descricao="Lanches só com hot-dog" tipo="2" />
+	<categoria id="-5" nome="Hot-Dog5" descricao="Lanches só com hot-dog" tipo="2" />
+	<categoria id="-6" nome="Hot-Dog6" descricao="Lanches só com hot-dog" tipo="2" />
+	<categoria id="-7" nome="Hot-Dog7" descricao="Lanches só com hot-dog" tipo="2" />
+</dataset>

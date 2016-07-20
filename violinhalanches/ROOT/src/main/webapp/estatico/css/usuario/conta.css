@@ -1,0 +1,57 @@
+
+#dados_usuario {
+	display: inline-block;
+	border: 1px solid #98997D;
+	border-radius: 4px;
+	background-color: rgb(255, 250, 140);
+	width: 50%;
+}
+
+	@media ( min-width : 1em) {
+		#dados_usuario {
+			width: 90% !important;
+		}
+		.field_wrapper div.destaque {
+			width: 38% !important;
+		}
+	}
+	
+	@media ( min-width : 50em) {
+		#dados_usuario {
+			width: 65% !important;
+		}
+	}
+	
+	@media ( min-width : 74em) {
+		#dados_usuario {
+			width: 55% !important;
+		}
+		
+		.field_wrapper div.destaque {
+			width: 50% !important;
+		}
+	}
+	
+	
+	#nome_usuario {
+		font-weight: bolder;
+		text-decoration: underline;
+	}
+
+	.field_wrapper div {
+		display:inline-block;
+	}
+	
+	.field_wrapper div.value {
+		text-align: left;
+		float: left;
+		margin-left: 5px;
+	}
+	
+	.field_wrapper div.destaque {
+		float: left;
+		text-align: right;
+		width: 50%;
+	}
+
+

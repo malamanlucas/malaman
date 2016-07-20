@@ -1,0 +1,39 @@
+
+#content {
+	text-align: center;
+}
+
+#acoes_gestor {
+	width:50%;
+	margin: 0 auto;
+}
+
+#assunto legend {
+	font-weight: bolder;
+	font-size: 1.6em;
+}
+
+#assunto .caixa {
+    margin: 5px 5%;
+    display:inline-block;
+}
+
+@media ( min-width : 1em) {
+	#painel-gestor .caixa {
+		width:80%;
+	}
+	
+	#painel-gestor {
+		text-align: center;
+	}
+}
+		
+@media ( min-width : 35em) {
+	#painel-gestor .caixa {
+		width:39%;
+	}
+	
+	#painel-gestor {
+		text-align: justify;
+	}
+}
