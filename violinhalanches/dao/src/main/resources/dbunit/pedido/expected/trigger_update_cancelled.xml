@@ -1,8 +1,0 @@
-<dataset>
-	
-	<usuario id="-1" telefone="93836299" nome="Lucas" 
-			 senha="123456" 
-			 email="malamanlucas@gmail.com"  
-			 confiavel="false" habilitado="true" qt_pedido="1" qt_pago="0" qt_nao_pago="1" />
-
-</dataset>

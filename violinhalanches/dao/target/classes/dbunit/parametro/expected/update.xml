@@ -1,5 +1,0 @@
-<dataset>
-	<parametro chave="preco_entrega" valor="99" />
-	<parametro chave="tempo_inatividade" valor="2" />
-	<parametro chave="tempo_resposta_inatividade" valor="1" />
-</dataset>

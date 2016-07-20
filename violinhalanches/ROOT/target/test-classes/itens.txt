@@ -1,6 +1,0 @@
-<items>
-	<item xmlns="http://www.w3.org/1999/xhtml" qtd="1" nome="eqweqweqw" valor="0" id="9" qtd_max="2">
-	</item>
-	<item xmlns="http://www.w3.org/1999/xhtml" qtd="1" nome="aweqwtwregdsvxcvcx" valor="2.34" id="13" qtd_max="2"></item>
-	<item xmlns="http://www.w3.org/1999/xhtml" qtd="1" nome="qweqwe" valor="0.00" id="7" qtd_max="1"></item>
-</items>

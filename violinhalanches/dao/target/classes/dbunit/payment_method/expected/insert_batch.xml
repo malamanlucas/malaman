@@ -1,5 +1,0 @@
-<dataset>
-	<meio_pagamento id="1" habilitado="true"  descricao="teste" />
-	<meio_pagamento id="2" habilitado="false" descricao="teste" />
-	<meio_pagamento id="3" habilitado="true"  descricao="teste" />
-</dataset>

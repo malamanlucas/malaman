@@ -1,6 +1,0 @@
-<dataset>
-	<produto id="-1" nome="Hot-Dog1" valor="5.00" descricao="Logo1." tipo="1" categoria="-1" />
-	<produto id="-2" nome="Hot-Dog2" valor="5.00" tipo="1" categoria="-1" />
-	<produto id="-3" nome="Hot-Dog3" valor="5.00" descricao="bbbb" tipo="1" categoria="-1" />
-	<produto id="-4" nome="Hot-Dog4" valor="5.00" tipo="1" categoria="-1" />
-</dataset>

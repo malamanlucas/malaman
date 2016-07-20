@@ -1,5 +1,0 @@
-<dataset>
-	<meio_recebimento id="1" habilitado="true"  descricao="teste" />
-	<meio_recebimento id="2" habilitado="false" descricao="teste" />
-	<meio_recebimento id="3" habilitado="true"  descricao="teste" />
-</dataset>

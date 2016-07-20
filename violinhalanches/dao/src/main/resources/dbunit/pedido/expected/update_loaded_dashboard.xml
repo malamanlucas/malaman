@@ -1,8 +1,0 @@
-<dataset>
-
-	<pedido id="1" pagamento="2" recebimento="1" troco="2.5" preco="7.65" url_pagamento="http://url_1"
-		user_logged="93836299" status_pedido="0" status_pagamento="0" carregado_dashboard="true" preco_entrega="3.00"
-		itens='[{"key":{"name":"Coca-cola","type":3,"description":"Refrigerante de 2 litros"},"priceUnit":2.12999999999999989341858963598497211933135986328125,"quantity":1,"textPrint":"S/ Bacon   +3 Alface   -2 Salsicha   +8 Queijo   S/ Salada de Fruta  ","extraInfo":"Pão bem torrado","type":3},{"key":{"name":"Bacon","type":2,"description":"Bacon Descrição"},"priceUnit":0.7600000000000000088817841970012523233890533447265625,"quantity":1,"textPrint":"S/ Bacon   +3 Alface   -2 Salsicha   +8 Queijo   S/ Salada de Fruta  ","extraInfo":"Pão bem torrado","type":2},{"key":{"name":"Batata-Frita","type":2,"description":"Batata Frita Descrição"},"priceUnit":1.7600000000000000088817841970012523233890533447265625,"quantity":1,"textPrint":"S/ Bacon   +3 Alface   -2 Salsicha   +8 Queijo   S/ Salada de Fruta  ","extraInfo":"Pão bem torrado","type":2}]'
-		endereco='{"id":null,"userId":null,"street":"Rua Alberto Lotto","number":"315","bairro":"Jardim dos Ypês","cep":"13609253","complement":"Casa"}' />
-
-</dataset>
