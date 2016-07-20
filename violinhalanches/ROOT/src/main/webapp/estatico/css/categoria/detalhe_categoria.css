@@ -1,0 +1,46 @@
+#titulo_categoria {
+	width:60%;
+	margin: 0 auto;
+}
+
+.lanche .valor {
+	position:absolute;
+	z-index: 5;
+	left:0%;
+	top:32px;
+	color: white;
+	background-color: rgb(145, 56, 56);
+	padding: 2px;
+	border-radius: 10px;
+}
+
+#lanches  {
+	width:100%;
+	/*background-color: #FAFF80;*/
+	text-align: center;
+}
+
+.lanche {
+	float:left;
+	margin:0.9%;
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	width:18%;
+	position:relative;
+	height:200px;
+}
+
+.lanche img {
+	width:100%;
+	min-width: 170px;
+	height:180px;
+	border-radius: 10px;
+}
+
+.lanche .botao-comprar {
+	position:absolute;
+	z-index: 5;
+	left:0%;
+	top:92%;
+}
+

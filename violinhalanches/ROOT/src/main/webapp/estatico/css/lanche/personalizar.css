@@ -1,0 +1,190 @@
+	
+#painel-cima {
+	margin: 0 auto;
+	height:400px;
+	width:100%;
+}
+
+	#lanche_nome {
+		display: inline;
+		padding: 0 10px;
+		background-color: rgba(252, 255, 186, 1);
+		border-radius: 10px;
+	}
+
+	#painel-lanche-nome {
+		text-align: center;
+	}
+
+	#painel-lanche-qtdItems {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 51;
+		background-color: rgba(252, 255, 186, 1);
+		border: 3px solid black;
+		padding: 2px 0px;
+	}
+		
+		#lanche_qtdItems {
+			float: right;
+			margin-right: 10px;
+		}
+		
+			#amount_itens_lanche {
+				cursor: pointer;
+			}
+			
+			#amount_itens_lanche:hover {
+				background-color: gold;
+			}
+			
+			#itens_into_lanche {
+				 background-color: rgba(252, 255, 186, 1);
+				 border: 1px solid black;
+				 display: none;
+				 position: absolute;
+				 width: 160px;
+				 border-radius: 5px;
+				 font-size: 0.7em;
+			}
+				#itens_into_lanche li {
+					padding-left: 3px;
+				}
+	
+		#lanche_preco {
+			margin-left: 10px;
+			float: left;
+			z-index: 50;
+			color: black;
+			background-color: rgb(229, 240, 99);
+		}	
+
+#painel-lanche {
+	width:100%;
+	height: 100%;
+	position: relative;
+}
+
+#painel-lanche img {
+	width:100%;
+	height:100%;
+	border-radius: 30px;
+	min-width:200px;
+}
+
+.item-lanche .qtd {
+	position:absolute;
+	z-index: 50;
+}
+
+#painel-item {
+	width:100%;
+	text-align: center;
+	padding-bottom: 30px;
+}
+
+	.painel-item {
+		position: relative;
+		border-radius: 15px;
+		border: 1px solid black;
+		cursor: pointer;
+	}
+	
+	.painel-item:hover {
+		background-color: rgba(245,255,0,0.61)
+	}
+		
+	.p-img {
+		height:100%;
+		width:100%;
+	}
+
+		.add_item, .sub_item {
+			position:absolute;
+			z-index:50;
+			width:50px;
+			opacity: 0.8;
+			cursor: pointer;
+		}
+		
+		.painel-item .qtd {
+			background-color: rgba(245, 255, 0, 1);
+			border: 1px solid black;
+			font-weight: bolder;
+			border-radius: 10px;
+			color: black;
+		}
+		
+		.valor_item {
+			position:absolute;
+			right: 0;
+			z-index: 50;
+		}
+		
+		.painel-item .qtd {
+			position: absolute;
+			z-index: 50;
+			padding: 0px 5px;
+		}
+
+		.add_item:hover {
+			opacity:1.0;
+		}
+		
+		.sub_item:hover {
+			opacity:1.0;
+		}
+
+		.sub_item {
+			top:100%;
+			margin-top:-35px;
+		}
+
+		.add_item {
+			top:100%;
+			left:100%;
+			margin-top:-35px;
+			margin-left:-35px;
+		}
+
+
+@media ( min-width : 1em) {
+	#painel-cima {
+		height: 220px !important;
+	}
+	.painel-item {
+		height: 200px !important;
+	}
+}
+	
+@media ( min-width : 35em) {
+	#painel-cima {
+		height: 280px !important;
+	}
+	
+	.painel-item {
+		height: 160px !important;
+	}
+}
+	
+@media ( min-width : 50em) {
+	#painel-cima {
+		height: 350px !important;
+	}
+	
+	.painel-item {
+		height: 180px !important;
+	}
+}
+	
+@media ( min-width : 74em) {
+	#painel-cima {
+		height: 450px !important;
+	}
+	
+	.painel-item {
+		height: 220px !important;
+	}
+}

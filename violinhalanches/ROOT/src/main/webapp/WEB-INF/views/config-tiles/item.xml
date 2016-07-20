@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="item/inicio" extends="template">
+		<put-attribute name="body"
+			value="/WEB-INF/views/item/item.jsp" />
+		<put-attribute name="titulo" value="Cadastro de Ingrediente" />
+
+		<put-list-attribute name="css_person">
+			<add-attribute value="/estatico/css/item/item.css" />
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="item/paginate" template="/WEB-INF/views/item/paginate_item.jsp" />
+	
+	<definition name="item/gerenciar" extends="template">
+		<put-attribute name="body"
+			value="/WEB-INF/views/item/gerenciar.jsp" />
+		<put-attribute name="titulo" value="Gerenciar Ingredientes" />
+
+		<put-list-attribute name="css_person">
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/gestor/gerenciar.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="item/gerenciar/paginate" template="/WEB-INF/views/item/gerenciar/paginate.jsp" />
+	
+</tiles-definitions>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+	
+	
+	<definition name="pedido/finish" extends="template">
+		<put-attribute name="body" value="/WEB-INF/views/pedido/finish.jsp" />
+
+		<put-list-attribute name="css_person">
+			<add-attribute value="/estatico/css/pedido/finish.css" />
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/pedido/finish.js" />
+		</put-list-attribute>
+	</definition>
+	
+</tiles-definitions>

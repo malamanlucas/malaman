@@ -1,0 +1,126 @@
+	
+#painel-cima {
+	margin: 0 auto;
+	height:350px;
+	width:70%;
+}
+
+.titulo {
+	text-align: center;
+}
+
+#lanche_nome {
+	display: inline;
+	padding: 0 10px;
+}
+
+#lanche_nome, #lanche_preco, #lanche_qtdItems {
+	background-color: rgba(245, 255, 0, 1);
+	border: 1px solid black;
+	font-weight: bolder;
+	border-radius: 10px;
+	color: black;
+}
+
+#lanche_qtdItems {
+	padding: 5px;
+	border: none !important;
+}
+
+#lanche_preco {
+	float:right;
+	position:relative;
+	padding:3px;
+	margin-right:15px;
+}
+
+#painel-lanche-preco {
+	position:absolute;
+	width:100%;
+}
+
+#painel-lanche-nome {
+	text-align: center;
+}
+
+#painel-lanche-qtdItems {
+	text-align: center;
+	clear:both;
+}
+
+#painel-lanche {
+	width:100%;
+	height: 100%;
+	position: relative;
+}
+
+#painel-lanche img {
+	width:100%;
+	height:100%;
+	border-radius: 30px;
+	min-width:200px;
+}
+
+#painel-baixo {
+	width:100%;
+	text-align: center;
+}
+
+.item-lanche {
+	float:left;
+	margin:0.9%;
+	box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	width:18%;
+	position:relative;
+	height:200px;
+}
+
+.item-lanche .img-item {
+	width:100%;
+	height:100%;
+}
+
+.item-lanche .img-item img {
+	border-radius: 15px;
+	width:100%;
+	height:100%;
+}
+
+.item-lanche .qtd {
+	position:absolute;
+	z-index: 50;
+}
+
+.add_item, .sub_item {
+	position:absolute;
+	z-index:50;
+	width:30%;
+	opacity: 0.4;
+	cursor: pointer;
+}
+
+.add_item:hover {
+	opacity:1.0;
+}
+
+.sub_item:hover {
+	opacity:1.0;
+}
+
+.sub_item {
+	top:100%;
+	margin-top:-30%;
+}
+
+.add_item {
+	top:100%;
+	left:100%;
+	margin-top:-30%;
+	margin-left:-30%;
+}
+
+.item-lanche .qtd {
+	background-color: black;
+	color:white;
+}

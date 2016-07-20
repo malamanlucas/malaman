@@ -1,0 +1,112 @@
+.icon35, .icon25, .icon, .icon_manager{
+	cursor: pointer;
+    display: inline-block;
+}
+	
+	.icon {
+		background: url(../../img/icons/icons.png) no-repeat top left;
+	}
+	
+		.icon-account{ background-position: 0 0; width: 70px; height: 25px; } 
+		.icon-account_hover{ background-position: 0 -26px; width: 70px; height: 25px; } 
+		.icon-back{ background-position: 0 -52px; width: 80px; height: 35px; } 
+		.icon-back_hover{ background-position: 0 -88px; width: 80px; height: 35px; } 
+		.icon-bread_both{ background-position: 0 -124px; width: 125px; height: 35px; } 
+		.icon-bread_both_hover{ background-position: 0 -160px; width: 125px; height: 35px; } 
+		.icon-bread_kill_hungry{ background-position: 0 -196px; width: 125px; height: 35px; } 
+		.icon-bread_kill_hungry_hover{ background-position: 0 -232px; width: 125px; height: 35px; } 
+		.icon-bread_normal{ background-position: 0 -268px; width: 109px; height: 35px; } 
+		.icon-bread_normal_hover{ background-position: 0 -304px; width: 109px; height: 35px; } 
+		.icon-buy{ background-position: 0 -340px; width: 35px; height: 35px; } 
+		.icon-buy_hover{ background-position: 0 -376px; width: 35px; height: 35px; } 
+		.icon-cancel{ background-position: 0 -412px; width: 80px; height: 35px; } 
+		.icon-cart{ background-position: 0 -448px; width: 35px; height: 29px; } 
+		.icon-close{ background-position: 0 -478px; width: 35px; height: 35px; } 
+		.icon-contact{ background-position: 0 -514px; width: 35px; height: 35px; } 
+		.icon-customize{ background-position: 0 -550px; width: 35px; height: 35px; } 
+		.icon-customize_hover{ background-position: 0 -586px; width: 35px; height: 35px; } 
+		.icon-dashboard{ background-position: 0 -622px; width: 35px; height: 35px; } 
+		.icon-dashboard_approved{ background-position: 0 -658px; width: 100px; height: 20px; } 
+		.icon-dashboard_canceled{ background-position: 0 -679px; width: 100px; height: 20px; } 
+		.icon-dashboard_delivered{ background-position: 0 -700px; width: 100px; height: 20px; } 
+		.icon-dashboard_not_delivered{ background-position: 0 -721px; width: 100px; height: 20px; } 
+		.icon-dashboard_not_paid{ background-position: 0 -742px; width: 100px; height: 20px; } 
+		.icon-dashboard_paid{ background-position: 0 -763px; width: 100px; height: 20px; } 
+		.icon-dashboard_ready{ background-position: 0 -784px; width: 100px; height: 20px; } 
+		.icon-dashboard_unapproved{ background-position: 0 -805px; width: 100px; height: 20px; } 
+		.icon-end_buy{ background-position: 0 -826px; width: 80px; height: 35px; } 
+		.icon-end_buy_hover{ background-position: 0 -862px; width: 80px; height: 35px; } 
+		.icon-erase_cart{ background-position: 0 -898px; width: 80px; height: 35px; } 
+		.icon-erase_cart_hover{ background-position: 0 -934px; width: 80px; height: 35px; } 
+		.icon-establishment_closed{ background-position: 0 -970px; width: 140px; height: 35px; } 
+		.icon-establishment_open{ background-position: 0 -1006px; width: 140px; height: 35px; } 
+		.icon-home{ background-position: 0 -1042px; width: 35px; height: 33px; } 
+		.icon-less25{ background-position: 0 -1076px; width: 25px; height: 25px; } 
+		.icon-less35{ background-position: 0 -1102px; width: 35px; height: 35px; } 
+		.icon-login{ background-position: 0 -1138px; width: 70px; height: 25px; } 
+		.icon-login_hover{ background-position: 0 -1164px; width: 70px; height: 25px; } 
+		.icon-logoff{ background-position: 0 -1190px; width: 70px; height: 25px; } 
+		.icon-logoff_hover{ background-position: 0 -1216px; width: 70px; height: 25px; } 
+		.icon-lunch{ background-position: 0 -1242px; width: 80px; height: 35px; } 
+		.icon-lunch_hover{ background-position: 0 -1278px; width: 80px; height: 35px; } 
+		.icon-manager{ background-position: 0 -1314px; width: 33px; height: 35px; } 
+		.icon-menu{ background-position: 0 -1350px; width: 33px; height: 35px; } 
+		.icon-more25{ background-position: 0 -1386px; width: 25px; height: 25px; } 
+		.icon-more35{ background-position: 0 -1412px; width: 35px; height: 35px; } 
+		.icon-next{ background-position: 0 -1448px; width: 80px; height: 35px; } 
+		.icon-next_hover{ background-position: 0 -1484px; width: 80px; height: 35px; } 
+		.icon-online_sale_closed{ background-position: 0 -1520px; width: 140px; height: 35px; } 
+		.icon-online_sale_open{ background-position: 0 -1556px; width: 140px; height: 35px; } 
+		.icon-products{ background-position: 0 -1592px; width: 80px; height: 35px; } 
+		.icon-products_hover{ background-position: 0 -1628px; width: 80px; height: 35px; } 
+		.icon-register{ background-position: 0 -1664px; width: 70px; height: 25px; } 
+		.icon-register_hover{ background-position: 0 -1690px; width: 70px; height: 25px; } 
+		.icon-secure_pay{ background-position: 0 -1716px; width: 80px; height: 34px; } 
+		.icon-secure_pay_hover{ background-position: 0 -1751px; width: 80px; height: 34px; } 
+
+
+
+
+
+	.icon_manager {
+		background: url(../../img/icons/icons_manager.png) no-repeat top left;
+	}
+	
+		.icon_manager-button_change_establishment{ background-position: 0 0; width: 80px; height: 50px; } 
+		.icon_manager-button_change_establishment_hover{ background-position: 0 -51px; width: 80px; height: 50px; } 
+		.icon_manager-button_change_sales{ background-position: 0 -102px; width: 80px; height: 50px; } 
+		.icon_manager-button_change_sales_hover{ background-position: 0 -153px; width: 80px; height: 50px; } 
+		.icon_manager-cancel{ background-position: 0 -204px; width: 80px; height: 35px; } 
+		.icon_manager-cancel_hover{ background-position: 0 -240px; width: 80px; height: 35px; } 
+		.icon_manager-change_picture{ background-position: 0 -276px; width: 80px; height: 35px; } 
+		.icon_manager-change_picture_hover{ background-position: 0 -312px; width: 80px; height: 35px; } 
+		.icon_manager-dashboard_delivery_off{ background-position: 0 -348px; width: 100px; height: 20px; } 
+		.icon_manager-dashboard_delivery_on{ background-position: 0 -369px; width: 100px; height: 20px; } 
+		.icon_manager-dashboard_load{ background-position: 0 -390px; width: 120px; height: 35px; } 
+		.icon_manager-dashboard_load_hover{ background-position: 0 -426px; width: 120px; height: 35px; } 
+		.icon_manager-dashboard_print{ background-position: 0 -462px; width: 49px; height: 35px; } 
+		.icon_manager-dashboard_print_hover{ background-position: 0 -498px; width: 49px; height: 35px; } 
+		.icon_manager-dashboard_ready{ background-position: 0 -534px; width: 100px; height: 20px; } 
+		.icon_manager-edit{ background-position: 0 -555px; width: 80px; height: 35px; } 
+		.icon_manager-edit_hover{ background-position: 0 -591px; width: 80px; height: 35px; } 
+		.icon_manager-enabled_false{ background-position: 0 -627px; width: 35px; height: 35px; } 
+		.icon_manager-enabled_true{ background-position: 0 -663px; width: 35px; height: 35px; } 
+		.icon_manager-exclude{ background-position: 0 -699px; width: 80px; height: 35px; } 
+		.icon_manager-exclude_hover{ background-position: 0 -735px; width: 80px; height: 35px; } 
+		.icon_manager-pay_by_card{ background-position: 0 -771px; width: 30px; height: 30px; } 
+		.icon_manager-pay_by_money{ background-position: 0 -802px; width: 30px; height: 30px; } 
+		.icon_manager-pay_by_pagseguro{ background-position: 0 -833px; width: 30px; height: 30px; } 
+		.icon_manager-register{ background-position: 0 -864px; width: 120px; height: 35px; } 
+		.icon_manager-register_hover{ background-position: 0 -900px; width: 120px; height: 35px; } 
+		.icon_manager-save{ background-position: 0 -936px; width: 80px; height: 35px; } 
+		.icon_manager-save_hover{ background-position: 0 -972px; width: 80px; height: 35px; } 
+		.icon_manager-star_empty{ background-position: 0 -1008px; width: 35px; height: 33px; } 
+		.icon_manager-star_filled{ background-position: 0 -1042px; width: 35px; height: 33px; } 
+		.icon_manager-user_blocked{ background-position: 0 -1076px; width: 100px; height: 20px; } 
+		.icon_manager-user_change_status{ background-position: 0 -1097px; width: 20px; height: 20px; } 
+		.icon_manager-user_change_status_hover{ background-position: 0 -1118px; width: 20px; height: 20px; } 
+		.icon_manager-user_delete_disabled{ background-position: 0 -1139px; width: 100px; height: 35px; } 
+		.icon_manager-user_delete_enabled{ background-position: 0 -1175px; width: 100px; height: 35px; } 
+		.icon_manager-user_liberated{ background-position: 0 -1211px; width: 100px; height: 20px; } 
+		.icon_manager-user_new{ background-position: 0 -1232px; width: 100px; height: 20px; } 
+		.icon_manager-user_trusted{ background-position: 0 -1253px; width: 100px; height: 20px; } 

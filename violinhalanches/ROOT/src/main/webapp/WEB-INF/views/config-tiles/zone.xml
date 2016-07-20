@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+	<definition name="zone/inicio" extends="template">
+		<put-attribute name="body" value="/WEB-INF/views/zona/cadastro.jsp" />
+		<put-attribute name="titulo" value="Cadastro de Zona de Bairro" />
+
+		<put-list-attribute name="css_person">
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+			<add-attribute value="/estatico/js/zona/cadastro.js" />
+		</put-list-attribute>
+	</definition>
+	
+	<definition name="zone/gerenciar" extends="template">
+		<put-attribute name="body" value="/WEB-INF/views/zona/gerenciar.jsp" />
+		<put-attribute name="titulo" value="Gerenciar Zonas" />
+
+		<put-list-attribute name="css_person">
+		</put-list-attribute>
+		
+		<put-list-attribute name="js_person">
+		</put-list-attribute>
+	</definition>
+	
+	
+</tiles-definitions>

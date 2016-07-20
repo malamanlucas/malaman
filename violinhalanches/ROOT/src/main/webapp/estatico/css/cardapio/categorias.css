@@ -1,0 +1,16 @@
+.painel-item .generic-img {
+	height: 90%;
+	cursor: pointer;
+}
+
+.wrapper-radio {
+	display: inline-block;
+}
+
+.wrapper-radio:nth-child(n+2) {
+	margin-left: 15px;
+}
+
+#painel-tipo-categoria  .label-radio:before {
+	margin-bottom: 9px;
+}

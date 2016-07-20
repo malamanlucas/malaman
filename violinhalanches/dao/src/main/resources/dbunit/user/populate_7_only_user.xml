@@ -1,0 +1,11 @@
+<dataset>
+
+	<usuario id="-1" telefone="93836291" nome="Lucas" senha="1" email="1" confiavel="true" habilitado="true" qt_pedido="0" qt_pago="0" qt_nao_pago="0" />
+	<usuario id="-2" telefone="93836292" nome="Lucas" senha="1" email="2" confiavel="true" habilitado="true" qt_pedido="0" qt_pago="0" qt_nao_pago="0" />
+	<usuario id="-3" telefone="93836293" nome="Lucas" senha="1" email="3" confiavel="true" habilitado="true" qt_pedido="0" qt_pago="0" qt_nao_pago="0" />
+	<usuario id="-4" telefone="93836294" nome="Lucas" senha="1" email="4" confiavel="true" habilitado="true" qt_pedido="0" qt_pago="0" qt_nao_pago="0" />
+	<usuario id="-5" telefone="93836295" nome="Lucas" senha="1" email="5" confiavel="true" habilitado="true" qt_pedido="0" qt_pago="0" qt_nao_pago="0" />
+	<usuario id="-6" telefone="93836296" nome="Lucas" senha="1" email="6" confiavel="true" habilitado="true" qt_pedido="0" qt_pago="0" qt_nao_pago="0" />
+	<usuario id="-7" telefone="93836297" nome="Lucas" senha="1" email="7" confiavel="true" habilitado="true" qt_pedido="0" qt_pago="0" qt_nao_pago="0" />
+	
+</dataset>
