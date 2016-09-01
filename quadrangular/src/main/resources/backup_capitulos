@@ -2,9 +2,9 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.3.13
--- Dumped by pg_dump version 9.3.13
--- Started on 2016-08-20 18:45:10 BRT
+-- Dumped from database version 9.3.14
+-- Dumped by pg_dump version 9.3.14
+-- Started on 2016-08-31 23:54:14 BRT
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -8142,7 +8142,7 @@ ALTER TABLE ONLY versiculo
     ADD CONSTRAINT versiculo_capitulo_pk FOREIGN KEY (capitulo_id, livro_id) REFERENCES capitulo(id, livro_id) ON DELETE CASCADE;
 
 
--- Completed on 2016-08-20 18:45:10 BRT
+-- Completed on 2016-08-31 23:54:15 BRT
 
 --
 -- PostgreSQL database dump complete
