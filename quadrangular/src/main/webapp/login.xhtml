@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:head>
+</h:head>
+<h:body>
+
+	<ui:composition template="pages/layout/template.xhtml">
+		<ui:define name="content">
+			<h:form id="loginForm">
+
+				<p:messages autoUpdate="true" showDetail="true" showSummary="true" />
+
+				<p:panel header="Login">
+					<p:panelGrid columns="2">
+						<p:outputLabel value="#{messages.login_username}" />
+						<p:inputText value="#{loginMB.username}" />
+
+						<p:outputLabel value="#{messages.login_password}" />
+						<p:inputText value="#{loginMB.password}" />
+
+						<p:commandButton value="Login" action="#{loginMB.login}" />
+					</p:panelGrid>
+				</p:panel>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

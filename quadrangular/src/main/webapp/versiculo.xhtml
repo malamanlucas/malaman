@@ -1,0 +1,160 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+
+
+</h:head>
+<ui:composition template="index.xhtml">
+
+	<ui:define name="content">
+		
+		<h:form prependId="false">
+
+			<p:defaultCommand target="btn_salvar" />
+
+			<h:panelGroup id="form_versiculo">
+				<h:inputHidden value="#{versiculoMB.backingBean.entity.key.id}" />
+				<h:inputHidden value="#{versiculoMB.backingBean.entity.key.capituloId}" />
+				<h:inputHidden value="#{versiculoMB.backingBean.entity.key.livroId}" />
+
+				<div class="ui-fluid">
+				
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Testamento" />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:selectOneButton value="#{versiculoMB.backingBean.testamento}">
+								<f:selectItems value="#{livroMB.allTestamento()}" var="i" itemLabel="#{i.descricao}" itemValue="#{i}" />
+								<p:ajax event="change" process="@this" update="idioma livros capitulos datatable_versiculo" listener="#{versiculoMB.modifyTestamento}" />
+							</p:selectOneButton>
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Idioma" />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:selectOneButton id="idioma" value="#{versiculoMB.backingBean.idioma}">
+								<f:selectItems value="#{versiculoMB.backingBean.allIdioma()}" var="i" itemLabel="#{i.descricao}" itemValue="#{i}" />
+							</p:selectOneButton>
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Livro" />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:selectOneMenu id="livros" value="#{versiculoMB.backingBean.livroId}">
+								<f:selectItems value="#{versiculoMB.backingBean.livros}" var="i" itemLabel="#{i.nome}" itemValue="#{i.id}" />
+								<p:ajax event="valueChange" update="capitulos, datatable_versiculo datatable_versiculo" process="@this" listener="#{versiculoMB.searchVersiculoAndLoadCapitulos}" />
+							</p:selectOneMenu>
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Capítulo" />
+						</div>
+
+						<div class="ui-g-4 ui-md-2 ui-lg-1">
+							<p:selectOneMenu id="capitulos" value="#{versiculoMB.backingBean.capituloId}">
+								<f:selectItems value="#{versiculoMB.backingBean.capitulos}" var="i" itemLabel="#{i.key.id}" itemValue="#{i.key.id}" />
+								<p:ajax event="valueChange" update="datatable_versiculo" process="@this" listener="#{versiculoMB.searchVersiculo}" />
+							</p:selectOneMenu>
+						</div>
+						
+						<div class="ui-g-2 ui-md-1 ui-lg-1">
+							<h:outputText value="Número" />
+						</div>
+
+						<div class="ui-g-3 ui-md-1 ui-lg-1">
+							<p:inputText value="#{versiculoMB.backingBean.entity.numero}" />
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Texto" />
+						</div>
+
+						<div class="ui-g-12 ui-md-12 ui-lg-12">
+							<p:inputText value="#{versiculoMB.backingBean.entity.texto}" widgetVar="texto"
+								placeholder="No [princípio]7225=, [criou]1254= [Deus]430= os [céus]8064= e a [terra]776=." />
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-2 ui-md-2 ui-lg-1">
+							<p:commandButton id="btn_salvar" value="Salvar" update="form_versiculo, datatable_versiculo" process="form_versiculo"
+								action="#{versiculoMB.save}" />
+						</div>
+					</div>
+
+				</div>
+
+			</h:panelGroup>
+
+			<p:dataTable id="datatable_versiculo" value="#{versiculoMB.list}" var="i" styleClass="table table-striped table-bordered"
+				emptyMessage="Nâo há registro" reflow="true" rowHover="true">
+
+				<p:column headerText="Número">
+					<h:outputText value="#{i.numero}" />
+				</p:column>
+
+				<p:column headerText="Idioma">
+					<h:outputText value="#{i.idioma.descricao}" />
+				</p:column>
+
+				<p:column headerText="Texto Limpo" width="60%">
+					<h:outputText value="#{i.textoSemFormatacao()}" style="font-style: italic; font-weight: bold" />
+				</p:column>
+
+				<p:column headerText="Ações">
+
+					<p:panelGrid>
+						
+						<p:commandButton ajax="true" icon="fa fa-search" update="dados_modal" oncomplete="PF('amodal').show();">
+							<f:setPropertyActionListener value="#{i}" target="#{versiculoMB.backingBean.entityModal}" />
+						</p:commandButton>
+						
+						<p:commandButton ajax="true" icon="fa fa-edit" update="form_versiculo" oncomplete="PF('texto').jq.focus();">
+							<f:setPropertyActionListener value="#{i}" target="#{versiculoMB.backingBean.entity}" />
+						</p:commandButton>
+						<p:commandButton ajax="true" icon="fa fa-eraser" update="datatable_versiculo, form_versiculo" action="#{versiculoMB.delete(i.key)}" />
+					</p:panelGrid>
+
+				</p:column>
+
+			</p:dataTable>
+
+			<p:dialog widgetVar="amodal" header="Dados do Versículo" closeOnEscape="true" closable="true" responsive="true"
+			    dynamic="true" maximizable="true" minimizable="true" modal="true" fitViewport="true" positionType="absolute">
+				
+				<p:ajax event="close" update="@this" />
+				
+				<h:panelGroup id="dados_modal">
+					<p>
+						<b>#{versiculoMB.backingBean.entityModal.texto}</b>
+					</p>
+					<p>
+						<i>#{versiculoMB.backingBean.entityModal.textoSemFormatacao()}</i>
+					</p>
+					<p>#{versiculoMB.backingBean.entityModal.formatado}</p>
+				</h:panelGroup>
+
+			</p:dialog>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

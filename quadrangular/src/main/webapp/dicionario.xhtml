@@ -1,0 +1,108 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+<ui:composition template="index.xhtml">
+
+	<ui:define name="content">
+
+		<h:form prependId="false">
+
+			<p:defaultCommand target="btn_salvar" />
+
+			<h:panelGroup id="form_dicionario">
+
+				<div class="ui-fluid">
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Idioma" />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:selectOneButton value="#{dicionarioMB.idioma}">
+								<f:selectItems value="#{dicionarioMB.allIdioma()}" var="i" itemLabel="#{i.descricao}" itemValue="#{i}" />
+								<p:ajax event="change" update="datatable_dicionario" listener="#{dicionarioMB.search}" process="@this" />
+							</p:selectOneButton>
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Id" />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:inputText value="#{dicionarioMB.entity.key.id}" />
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Definição" />
+						</div>
+
+						<div class="ui-g-12 ui-md-12 ui-lg-12">
+							<p:inputTextarea value="#{dicionarioMB.entity.definicao}" rows="8"  autoResize="false" />
+						</div>
+					</div>
+				</div>
+
+				<div class="ui-g">
+					<div class="ui-g-2 ui-md-2 ui-lg-1">
+						<p:commandButton id="btn_salvar" value="Salvar" update="form_dicionario, datatable_dicionario" process="form_dicionario"
+							action="#{dicionarioMB.save}" />
+					</div>
+				</div>
+
+
+			</h:panelGroup>
+
+			<p:dataTable rowHover="true" id="datatable_dicionario" value="#{dicionarioMB.list}" var="i" styleClass="table table-striped table-bordered" rows="15"
+				emptyMessage="Nâo há registro" paginator="true" reflow="true" paginatorPosition="bottom">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{i.key.id}" />
+				</p:column>
+
+				<p:column headerText="Idioma">
+					<h:outputText value="#{i.key.idioma.descricao}" />
+				</p:column>
+				
+				<p:column headerText="Definição" width="70%">
+					<h:outputText value="#{fn:substring(i.definicao,0, 300)}" />
+				</p:column>
+
+				<p:column headerText="Ações">
+					<p:panelGrid>
+						
+						<p:commandButton ajax="true" icon="fa fa-search" update="dados_modal" oncomplete="PF('amodal').show();">
+							<f:setPropertyActionListener value="#{i}" target="#{dicionarioMB.entityModal}" />
+						</p:commandButton>
+						
+						<p:commandButton ajax="true" icon="fa fa-edit" update="form_dicionario">
+							<f:setPropertyActionListener value="#{i}" target="#{dicionarioMB.entity}" />
+						</p:commandButton>
+					</p:panelGrid>
+				</p:column>
+
+			</p:dataTable>
+			
+			<p:dialog widgetVar="amodal" header="#{dicionarioMB.entityModal.key.id} - #{dicionarioMB.entityModal.key.idioma.descricao}" 
+				closeOnEscape="true" closable="true" responsive="true" dynamic="true" maximizable="true" minimizable="true"
+				modal="true" fitViewport="true" positionType="absolute">
+
+				<p:ajax event="close" update="@this" />
+				
+				<h:panelGroup id="dados_modal">
+					<p>
+						<b>#{dicionarioMB.entityModal.definicao}</b>
+					</p>
+				</h:panelGroup>
+			</p:dialog>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

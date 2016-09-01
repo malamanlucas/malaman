@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+
+	<script>
+		// 				$.blockUI.defaults.overlayCSS.opacity = 0;
+		$.blockUI.defaults.message = '<div> <img src="/resources/img/waitcursor.gif" /> Carregando...</div>';
+
+		window.onload = function() {
+			bindScrolls();
+		};
+
+		function bindScrolls() {
+			$("#scroll_down").click(function() {
+				scrollDown();
+			});
+
+			$("#scroll_up").click(function() {
+				$('html, body').animate({
+					scrollTop : 0
+				}, 'fast');
+			});
+		}
+
+		function scrollDown() {
+			$('html, body').animate({
+				scrollTop : $("#body").height()
+			}, 'fast');
+		}
+
+		function block() {
+			$.blockUI();
+		}
+
+		function unblock() {
+			$.unblockUI();
+		}
+	</script>
+
+	<style type="text/css">
+		/* Sticky footer styles
+							-------------------------------------------------- */
+		html {
+			position: relative;
+			min-height: 100%;
+		}
+		
+		body {
+			/* Margin bottom by footer height */
+			margin-bottom: 60px;
+		}
+		
+		.footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			/* Set the fixed height of the footer here */
+			background-color: #f5f5f5;
+		}
+		
+		/* Custom page CSS
+							-------------------------------------------------- */
+		/* Not required for template or sticky footer method. */
+		.container {
+			width: auto;
+			max-width: 680px;
+			padding: 0 15px;
+		}
+		
+		.container .text-muted {
+			margin: 20px 0;
+		}
+		
+		.container-fluid {
+			height: 100%;
+			display: table;
+			width: 100%;
+			padding-right: 0;
+			padding-left: 0;
+		}
+		
+		.row-fluid {
+			height: 100%;
+			display: table-cell;
+			vertical-align: middle;
+			width: 100%;
+		}
+		
+		.centering {
+			float: none;
+			margin: 0 auto;
+		}
+	</style>
+
+</h:head>
+<h:body styleClass="body">
+
+	<p:blockUI widgetVar="block" block="form_nav" />
+
+	<h:form prependId="false" id="form_nav">
+	
+		<b:navBar brand="Bíblia" brandHref="home.xhtml" fixed="top">
+			<b:navbarLinks>
+				<b:navLink value="Versículos" outcome="versiculo.xhtml" />
+				<b:navLink value="Dicionário" outcome="dicionario.xhtml" />
+				<b:navLink value="Livros" outcome="livro.xhtml" />
+				<b:navLink value="Capítulo" outcome="capitulo.xhtml" />
+				<b:navLink value="Mensagens" outcome="message.xhtml" />
+				<b:dropMenu value="Dropdown">
+					<b:navLink id="scroll_up" value="Scroll UP" href="#"></b:navLink>
+					<b:navLink value="Scroll Down" href="#"></b:navLink>
+					<b:navLink value="Something else here" href="#"></b:navLink>
+					<b:navLink></b:navLink>
+					<b:navLink header="Nav header"></b:navLink>
+					<b:navLink value="Separated link" href="#"></b:navLink>
+					<b:navLink value="One more separated link" href="#"></b:navLink>
+				</b:dropMenu>
+			</b:navbarLinks>
+		</b:navBar>
+
+	</h:form>
+
+	<p:spacer height="60px" />
+
+	<b:container fluid="true" >
+	
+		<ui:insert name="content" />
+		
+	</b:container>
+
+	<hr />
+
+	<footer class="footer" style="text-align: center">
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="centering">
+					<p>
+						Baseado na <b>Bíblia de Estudo Palavras Chave Hebraico/Grego</b>
+					</p>
+					<p>Almeida Revista e Corrigida 4ª EDIÇÃO</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+</h:body>
+</html>

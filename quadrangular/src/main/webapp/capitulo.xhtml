@@ -1,0 +1,101 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+</h:head>
+<ui:composition template="index.xhtml">
+
+	<ui:define name="content">
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+			});
+		</script>
+
+		<h:form prependId="false">
+
+			<h:panelGroup id="form_capitulo">
+
+				<div class="ui-fluid">
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Testamento" />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:selectOneButton value="#{capituloMB.testamento}">
+								<f:selectItems value="#{livroMB.allTestamento()}" var="i" itemLabel="#{i.descricao}" itemValue="#{i}" />
+								<p:ajax event="change" process="@this" update="livros datatable_capitulo" listener="#{capituloMB.searchLivros}" />
+							</p:selectOneButton>
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Livro" />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:selectOneMenu id="livros" value="#{capituloMB.livroId}">
+								<f:selectItems value="#{capituloMB.livros}" var="i" itemLabel="#{i.nome}" itemValue="#{i.id}" />
+								<p:ajax event="change" listener="#{capituloMB.search()}" update="datatable_capitulo" />
+							</p:selectOneMenu>
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Número:" />
+						</div>
+
+						<div class="ui-g-8 ui-md-8 ui-lg-8">
+							<p:inputText id="nro" value="#{capituloMB.entity.key.id}" />
+							<p:slider for="nro" maxValue="150" />
+						</div>
+					</div>
+				</div>
+
+				<div class="ui-g">
+					<div class="ui-g-2 ui-md-2 ui-lg-1">
+						<p:commandButton id="btn_salvar" value="Salvar" update="form_capitulo, datatable_capitulo" process="form_capitulo" action="#{capituloMB.save}" />
+					</div>
+
+					<div class="ui-g-2 ui-md-2 ui-lg-1">
+						<p:commandButton value="Salvar Batch" update="form_capitulo, datatable_capitulo" process="form_capitulo" action="#{capituloMB.saveBatch}" />
+					</div>
+					
+					<div class="ui-g-2 ui-md-2 ui-lg-1">
+						<p:commandButton value="Delete Batch" update="datatable_capitulo" process="form_capitulo" action="#{capituloMB.deleteBatch}" />
+					</div>
+				</div>
+
+			</h:panelGroup>
+
+			<p:dataTable rowHover="true" id="datatable_capitulo" value="#{capituloMB.list}" var="i" styleClass="table table-striped table-bordered" rows="30"
+				emptyMessage="Nâo há registro" paginator="true" reflow="true" paginatorPosition="bottom">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{i.key.id}" />
+				</p:column>
+
+				<p:column headerText="Ações">
+
+					<p:panelGrid>
+						<p:commandButton ajax="true" icon="fa fa fa-edit" update="form_capitulo">
+							<f:setPropertyActionListener value="#{i}" target="#{capituloMB.entity}" />
+						</p:commandButton>
+						<p:commandButton ajax="true" icon="fa fa-eraser" update="datatable_capitulo, form_capitulo" action="#{capituloMB.delete(i.key)}" />
+					</p:panelGrid>
+
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
