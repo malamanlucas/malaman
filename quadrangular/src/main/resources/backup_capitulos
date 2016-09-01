@@ -2,10 +2,6 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.3.14
--- Dumped by pg_dump version 9.3.14
--- Started on 2016-08-31 23:54:14 BRT
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -14,8 +10,6 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 2010 (class 1262 OID 12068)
--- Dependencies: 2009
 -- Name: postgres; Type: COMMENT; Schema: -; Owner: -
 --
 
@@ -23,7 +17,6 @@ COMMENT ON DATABASE postgres IS 'default administrative connection database';
 
 
 --
--- TOC entry 1 (class 3079 OID 11789)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -31,8 +24,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2011 (class 0 OID 0)
--- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
 --
 
@@ -44,7 +35,6 @@ SET search_path = public, pg_catalog;
 SET default_with_oids = false;
 
 --
--- TOC entry 173 (class 1259 OID 16854)
 -- Name: capitulo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -55,7 +45,6 @@ CREATE TABLE capitulo (
 
 
 --
--- TOC entry 171 (class 1259 OID 16844)
 -- Name: dicionario; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -68,7 +57,6 @@ CREATE TABLE dicionario (
 
 
 --
--- TOC entry 172 (class 1259 OID 16851)
 -- Name: livro; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -81,7 +69,6 @@ CREATE TABLE livro (
 
 
 --
--- TOC entry 175 (class 1259 OID 17219)
 -- Name: message; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -93,7 +80,6 @@ CREATE TABLE message (
 
 
 --
--- TOC entry 174 (class 1259 OID 16857)
 -- Name: versiculo; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -109,8 +95,6 @@ CREATE TABLE versiculo (
 
 
 --
--- TOC entry 2002 (class 0 OID 16854)
--- Dependencies: 173
 -- Data for Name: capitulo; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -773,8 +757,6 @@ INSERT INTO capitulo (id, livro_id) VALUES (4, 56);
 
 
 --
--- TOC entry 2000 (class 0 OID 16844)
--- Dependencies: 171
 -- Data for Name: dicionario; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -3915,11 +3897,15 @@ INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (3762, 'GREGO', 'N
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (801, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (3539, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (4124, 'GREGO', 'Não há definição para esta palavra', false);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (3468, 'HEBRAICO', 'Não há definição para esta palavra', false);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (6342, 'HEBRAICO', 'Não há definição para esta palavra', false);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (3782, 'HEBRAICO', 'Não há definição para esta palavra', false);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (982, 'HEBRAICO', 'Não há definição para esta palavra', false);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (7891, 'HEBRAICO', 'Não há definição para esta palavra', false);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (2167, 'HEBRAICO', 'Não há definição para esta palavra', false);
 
 
 --
--- TOC entry 2001 (class 0 OID 16851)
--- Dependencies: 172
 -- Data for Name: livro; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -3992,8 +3978,6 @@ INSERT INTO livro (id, nome, testamento, ordem) VALUES (66, 'Apocalipse', 'NOVO'
 
 
 --
--- TOC entry 2004 (class 0 OID 17219)
--- Dependencies: 175
 -- Data for Name: message; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -4002,8 +3986,6 @@ INSERT INTO message (id, title, texto) VALUES (1, 'Malaquias 2.15', 'arrumar, va
 
 
 --
--- TOC entry 2003 (class 0 OID 16857)
--- Dependencies: 174
 -- Data for Name: versiculo; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -8068,10 +8050,23 @@ INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, nume
 INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4060, 7, 2, 'Porque do interior do coração dos homens saem os maus [pensamentos,]1261= os adultérios, as [prostituições,]4202= os homicídios,', 'GREGO', 'Porque do interior do coração dos homens saem os maus <span class="texto" dic="1261">pensamentos,</span> os adultérios, as <span class="texto" dic="4202">prostituições,</span> os homicídios,', 21);
 INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4061, 7, 2, 'os furtos, a [avareza,]4124= as [maldades,]4189= o engano, a [dissolução,]766= a [inveja,]4190= a [blasfêmia,]988= a soberba, a loucura.', 'GREGO', 'os furtos, a <span class="texto" dic="4124">avareza,</span> as <span class="texto" dic="4189">maldades,</span> o engano, a <span class="texto" dic="766">dissolução,</span> a <span class="texto" dic="4190">inveja,</span> a <span class="texto" dic="988">blasfêmia,</span> a soberba, a loucura.', 22);
 INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4062, 7, 2, 'Todos estes males procedem de dentro e contaminam o homem.', 'GREGO', 'Todos estes males procedem de dentro e contaminam o homem.', 23);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4063, 27, 36, 'O Senhor é a minha [luz]216= e a minha [salvação;]3468= a quem [temerei?]3372= O Senhor é a força da minha [vida;]2416= de quem [me recearei?]6342=', 'HEBRAICO', 'O Senhor é a minha <span class="texto" dic="216">luz</span> e a minha <span class="texto" dic="3468">salvação;</span> a quem <span class="texto" dic="3372">temerei?</span> O Senhor é a força da minha <span class="texto" dic="2416">vida;</span> de quem <span class="texto" dic="6342">me recearei?</span>', 1);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4064, 27, 36, 'Quando os [malvados,]7489= meus adversários e meus inimigos, investiram contra mim, para comerem as minhas [carnes,]1320= [tropeçaram]3782= e [caíram.]5307=', 'HEBRAICO', 'Quando os <span class="texto" dic="7489">malvados,</span> meus adversários e meus inimigos, investiram contra mim, para comerem as minhas <span class="texto" dic="1320">carnes,</span> <span class="texto" dic="3782">tropeçaram</span> e <span class="texto" dic="5307">caíram.</span>', 2);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4065, 27, 36, 'Ainda que um [exército]4264= me cercasse, o meu [coração]3820= não temeria; ainda que a guerra se levantasse contra mim, nele [confiaria.]982=', 'HEBRAICO', 'Ainda que um <span class="texto" dic="4264">exército</span> me cercasse, o meu <span class="texto" dic="3820">coração</span> não temeria; ainda que a guerra se levantasse contra mim, nele <span class="texto" dic="982">confiaria.</span>', 3);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4066, 27, 36, 'Uma coisa [pedi]7592= ao Senhor e a buscarei: que possa morar na [Casa]1004= do Senhor todos os [dias]3117= da minha vida, para [contemplar]2372= a formosura do Senhor e aprender no seu [templo.]1964=', 'HEBRAICO', 'Uma coisa <span class="texto" dic="7592">pedi</span> ao Senhor e a buscarei: que possa morar na <span class="texto" dic="1004">Casa</span> do Senhor todos os <span class="texto" dic="3117">dias</span> da minha vida, para <span class="texto" dic="2372">contemplar</span> a formosura do Senhor e aprender no seu <span class="texto" dic="1964">templo.</span>', 4);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4067, 27, 36, 'Porque no [dia]3117= da [adversidade]7451= me esconderá no seu pavilhão; no oculto do seu [taberncáulo]168= me escondeará; por-me-á sobre uma rocha.', 'HEBRAICO', 'Porque no <span class="texto" dic="3117">dia</span> da <span class="texto" dic="7451">adversidade</span> me esconderá no seu pavilhão; no oculto do seu <span class="texto" dic="168">taberncáulo</span> me escondeará; por-me-á sobre uma rocha.', 5);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4068, 27, 36, 'Também a minha [cabeça]7218= será exaltada sobre os meus inimigos que estão ao redor de mim; pelo que [oferecerei]2076= [sacrifício]2077= de júbilo no seu tabernáculo; [cantarei,]7891= sim, [cantarei louvores]2167= ao Senhor.', 'HEBRAICO', 'Também a minha <span class="texto" dic="7218">cabeça</span> será exaltada sobre os meus inimigos que estão ao redor de mim; pelo que <span class="texto" dic="2076">oferecerei</span> <span class="texto" dic="2077">sacrifício</span> de júbilo no seu tabernáculo; <span class="texto" dic="7891">cantarei,</span> sim, <span class="texto" dic="2167">cantarei louvores</span> ao Senhor.', 6);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4069, 27, 36, '[Ouve,]8085= Senhor, a minha voz quando [clamo;]7121= tem também [piedade]2603= de mim e responde-me.', 'HEBRAICO', '<span class="texto" dic="8085">Ouve,</span> Senhor, a minha voz quando <span class="texto" dic="7121">clamo;</span> tem também <span class="texto" dic="2603">piedade</span> de mim e responde-me.', 7);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4070, 27, 36, 'Quando tu disseste: Buscai o meu rosto, o meu coração te disse a ti: O teu rosto, Senhor, buscarei.', 'HEBRAICO', 'Quando tu disseste: Buscai o meu rosto, o meu coração te disse a ti: O teu rosto, Senhor, buscarei.', 8);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4071, 27, 36, 'Não escondas de mim a tua face e não rejeites ao teu [servo]5650= com [ira;]639= tu foste a minha jauda; não me [deixes,]5203= nem me [desampares,]5800= ó [Deus]430= da minha salvação.', 'HEBRAICO', 'Não escondas de mim a tua face e não rejeites ao teu <span class="texto" dic="5650">servo</span> com <span class="texto" dic="639">ira;</span> tu foste a minha jauda; não me <span class="texto" dic="5203">deixes,</span> nem me <span class="texto" dic="5800">desampares,</span> ó <span class="texto" dic="430">Deus</span> da minha salvação.', 9);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4072, 27, 36, 'Porque, quando meu [pai]1= e minha [mãe]517= me desampararem, o Senhor me recolherá.', 'HEBRAICO', 'Porque, quando meu <span class="texto" dic="1">pai</span> e minha <span class="texto" dic="517">mãe</span> me desampararem, o Senhor me recolherá.', 10);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4073, 27, 36, '[Ensina-me,]3384= Senhor, o teu [caminho]1870= e [guia-me]5148= pela [vereda]734= direita, por causa dos que me andam espiando.', 'HEBRAICO', '<span class="texto" dic="3384">Ensina-me,</span> Senhor, o teu <span class="texto" dic="1870">caminho</span> e <span class="texto" dic="5148">guia-me</span> pela <span class="texto" dic="734">vereda</span> direita, por causa dos que me andam espiando.', 11);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4074, 27, 36, 'Não me entregues à vontade dos meus adversários, pois se levantaram [falsas]8267= testemunhas contra mim, e os que respiram [crueldade,]2555=', 'HEBRAICO', 'Não me entregues à vontade dos meus adversários, pois se levantaram <span class="texto" dic="8267">falsas</span> testemunhas contra mim, e os que respiram <span class="texto" dic="2555">crueldade,</span>', 12);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4075, 27, 36, 'Pereceria sem dúvida, se não [cresse]539= que veria os bens do Senhor na [terra]776= dos [viventes.]2416=', 'HEBRAICO', 'Pereceria sem dúvida, se não <span class="texto" dic="539">cresse</span> que veria os bens do Senhor na <span class="texto" dic="776">terra</span> dos <span class="texto" dic="2416">viventes.</span>', 13);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4076, 27, 36, '[Espera no]6960= Senhor, [anima-te,]2388= e ele fortalecerá o teu coração; espera, pois, no Senhor.', 'HEBRAICO', '<span class="texto" dic="6960">Espera no</span> Senhor, <span class="texto" dic="2388">anima-te,</span> e ele fortalecerá o teu coração; espera, pois, no Senhor.', 14);
 
 
 --
--- TOC entry 1886 (class 2606 OID 16870)
 -- Name: capitulo_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8080,7 +8075,6 @@ ALTER TABLE ONLY capitulo
 
 
 --
--- TOC entry 1880 (class 2606 OID 16868)
 -- Name: dicionario_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8089,7 +8083,6 @@ ALTER TABLE ONLY dicionario
 
 
 --
--- TOC entry 1882 (class 2606 OID 16864)
 -- Name: livro_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8098,7 +8091,6 @@ ALTER TABLE ONLY livro
 
 
 --
--- TOC entry 1884 (class 2606 OID 16866)
 -- Name: livro_unique; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8107,7 +8099,6 @@ ALTER TABLE ONLY livro
 
 
 --
--- TOC entry 1890 (class 2606 OID 17226)
 -- Name: message_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8116,7 +8107,6 @@ ALTER TABLE ONLY message
 
 
 --
--- TOC entry 1888 (class 2606 OID 16877)
 -- Name: versiculo_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8125,7 +8115,6 @@ ALTER TABLE ONLY versiculo
 
 
 --
--- TOC entry 1891 (class 2606 OID 16871)
 -- Name: capitulo_livro_pk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -8134,15 +8123,12 @@ ALTER TABLE ONLY capitulo
 
 
 --
--- TOC entry 1892 (class 2606 OID 16878)
 -- Name: versiculo_capitulo_pk; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY versiculo
     ADD CONSTRAINT versiculo_capitulo_pk FOREIGN KEY (capitulo_id, livro_id) REFERENCES capitulo(id, livro_id) ON DELETE CASCADE;
 
-
--- Completed on 2016-08-31 23:54:15 BRT
 
 --
 -- PostgreSQL database dump complete
