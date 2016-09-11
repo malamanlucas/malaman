@@ -754,6 +754,10 @@ INSERT INTO capitulo (id, livro_id) VALUES (1, 56);
 INSERT INTO capitulo (id, livro_id) VALUES (2, 56);
 INSERT INTO capitulo (id, livro_id) VALUES (3, 56);
 INSERT INTO capitulo (id, livro_id) VALUES (4, 56);
+INSERT INTO capitulo (id, livro_id) VALUES (1, 18);
+INSERT INTO capitulo (id, livro_id) VALUES (2, 18);
+INSERT INTO capitulo (id, livro_id) VALUES (3, 18);
+INSERT INTO capitulo (id, livro_id) VALUES (4, 18);
 
 
 --
@@ -1219,7 +1223,6 @@ INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (3957, 'GREGO', 'N
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (1115, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (5102, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (314, 'GREGO', 'Não há definição para esta palavra', false);
-INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (1451, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (2632, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (264, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (3485, 'GREGO', 'Não há definição para esta palavra', false);
@@ -1346,7 +1349,6 @@ INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (3727, 'GREGO', 'N
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (5547, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (5312, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (305, 'GREGO', 'Não há definição para esta palavra', false);
-INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (1097, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (4717, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (2660, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (2588, 'GREGO', 'Não há definição para esta palavra', false);
@@ -1374,6 +1376,23 @@ INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (4396, 'GREGO', '(
  (III) Especificamente sobre aqueles que possuíam o dom profético ou carisma distribuído pelo Espírito Santo à igreja. Os profetas eram um tipo de instrutores ou pregadores que eram similares, em posição hierárquica, aos apóstolos, e estavam antes dos ensinadores (1 Co 12.28). Como os apóstolos, no entanto, eles não permaneciam em um só lugar, como era o caso dos ensinadores. Eles pareciam ser diferentes dos ensinadores, pelo fato de que, enquanto os ensinadoers falavam em um discurso didático calmo e conectao, adpatado para instruir e esclarecer os ouvintes, os profetas falavam mais movidos pelo impulso de uma repentina inspiraçao, com a luz de uma repetina revelação feita no momento, como indica 1 Co 14.30. Parece que este discurso era, provavelmente, mais adaptado por meio de poderosas exortações, para despertar os sentimentos e a consciência dos ouvintes. A ideia de falar com base em uma revelação imediata aqui parece ser fundamental, estando relacionada a eventos futuros ou ao pensamento e às intenções do Espírito, de modo geral. Veja também At 11.27; veja 13.1; 1 Co 12.28, 29; 14.29, 32, 37; Ef 2.20; 3.5; 4.11.
  (IV) Usada uma vez no sentido secular grego de um porta-voz dos deuses (Tt 1.12).
 Deriv.: prophẽteuõ (4395); profetizar; prophẽtikos (4397), profético; pseudoprophẽtẽs (5578), um falso profeta.', true);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (1097, 'GREGO', '(ginõskõ) forma estendida de um verbo primário; "conhecer" (absoluto), em uma ampla variedade de aplicações e com muitas implicações (como será visto a seguir, com outras não claramente expressas) :-- permitir, estar ciente (de), sentir, conhecer (ter conhecimento de), perceber, estar resolvido, poder falar, estar seguro, compreender.
+    Conhecer, em um sentido inicial ou completo:
+      (I) Conhecer em um sentido inicial: ou seja, vir a conhecer, ganhar ou receber o conhecimento de:
+        (A) De modo geral (Mt 12.7; Mc 6.38; Lc 12.47; Jo 7.26; 8.32,52; At 1.7; Rm 1.21; 1 Co 4.19; 13.9; 2 Co 2.9; Tg 2.20; 1 Jo 3.16; 19.24; 4.13). Na voz passiva: ser conhecido ou distinto (1 Co 14.17).
+        (B)Em sentido jurídico: conhecer por tentativa, investigar ou examinar a razão ou a causa (Jo 7.51; At 23.28).
+        (C) No sentido de conhecer a partir dfe outros, aprender, descobrir. Na voz passiva: ser feito conhecido, ser revelado (Mt 10.26; Mc 5.43; At 9.24; 21.34; Cl 4.8; Mt 9.30; Lc 9.11; LXX: 1 Sm 21.2).
+        (D) No sentido de perceber, observar, estar ciente de (Mt 16.8; 22.18; 26.10; Mc 5.29; At 23.6; LXX: Rt 3.4).
+        (E) No sentido de entender ou compreender (Mt 13.11; Mc 4.13; Lc 18.34; Jo 3.10; 7.49; 1 Co 2.8,14; Jo 10.6; 12.16; 13.12; At 8.30; Rm 11.34; LXX: 1 Sm 20.39; Pv 1.2).
+        (F) Via eufemismo: dormir com uma pessoa do sexo oposto, referindo-se a um homem ou homens (Mt 1.25; LXX: Gn 4.1,17; 24.16); a uma mulher ou mulheres (Lc 1.34; LXX: Gn 19.8; Nm 31.17, 35).
+     (II) Conhecer em um sentido completo, ou seja, deter o conhecimento de:
+        (A) De modo geral (Mt 6.3; 24.43; Lc 2.43; 7.39; 16.15; Jo 2.25; At 19.35; Rm 2.18; 10.19; 2 Co 5.21; Ef 5.5; 1 Jo 3.20). Com pessoas: conhecer de vista ou pessoalmente (Jo 1.48; 2 Co 5.16); conhecer o caráter de alguém (Jo 1.10; 2.24; 14.7,9; 16.3; At 19.15; LXX Dt 34.10; Sl 87.4; 139.1).
+        (B) No sentido de conhecer, de ser o que somos ou professamos ser, reconhecer (Mt 7.23). Na voz passiva (1 Co 8.3; Gl 4.9; LXX: Is 33.13; 61.9; 63.16).
+        (C) Com a ideia de volição ou boa-vontade conhecer e aprovar ou amar, cuidar de, referindo-se a pessoas (Jo 10.14,15,27; 1 Tm 2.18; LXX; Sl 144.3; Am 3.2; Na 1.17); referindo-se a pessoas (Rm 8.15; LXX Sl 1.6).
+  Deriv.: anaginõsko (314), ler; gnõmẽ (1106), cognição; gnôsis (1108), conhecimento; gnôstês (1109), um conhecedor, um perito; gnõstos (1110), bme conhecido, familiaridade;  diagnõskõ (132), conhecer por completo; epiginõsko (1921), observar, perceber de forma total, observar com atenção, discernir; kardiognõstẽs (2589), conhecedor do coração; kataginõsko (2607), culpar, condenar; proginõsko (4267), conhecer de antemão.
+  Sin.: epistamai (1987), conhecer ou adquirir conhecimento; synoida (4894), conhecer conjuntamente; theõreõ (2334), ser um expectador e, dessa forma, compreender ou perceber; aisthanomai (143), perceber por meio dos sentidos, apesar de ginõskõ significar "perceber com a mente"; noeõ (3539), perceber com a mente; katnoeõ (2657), compreender de forma mais completa; katalambanõ (2638), apanhar, apreender, pereceber; blepõ (991), ver e perceber; syniẽmi (4920), fazer um agrupamento mental das coisas; pynthanomai (4441), investigar com o propósito de conhecer; parakoloutheõ (3877), seguir, observar, entender; gnõridzõ (1107), vir a conhecerrr; diagnõridzõ (1232), fazer conhecido; diagniõskõ (1231), determinar por meio de um exame detalhado; gnõridzõ (1107), fazer conhecido, compreender.
+ 
+  ', true);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (1322, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (2842, 'GREGO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (2800, 'GREGO', 'Não há definição para esta palavra', false);
@@ -3903,6 +3922,11 @@ INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (3782, 'HEBRAICO',
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (982, 'HEBRAICO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (7891, 'HEBRAICO', 'Não há definição para esta palavra', false);
 INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (2167, 'HEBRAICO', 'Não há definição para esta palavra', false);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (1933, 'GREGO', '(epieikẽs) de 1909 e 1503; apropriado, i.e. (consequentemente) manso, brando :-- gentil, moderação, paciente.', true);
+INSERT INTO dicionario (id, idioma, definicao, existe) VALUES (1451, 'GREGO', '(engys) de um verbo primário, (anchõ, comprimir ou apertar; semelhante à raiz de 43); perto (literal ou figurado, de lugar ou tempo) :-- oriundo em, desde, iminente, perto, próximo (iminente, para), pronto. Advérbio com o significado de "perto, próximo":
+      (I) Referindo-se a lugar (Jo 3.23; 6.19, 23; 11.18,54; 19.42; Lc 19.11; At 1.12; LXX Gn 45.10; Ez 23.12). De modo metafórico: perto, próximo (Fp 4.5 [cf. Fp 4.6 {veja também Sl 34.18; 145.18}]; Hb 6.8; 8.13). Referindo-se aos judeus, "aqueles que estão perto", i.e., que detém o conhecimento e adoram o Deus verdadeiro, em contraste com "aqueles que estão longe", os gentios (Ef 2.17; LXX Is 57.19). Portanto, chegar mais perto de Deus pela adesão ao Evangelho (Ef 2.13).
+     (II) Rferindo-se a tempo: estar perto, iminente (Mt 24.32-33; Mc 13.28-29; Ap 1.3; 22.10). Utilizado para se referir à Páscoa (Jo 2.13; 6.4; 11.55); à festa (Jo 7.2); ao reino de Deus (Lc 21.31); ao Senhor (Fp 4.5 [cf. Hb 10.37]). Utilizado na LXX: em lugar de qãrôbh (7138, Antigo Testamento): Ezequiel 30.3; Joel 1.15; 2.1.
+    Deriv.: engidzõ (1448), trazer para perto; engyteron (1452), mais perto.', true);
 
 
 --
@@ -8064,6 +8088,11 @@ INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, nume
 INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4074, 27, 36, 'Não me entregues à vontade dos meus adversários, pois se levantaram [falsas]8267= testemunhas contra mim, e os que respiram [crueldade,]2555=', 'HEBRAICO', 'Não me entregues à vontade dos meus adversários, pois se levantaram <span class="texto" dic="8267">falsas</span> testemunhas contra mim, e os que respiram <span class="texto" dic="2555">crueldade,</span>', 12);
 INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4075, 27, 36, 'Pereceria sem dúvida, se não [cresse]539= que veria os bens do Senhor na [terra]776= dos [viventes.]2416=', 'HEBRAICO', 'Pereceria sem dúvida, se não <span class="texto" dic="539">cresse</span> que veria os bens do Senhor na <span class="texto" dic="776">terra</span> dos <span class="texto" dic="2416">viventes.</span>', 13);
 INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4076, 27, 36, '[Espera no]6960= Senhor, [anima-te,]2388= e ele fortalecerá o teu coração; espera, pois, no Senhor.', 'HEBRAICO', '<span class="texto" dic="6960">Espera no</span> Senhor, <span class="texto" dic="2388">anima-te,</span> e ele fortalecerá o teu coração; espera, pois, no Senhor.', 14);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4077, 4, 18, 'Portanto, meus [amados e mui queridos]27= [irmãos,]80= minha [alegria]5479= e coroa, estai assim firmes no Senhor, amados.', 'GREGO', 'Portanto, meus <span class="texto" dic="27">amados e mui queridos</span> <span class="texto" dic="80">irmãos,</span> minha <span class="texto" dic="5479">alegria</span> e coroa, estai assim firmes no Senhor, amados.', 1);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4078, 4, 18, 'Rogo a Evódia e rogo a Síntique que [sintam]5426= o mesmo no Senhor.', 'GREGO', 'Rogo a Evódia e rogo a Síntique que <span class="texto" dic="5426">sintam</span> o mesmo no Senhor.', 2);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4079, 4, 18, 'E [peço-te]2065= também a ti, meu verdadeiro companheiro, que ajudes essas mulheres que trabalharam comigo no [evangelho,]2098= e com Clemente, e com os outros cooperadores, cujos [nomes]3686= estão no [livro]976= da [vida.]2222=', 'GREGO', 'E <span class="texto" dic="2065">peço-te</span> também a ti, meu verdadeiro companheiro, que ajudes essas mulheres que trabalharam comigo no <span class="texto" dic="2098">evangelho,</span> e com Clemente, e com os outros cooperadores, cujos <span class="texto" dic="3686">nomes</span> estão no <span class="texto" dic="976">livro</span> da <span class="texto" dic="2222">vida.</span>', 3);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4080, 4, 18, '[Regozijai-vos,]5463= sempre no Senhor; outra vez digo: regozijais-vos.', 'GREGO', '<span class="texto" dic="5463">Regozijai-vos,</span> sempre no Senhor; outra vez digo: regozijais-vos.', 4);
+INSERT INTO versiculo (id, capitulo_id, livro_id, texto, idioma, formatado, numero) VALUES (4081, 4, 18, '[Seja a vossa equidade]1933=[*]1451= [notória]1097= a todos os [homens.]444= [Perto está]1451= o Senhor.', 'GREGO', '<span class="texto" dic="1933">Seja a vossa equidade</span><span class="texto" dic="1451">*</span> <span class="texto" dic="1097">notória</span> a todos os <span class="texto" dic="444">homens.</span> <span class="texto" dic="1451">Perto está</span> o Senhor.', 5);
 
 
 --
