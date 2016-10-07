@@ -80,8 +80,8 @@ public class Application
 //		servletContext.setInitParameter("BootsFaces_USETHEME", "true");
 //		servletContext.setInitParameter("BootsFaces_THEME", "united");
 		
-		servletContext.setInitParameter("net.bootsfaces.get_fontawesome_from_cdn", "false");
-		servletContext.setInitParameter("net.bootsfaces.get_jquery_from_cdn", "false");
+		servletContext.setInitParameter("net.bootsfaces.get_fontawesome_from_cdn", "true");
+		servletContext.setInitParameter("net.bootsfaces.get_jquery_from_cdn", "true");
 		servletContext.setInitParameter("BootsFaces_USE_VIEWPORT",
 				"width=device-width, initial-scale=1.0, user-scalable=no");
 		servletContext.setInitParameter("net.bootsfaces.blockUI", "true");
