@@ -14,7 +14,7 @@ public interface LivroDAO extends JpaRepository<Livro, Integer> {
 	@Query(nativeQuery=true, value="SELECT COALESCE(MAX(id),0)+1 FROM livro")
 	Integer retrieveNextId();
 	
-	@Query("SELECT p FROM Livro p WHERE p.testamento = :testamento")
+	@Query("SELECT p FROM Livro p WHERE p.testamento = :testamento ORDER BY p.ordem ASC")
 	List<Livro> searchByTestamento(@Param("testamento") Testamento testamento);
 	
 }
