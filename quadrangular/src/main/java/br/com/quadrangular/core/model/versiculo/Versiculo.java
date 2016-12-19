@@ -30,6 +30,7 @@ public class Versiculo {
 	private String texto;
 	private String formatado;
 	private Integer numero;
+	private String limpo;
 	
 	@Enumerated(EnumType.STRING)
 	private Idioma idioma = Idioma.HEBRAICO;

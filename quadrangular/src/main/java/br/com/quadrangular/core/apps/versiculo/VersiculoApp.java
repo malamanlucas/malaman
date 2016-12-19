@@ -8,6 +8,9 @@ import br.com.quadrangular.core.model.versiculo.VersiculoKey;
 public interface VersiculoApp {
 
 	Versiculo save(Versiculo entity);
+	
+	void atualizarLimpo();
+	
 	List<Versiculo> findAll();
 	
 	List<Versiculo> search(Integer livroId, Integer capituloId);

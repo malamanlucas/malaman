@@ -1,6 +1,7 @@
 package br.com.quadrangular;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import javax.faces.webapp.FacesServlet;
@@ -22,7 +23,8 @@ import org.springframework.context.annotation.Configuration;
 
 import com.sun.faces.config.ConfigureListener;
 
-import br.com.quadrangular.core.dao.LivroDAO;
+import br.com.quadrangular.core.apps.versiculo.VersiculoApp;
+import br.com.quadrangular.core.model.versiculo.Versiculo;
 import br.com.quadrangular.web.scope.ViewScope;
 
 /**
@@ -39,9 +41,10 @@ public class Application
 	public static void main(String[] args) {
 		Locale.setDefault(new Locale("pt", "BR"));
 		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-
-		LivroDAO dao = ctx.getBean(LivroDAO.class);
-
+		
+		VersiculoApp app = ctx.getBean(VersiculoApp.class);
+		app.atualizarLimpo();
+		
 	}
 
 	// @Bean

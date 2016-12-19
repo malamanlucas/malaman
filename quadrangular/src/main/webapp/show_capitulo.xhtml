@@ -16,7 +16,7 @@
 			<b:container fluid="true">
 				
 				<ui:repeat value="#{showCapituloMB.capitulos}" var="l">
-					<h:link value="#{l.key.id.toString()}" outcome="show_versiculo.xhtml" styleClass="btn">
+					<h:link value="#{l.key.id.toString()}" outcome="new/show_versiculo.xhtml" styleClass="btn">
 						<f:param name="livro_id" value="#{l.key.livroId}" />
 						<f:param name="capitulo_id" value="#{l.key.id}" />
 					</h:link>

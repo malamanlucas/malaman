@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.quadrangular.core.dao.DicionarioDAO;
 import br.com.quadrangular.core.dao.VersiculoDAO;
@@ -32,8 +34,13 @@ public class VersiculoFacade implements VersiculoApp {
 			entity.setNumero( dao.retrieveNextVerso( key.getLivroId(), key.getCapituloId() ));
 		}
 		entity.setFormatado( formata(entity.getTexto(), entity.getIdioma()) );
+		entity.setLimpo( limpar(entity.getTexto()) );
 		dao.save( entity );
 		return entity;
+	}
+
+	private String limpar(String texto) {
+		return texto.replaceAll("[\\[|\\]|0-9|=|*]", "");
 	}
 
 	public String formata(String text, Idioma idioma) {
@@ -84,6 +91,20 @@ public class VersiculoFacade implements VersiculoApp {
 	@Override
 	public List<Versiculo> search(Integer livroId, Integer capituloId) {
 		return dao.search(livroId, capituloId);
+	}
+
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
+	public void atualizarLimpo() {
+		
+		List<Versiculo> lst = findAll();
+		
+		lst.forEach( entity -> {
+			entity.setLimpo( limpar(entity.getTexto()));
+			VersiculoKey key = entity.getKey();
+			dao.updateLimpo(entity.getLimpo(), key.getId(), key.getCapituloId(), key.getLivroId());
+		});
+		
 	}
 	
 }

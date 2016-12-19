@@ -31,7 +31,8 @@ CREATE TABLE versiculo (
 	texto       TEXT    NOT NULL,
 	idioma      VARCHAR(20) NOT NULL,
 	numero    INTEGER NOT NULL,     
-	formatado   TEXT    NOT NULL
+	formatado   TEXT    NOT NULL,
+	limpo       TEXT    NOT NULL
 );
 
 ALTER TABLE message ADD CONSTRAINT message_pk PRIMARY KEY(id);

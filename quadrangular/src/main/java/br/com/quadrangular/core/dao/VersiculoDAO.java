@@ -15,6 +15,10 @@ public interface VersiculoDAO extends JpaRepository<Versiculo, Integer> {
 	@Query(nativeQuery=true, value="SELECT COALESCE(MAX(id),0)+1 FROM versiculo")
 	Integer retrieveNextId();
 	
+	@Modifying
+	@Query("UPDATE Versiculo v SET v.limpo = ?1 WHERE v.key.id = ?2 AND v.key.capituloId = ?3 AND v.key.livroId = ?4")
+	void updateLimpo(String limpo, Integer id, Integer capituloId, Integer livroId);
+	
 	@Query(nativeQuery=true, value="SELECT COALESCE(MAX(numero),0)+1 FROM versiculo WHERE livro_id = :livroId AND capitulo_id = :capituloId")
 	Integer retrieveNextVerso(@Param("livroId") Integer livroId, @Param("capituloId") Integer capituloId);
 	
