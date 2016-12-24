@@ -1,7 +1,6 @@
 package br.com.quadrangular;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 
 import javax.faces.webapp.FacesServlet;
@@ -23,8 +22,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.sun.faces.config.ConfigureListener;
 
-import br.com.quadrangular.core.apps.versiculo.VersiculoApp;
-import br.com.quadrangular.core.model.versiculo.Versiculo;
 import br.com.quadrangular.web.scope.ViewScope;
 
 /**
@@ -41,10 +38,6 @@ public class Application
 	public static void main(String[] args) {
 		Locale.setDefault(new Locale("pt", "BR"));
 		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-		
-		VersiculoApp app = ctx.getBean(VersiculoApp.class);
-		app.atualizarLimpo();
-		
 	}
 
 	// @Bean
@@ -78,7 +71,7 @@ public class Application
 
 		servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "false");
 		servletContext.setInitParameter("primefaces.THEME", "bootstrap");
-		servletContext.setInitParameter("primefaces.FONT_AWESOME", "false");
+		servletContext.setInitParameter("primefaces.FONT_AWESOME", "true");
 		servletContext.setInitParameter("primefaces.UPLOADER", "commons");
 //		servletContext.setInitParameter("BootsFaces_USETHEME", "true");
 //		servletContext.setInitParameter("BootsFaces_THEME", "united");

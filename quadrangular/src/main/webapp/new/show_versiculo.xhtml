@@ -1,10 +1,14 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 </h:head>
 
-<ui:composition template="../index.xhtml">
+<ui:composition template="index_new.xhtml">
 
 	<ui:define name="content">
 
@@ -17,104 +21,91 @@
 			.texto {
 				text-decoration: underline;
 			}
+			
+			.list-group {
+				list-style: decimal inside;
+			}
+			
+			.list-group-item {
+				display: list-item;
+			}
+			
+			.versiculo {
+				display: inline;
+			}
+			
 		</style>
-
+		
 		<h:form prependId="false">
 
-			<p:remoteCommand name="definicao" update="panel_modal" action="#{showVersiculoMB.retrieveDefinition}" async="true" 
-				onstart="block();" oncomplete="$('#amodal').modal();unblock();" />
-			
-			<p:remoteCommand name="openModalMessage" action="#{showVersiculoMB.message}" oncomplete="$('#modal_message').modal();" async="true" 
-				update="panel_modal_message" />
-				
-			<p:remoteCommand name="sendError" async="true" action="#{showVersiculoMB.sendError}" update="panel_modal_message"
-				onstart="block();" oncomplete="unblock();" />
-
-			<b:modal id="amodal" closeOnEscape="true">
-				<f:facet name="footer">
-					<b:button icon="glyphicon-remove" value="" dismiss="modal" look="danger" size="md" />
-				</f:facet>
-				
-				<b:row dir="rtl">
-					<b:column >
-						<b:button icon="glyphicon-remove" value="" dismiss="modal" look="danger" size="md" />
-					</b:column>
-				</b:row>
-				
-				<p:spacer height="2px" />
-				
-				<h:panelGroup id="panel_modal">
-					<b:panel title="#{showVersiculoMB.dicionario.key.id} - #{showVersiculoMB.dicionario.key.idioma.descricao}">
-						<p style="white-space: pre-wrap" id="texto_modal">
-							<h:outputText value="#{showVersiculoMB.dicionario.definicao}" escape="false" />
-						</p>
-					</b:panel>
-				</h:panelGroup>
-			</b:modal>
-			
-			<b:modal closeOnEscape="true" id="modal_message">
-				<f:facet name="footer">
-					<b:button id="close_modal_message" icon="glyphicon-remove" value="" dismiss="modal" look="danger" size="md" />
-				</f:facet>
-				
-				<b:row dir="rtl">
-					<b:column >
-						<b:button icon="glyphicon-remove" value="" dismiss="modal" look="danger" size="md" />
-					</b:column>
-				</b:row>
-				
-				<p:spacer height="2px" />
-				
-				<h:panelGroup id="panel_modal_message">
-					<b:container>
-						<p:panel>
-							<f:facet name="header">
-								Informe o erro encontrado em: <i>#{showVersiculoMB.message.title}</i>
-							</f:facet>
-							
-							<b:inputTextarea value="#{showVersiculoMB.message.texto}" fieldSize="lg" />
-							<b:button value="Enviar" onclick="sendError();" />
-							
-						</p:panel>
-					</b:container>
-				</h:panelGroup>
-			</b:modal>
 
 			<b:container fluid="true" style="font-size: 1.4em;">
-			
-				<b:panel titleStyle="text-align: center" collapsed="false" collapsible="false">
+
+				<b:panel titleStyle="text-align: center" collapsed="false"
+					collapsible="false">
 					<f:facet name="heading">
-						<b>#{showVersiculoMB.capitulo.livro.nome} - Capítulo #{showVersiculoMB.capitulo.key.id}</b>
+						<b>#{showVersiculoMB.capitulo.livro.nome} - Capítulo
+							#{showVersiculoMB.capitulo.key.id}</b>
 					</f:facet>
-					<ol>
-						<ui:repeat var="v" value="#{showVersiculoMB.versos}">
-						    
-							<li idioma="#{v.idioma}">
-								<b:button value="" icon="envelope" 
-									onclick="openModalMessage([{name:'title', value: '#{v.capitulo.livro.nome} #{v.capitulo.key.id}.#{v.numero}'}]);"  />
-								<h:outputText value=" ${v.limpo}" escape="false" />
+					<ul class="list-group">
+						<ui:repeat var="v" value="#{showVersiculoMB.versos}" varStatus="status">
+
+							<li class="list-group-item" id="versiculo_${status.index}">
+<!-- 								<p:inputTextarea value="${v.limpo}" styleClass="versiculo" readonly="true" -->
+<!-- 									rows="0" /> -->
+								<div class="versiculo">
+									${v.limpo}
+								</div>
 							</li>
 						</ui:repeat>
-					</ol>
+					</ul>
 				</b:panel>
 			</b:container>
 
 		</h:form>
+		
+		<script type="text/javascript" src="/resources/js/selection.js"></script>
+		<script type="text/javascript" src="/resources/js/selectionVersiculo.js"></script>
 
 		<script type="text/javascript">
+
 			$(document).ready(function() {
 
 				// 				$("#amodal").modal();
 				bindClick();
+
+				$(".versiculo").off("mouseup").on("mouseup", function() {
+
+					var start = this.selectionStart, end = this.selectionEnd;
+
+					console.log($(this).val().substr(start, end - start));
+
+				});
+				
+				var ajustarTextArea = function() {
+					$(".versiculo").each(function() {
+						$(this).css("height", "1px");
+						$(this).css("height", (this.scrollHeight) + "px")
+					});
+				};
+				
+				ajustarTextArea();
+				
+				$(window).resize(function(){
+					ajustarTextArea();
+				});
 				
 			});
 
 			function bindClick() {
 				$(".texto").click(function() {
-					definicao([ 
-		            	{name : 'dic'   ,value : $(this).attr("dic")},
-		            	{name : 'idioma',value : $(this).parents("li").attr("idioma") }
-		            ]);
+					definicao([ {
+						name : 'dic',
+						value : $(this).attr("dic")
+					}, {
+						name : 'idioma',
+						value : $(this).parents("li").attr("idioma")
+					} ]);
 				});
 			}
 		</script>
