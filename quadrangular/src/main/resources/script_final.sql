@@ -15,7 +15,8 @@ CREATE TABLE livro (
 
 CREATE TABLE capitulo (
 	id       INTEGER NOT NULL,
-	livro_id INTEGER NOT NULL
+	livro_id INTEGER NOT NULL,
+	titulo   TEXT
 );
 
 CREATE TABLE message (

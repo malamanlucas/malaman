@@ -13,13 +13,15 @@
 	<ui:define name="content">
 
 		<style type="text/css">
-			.texto:hover {
-				color: red;
-				cursor: pointer;
-			}
+/* 			.texto:hover { */
+/* 				color: red; */
+/* 				cursor: pointer; */
+/* 			} */
 			
 			.texto {
-				text-decoration: underline;
+/*  				text-decoration: underline; */
+ 				color: red;
+ 				font-weight: bold;
 			}
 			
 			.list-group {
@@ -54,7 +56,7 @@
 <!-- 								<p:inputTextarea value="${v.limpo}" styleClass="versiculo" readonly="true" -->
 <!-- 									rows="0" /> -->
 								<div class="versiculo">
-									${v.limpo}
+									<h:outputText value="${v.formatado}" escape="false" />
 								</div>
 							</li>
 						</ui:repeat>
@@ -71,8 +73,7 @@
 
 			$(document).ready(function() {
 
-				// 				$("#amodal").modal();
-				bindClick();
+// 				bindClick();
 
 				$(".versiculo").off("mouseup").on("mouseup", function() {
 
@@ -82,18 +83,18 @@
 
 				});
 				
-				var ajustarTextArea = function() {
-					$(".versiculo").each(function() {
-						$(this).css("height", "1px");
-						$(this).css("height", (this.scrollHeight) + "px")
-					});
-				};
+// 				var ajustarTextArea = function() {
+// 					$(".versiculo").each(function() {
+// 						$(this).css("height", "1px");
+// 						$(this).css("height", (this.scrollHeight) + "px")
+// 					});
+// 				};
 				
-				ajustarTextArea();
+// 				ajustarTextArea();
 				
-				$(window).resize(function(){
-					ajustarTextArea();
-				});
+// 				$(window).resize(function(){
+// 					ajustarTextArea();
+// 				});
 				
 			});
 

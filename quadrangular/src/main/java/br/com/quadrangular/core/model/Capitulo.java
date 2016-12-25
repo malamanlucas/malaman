@@ -30,4 +30,6 @@ public class Capitulo {
 	@JoinColumn(name="livro_id", referencedColumnName="id", insertable=false, updatable=false)
 	private Livro livro;
 	
+	private String titulo;
+	
 }

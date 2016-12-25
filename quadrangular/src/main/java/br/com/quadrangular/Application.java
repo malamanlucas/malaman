@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.sun.faces.config.ConfigureListener;
 
+import br.com.quadrangular.core.apps.importador.ImportarBiblia;
 import br.com.quadrangular.web.scope.ViewScope;
 
 /**
@@ -38,6 +39,10 @@ public class Application
 	public static void main(String[] args) {
 		Locale.setDefault(new Locale("pt", "BR"));
 		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+		
+//		ImportarBiblia bean = ctx.getBean(ImportarBiblia.class);
+//		bean.importar("Rute", "Ruth", 1);
+		
 	}
 
 	// @Bean
