@@ -11,14 +11,13 @@ import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.embedded.ServletContextInitializer;
-import org.springframework.boot.context.embedded.ServletListenerRegistrationBean;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.WebApplicationInitializer;
 
 import com.sun.faces.config.ConfigureListener;
 
@@ -32,8 +31,8 @@ import br.com.quadrangular.web.scope.ViewScope;
 @EnableAutoConfiguration
 @ComponentScan
 public class Application 
-				extends SpringBootServletInitializer 
-					implements ServletContextInitializer {
+				extends SpringApplicationBuilder
+					implements WebApplicationInitializer {
 
 	public static void main(String[] args) {
 		Locale.setDefault(new Locale("pt", "BR"));
@@ -59,7 +58,6 @@ public class Application
 	// return localSessionFactoryBean;
 	// }
 
-	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(Application.class);
 	}

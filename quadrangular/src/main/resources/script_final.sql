@@ -36,6 +36,15 @@ CREATE TABLE versiculo (
 	limpo       TEXT    NOT NULL
 );
 
+CREATE TABLE expressao (
+	id          INTEGER NOT NULL,
+	capitulo_id INTEGER NOT NULL,
+	livro_id    INTEGER NOT NULL,
+	inicio      INTEGER NOT NULL,
+	fim         INTEGER NOT NULL,
+	codigo      INTEGER NOT NULL
+);
+
 ALTER TABLE message ADD CONSTRAINT message_pk PRIMARY KEY(id);
 
 ALTER TABLE livro ADD CONSTRAINT livro_pk PRIMARY KEY(id);
@@ -48,6 +57,10 @@ ALTER TABLE capitulo ADD CONSTRAINT capitulo_livro_pk FOREIGN KEY(livro_id) REFE
 ALTER TABLE versiculo ADD CONSTRAINT versiculo_pk PRIMARY KEY(id, capitulo_id, livro_id);
 ALTER TABLE versiculo ADD CONSTRAINT versiculo_capitulo_pk FOREIGN KEY(capitulo_id, livro_id) REFERENCES capitulo(id, livro_id) ON DELETE CASCADE;
 
+ALTER TABLE expressao ADD CONSTRAINT expressao_pk PRIMARY KEY(id, capitulo_id, livro_id);
+ALTER TABLE expressao ADD CONSTRAINT expressao_versiculo_fk FOREIGN KEY (id, capitulo_id, livro_id) REFERENCES versiculo(id, capitulo_id, livro_id) ON DELETE CASCADE;
+
+/*
 CREATE TABLE usuario (
 	id         INTEGER     NOT NULL,
 	login      VARCHAR(40) NOT NULL,
@@ -56,7 +69,7 @@ CREATE TABLE usuario (
 	email      VARCHAR(90) NOT NULL,
 	confiavel  BOOLEAN     NOT NULL DEFAULT true,
 	habilitado BOOLEAN     NOT NULL DEFAULT true
-);
+);*/
 
 /* CREATE TABLE endereco (
 	id          INTEGER      NOT NULL,
@@ -67,6 +80,7 @@ CREATE TABLE usuario (
 	complemento TEXT         NOT NULL
 ); */
 
+/*
 CREATE TABLE usuario_papel (
 	papel      VARCHAR(20) NOT NULL,
 	usuario_id INTEGER     NOT NULL
@@ -118,6 +132,6 @@ CREATE TABLE text_home (
 	id INT NOT NULL,
 	texto TEXT,
 	foto BYTEA
-);
+); */
 
 

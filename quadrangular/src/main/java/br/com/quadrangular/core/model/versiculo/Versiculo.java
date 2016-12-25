@@ -1,12 +1,17 @@
 package br.com.quadrangular.core.model.versiculo;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.com.quadrangular.core.enums.Idioma;
@@ -41,6 +46,9 @@ public class Versiculo {
 		@JoinColumn(name="livro_id", referencedColumnName="livro_id", insertable=false, updatable=false),
 	})
 	private Capitulo capitulo;
+	
+//	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="versiculo")
+//	private List<Expressao> expressoes;
 	
 	public String textoSemFormatacao() {
 		return texto == null ? "" : texto.replaceAll("\\[|\\]|=|\\d", ""); 
