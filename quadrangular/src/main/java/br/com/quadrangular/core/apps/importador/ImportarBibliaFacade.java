@@ -40,7 +40,6 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 
 	static JdbcTemplate jdbcTemplate;
 	
-	public static void main(String[] args) {
 		
 //		LivroEnum[] values = LivroEnum.values();
 //		DataSource dataSource = DataSourceBuilder
@@ -61,9 +60,6 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 //		}
 //		
 //		internalImport(LivroEnum.LAMENTACOES);
-		
-		
-	}
 	
 	private static void internalImport(LivroEnum livro) {
 		

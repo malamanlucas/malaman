@@ -22,7 +22,6 @@ import org.springframework.context.annotation.Configuration;
 
 import com.sun.faces.config.ConfigureListener;
 
-import br.com.quadrangular.core.apps.importador.ImportarBiblia;
 import br.com.quadrangular.web.scope.ViewScope;
 
 /**
