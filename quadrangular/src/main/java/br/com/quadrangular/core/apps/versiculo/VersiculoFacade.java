@@ -80,10 +80,6 @@ public class VersiculoFacade implements VersiculoApp {
 		return dao.findAll();
 	}
 
-	public Versiculo findOne(Integer id) {
-		return dao.findOne(id);
-	}
-
 	public void deleteByKey(VersiculoKey key) {
 		dao.deleteByKey( key.getId(), key.getCapituloId(), key.getLivroId() );
 	}

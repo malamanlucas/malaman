@@ -13,13 +13,8 @@
 	<ui:define name="content">
 
 		<style type="text/css">
-/* 			.texto:hover { */
-/* 				color: red; */
-/* 				cursor: pointer; */
-/* 			} */
 			
 			.texto {
-/*  				text-decoration: underline; */
  				color: red;
  				font-weight: bold;
 			}
@@ -56,7 +51,7 @@
 <!-- 								<p:inputTextarea value="${v.limpo}" styleClass="versiculo" readonly="true" -->
 <!-- 									rows="0" /> -->
 								<div class="versiculo">
-									<h:outputText value="${v.formatado}" escape="false" />
+									<h:outputText value="${v.limpo}" escape="true" />
 								</div>
 							</li>
 						</ui:repeat>

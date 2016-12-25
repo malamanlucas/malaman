@@ -9,8 +9,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.quadrangular.core.model.versiculo.Versiculo;
+import br.com.quadrangular.core.model.versiculo.VersiculoKey;
 
-public interface VersiculoDAO extends JpaRepository<Versiculo, Integer> {
+public interface VersiculoDAO extends JpaRepository<Versiculo, VersiculoKey> {
 
 	@Query(nativeQuery=true, value="SELECT COALESCE(MAX(id),0)+1 FROM versiculo")
 	Integer retrieveNextId();

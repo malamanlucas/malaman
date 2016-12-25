@@ -15,8 +15,6 @@ public interface VersiculoApp {
 	
 	List<Versiculo> search(Integer livroId, Integer capituloId);
 
-	Versiculo findOne(Integer id);
-	
 	void deleteByKey(VersiculoKey key);
 	
 }
