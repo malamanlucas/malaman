@@ -48,7 +48,7 @@ public class Versiculo {
 	private Capitulo capitulo;
 	
 //	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="versiculo")
-//	private List<Expressao> expressoes;
+//	private List<Expressao> expressoes; 
 	
 	public String textoSemFormatacao() {
 		return texto == null ? "" : texto.replaceAll("\\[|\\]|=|\\d", ""); 
