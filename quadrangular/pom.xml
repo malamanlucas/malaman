@@ -14,6 +14,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.3.RELEASE</version>
 	</parent>
+	
 
 	<properties>
 		<start-class>br.com.quadrangular.Application</start-class>
