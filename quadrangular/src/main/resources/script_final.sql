@@ -31,18 +31,23 @@ CREATE TABLE versiculo (
 	livro_id    INTEGER NOT NULL,
 	texto       TEXT    NOT NULL,
 	idioma      VARCHAR(20) NOT NULL,
-	numero    INTEGER NOT NULL,     
+	numero      INTEGER NOT NULL,     
 	formatado   TEXT    NOT NULL,
-	limpo       TEXT    NOT NULL
+	limpo       TEXT    NOT NULL,
+	qtd_aumento INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE expressao (
-	id          INTEGER NOT NULL,
-	capitulo_id INTEGER NOT NULL,
-	livro_id    INTEGER NOT NULL,
-	inicio      INTEGER NOT NULL,
-	fim         INTEGER NOT NULL,
-	codigo      INTEGER NOT NULL
+	sequencia    INTEGER NOT NULL,
+	versiculo_id INTEGER NOT NULL,
+	capitulo_id  INTEGER NOT NULL,
+	livro_id     INTEGER NOT NULL,
+	inicio       INTEGER NOT NULL,
+	fim          INTEGER NOT NULL,
+	codigo       TEXT    NOT NULL,
+	texto        TEXT    NOT NULL,
+	descricao    TEXT,
+	tipo         VARCHAR(15) NOT NULL
 );
 
 ALTER TABLE message ADD CONSTRAINT message_pk PRIMARY KEY(id);
@@ -57,8 +62,8 @@ ALTER TABLE capitulo ADD CONSTRAINT capitulo_livro_pk FOREIGN KEY(livro_id) REFE
 ALTER TABLE versiculo ADD CONSTRAINT versiculo_pk PRIMARY KEY(id, capitulo_id, livro_id);
 ALTER TABLE versiculo ADD CONSTRAINT versiculo_capitulo_pk FOREIGN KEY(capitulo_id, livro_id) REFERENCES capitulo(id, livro_id) ON DELETE CASCADE;
 
-ALTER TABLE expressao ADD CONSTRAINT expressao_pk PRIMARY KEY(id, capitulo_id, livro_id);
-ALTER TABLE expressao ADD CONSTRAINT expressao_versiculo_fk FOREIGN KEY (id, capitulo_id, livro_id) REFERENCES versiculo(id, capitulo_id, livro_id) ON DELETE CASCADE;
+ALTER TABLE expressao ADD CONSTRAINT expressao_pk PRIMARY KEY(sequencia, versiculo_id, capitulo_id, livro_id);
+ALTER TABLE expressao ADD CONSTRAINT expressao_versiculo_fk FOREIGN KEY (versiculo_id, capitulo_id, livro_id) REFERENCES versiculo(id, capitulo_id, livro_id) ON DELETE CASCADE;
 
 /*
 CREATE TABLE usuario (

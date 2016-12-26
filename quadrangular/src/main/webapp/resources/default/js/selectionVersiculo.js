@@ -8,10 +8,61 @@ $.fn.textSelected = function() {
 			var start = selection.anchorOffset,
 			end = selection.focusOffset;
 			
-			return $(this).text().substr(start, end-start);
+			return {
+				"text": $(this).text().substr(start, end-start),
+				"start": start,
+				"end": end
+			};
 		}
 		
 	} else {
-		return "";
+		return {"text":""};
 	}
 };
+
+$(document).ready(function() {
+
+	$(".versiculo").off("mouseup").on("mouseup", function() {
+
+		var expressao = $(this).textSelected();
+		var keyAsJson = $(this).attr("json");
+		
+		if ( expressao != undefined && expressao != null && expressao.text != "") {
+			console.log( expressao.text + " - " + keyAsJson );
+			
+			salvarExpressao([
+				{
+					name: "keyAsJson",
+					value: keyAsJson
+				},
+				{
+					name: "texto",
+					value: expressao.text
+				},
+				{
+					name: "inicio",
+					value: expressao.start
+				},
+				{
+					name: "fim",
+					value: expressao.end
+				}
+			]);
+			
+		}
+
+	});
+
+});
+
+function bindClick() {
+	$(".texto").click(function() {
+		definicao([ {
+			name : 'dic',
+			value : $(this).attr("dic")
+		}, {
+			name : 'idioma',
+			value : $(this).parents("li").attr("idioma")
+		} ]);
+	});
+}

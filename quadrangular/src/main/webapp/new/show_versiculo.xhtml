@@ -13,27 +13,64 @@
 	<ui:define name="content">
 
 		<style type="text/css">
-			
-			.texto {
- 				color: red;
- 				font-weight: bold;
-			}
-			
-			.list-group {
-				list-style: decimal inside;
-			}
-			
-			.list-group-item {
-				display: list-item;
-			}
-			
-			.versiculo {
-				display: inline;
-			}
-			
-		</style>
-		
+.texto {
+	color: red;
+	font-weight: bold;
+}
+
+.list-group {
+	list-style: decimal inside;
+}
+
+.list-group-item {
+	display: list-item;
+}
+
+.versiculo {
+	display: inline;
+}
+</style>
+
 		<h:form prependId="false">
+		
+			<p:remoteCommand name="salvarExpressao" action="#{showVersiculoMB.initExpressao}" 
+				oncomplete="$('#modal_expressao').modal();" async="true" update="panel_modal_expressao" />
+
+			<h:panelGroup id="panel_modal_expressao">
+				<b:modal title="Expressão: '#{showVersiculoMB.expressaoBackingBean.entity.texto}
+					: #{showVersiculoMB.expressaoBackingBean.entity.inicio} - #{showVersiculoMB.expressaoBackingBean.entity.fim}
+					'" closable="true" id="modal_expressao" >
+					
+					<b:container fluid="true">
+						<b:row>
+							<b:column span="2">
+								<h:outputText value="Código: " />
+							</b:column>
+							<b:column span="4">
+								<b:inputText value="#{showVersiculoMB.expressaoBackingBean.entity.codigo}" />
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column span="2">
+								<h:outputText value="Descrição: " />
+							</b:column>
+							<b:column span="10">
+								<b:inputTextarea value="#{showVersiculoMB.expressaoBackingBean.entity.descricao}" />
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column span="2" offset="2">
+								<b:commandButton value="Salvar" look="primary" />
+							</b:column>
+							<b:column span="2">
+								<b:button value="Cancelar" dismiss="modal" look="danger" />
+							</b:column>
+						</b:row>
+					</b:container>
+	
+				</b:modal>
+			</h:panelGroup>
+
 
 
 			<b:container fluid="true" style="font-size: 1.4em;">
@@ -45,12 +82,11 @@
 							#{showVersiculoMB.capitulo.key.id}</b>
 					</f:facet>
 					<ul class="list-group">
-						<ui:repeat var="v" value="#{showVersiculoMB.versos}" varStatus="status">
+						<ui:repeat var="v" value="#{showVersiculoMB.versos}"
+							varStatus="status">
 
 							<li class="list-group-item" id="versiculo_${status.index}">
-<!-- 								<p:inputTextarea value="${v.limpo}" styleClass="versiculo" readonly="true" -->
-<!-- 									rows="0" /> -->
-								<div class="versiculo">
+								<div class="versiculo" json="#{v.key.toJson()}">
 									<h:outputText value="${v.limpo}" escape="true" />
 								</div>
 							</li>
@@ -60,51 +96,9 @@
 			</b:container>
 
 		</h:form>
-		
+
 		<h:outputScript library="default" name="js/selection.js" />
 		<h:outputScript library="default" name="js/selectionVersiculo.js" />
-		
-		<script type="text/javascript">
-
-			$(document).ready(function() {
-
-// 				bindClick();
-
-				$(".versiculo").off("mouseup").on("mouseup", function() {
-
-					var start = this.selectionStart, end = this.selectionEnd;
-
-					console.log($(this).val().substr(start, end - start));
-
-				});
-				
-// 				var ajustarTextArea = function() {
-// 					$(".versiculo").each(function() {
-// 						$(this).css("height", "1px");
-// 						$(this).css("height", (this.scrollHeight) + "px")
-// 					});
-// 				};
-				
-// 				ajustarTextArea();
-				
-// 				$(window).resize(function(){
-// 					ajustarTextArea();
-// 				});
-				
-			});
-
-			function bindClick() {
-				$(".texto").click(function() {
-					definicao([ {
-						name : 'dic',
-						value : $(this).attr("dic")
-					}, {
-						name : 'idioma',
-						value : $(this).parents("li").attr("idioma")
-					} ]);
-				});
-			}
-		</script>
 	</ui:define>
 </ui:composition>
 

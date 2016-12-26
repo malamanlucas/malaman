@@ -12,11 +12,13 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.quadrangular.Application;
-import br.com.quadrangular.core.dao.VersiculoDAO;
-import br.com.quadrangular.core.model.versiculo.Expressao;
-import br.com.quadrangular.core.model.versiculo.Versiculo;
-import br.com.quadrangular.core.model.versiculo.VersiculoKey;
+import br.com.biblia.Application;
+import br.com.biblia.core.dao.VersiculoDAO;
+import br.com.biblia.core.enums.TipoExpressao;
+import br.com.biblia.core.model.versiculo.Expressao;
+import br.com.biblia.core.model.versiculo.ExpressaoKey;
+import br.com.biblia.core.model.versiculo.Versiculo;
+import br.com.biblia.core.model.versiculo.VersiculoKey;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
@@ -39,7 +41,9 @@ public class VersiculoDAOTest {
 	public void testGetOne() {
 		VersiculoKey key = new VersiculoKey(994, 25, 12);
 		Versiculo versiculoToSave = dao.getOne(key);
-		versiculoToSave.getExpressoes().add( new Expressao(key, 1, 2, 1, null) );
+		ExpressaoKey expKey = new ExpressaoKey(1, key.getId(), key.getCapituloId(), key.getLivroId());
+		
+		versiculoToSave.getExpressoes().add( new Expressao(expKey, 1, 2, "1", "a", "bla", TipoExpressao.DICIONARIO, null) );
 		dao.saveAndFlush( versiculoToSave );
 		Versiculo one = dao.getOne( key );
 		Assert.assertNotNull(one);
