@@ -4,8 +4,12 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
               version="2.2">
     <application>
+    	<message-bundle>resources.application</message-bundle>
 <!--         <resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler> -->
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+        <locale-config>
+        	<default-locale>pt_BR</default-locale>
+        </locale-config>
     </application>
     
     <lifecycle>

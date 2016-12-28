@@ -18,7 +18,6 @@ import br.com.biblia.core.dao.CapituloDAO;
 import br.com.biblia.core.dao.LivroDAO;
 import br.com.biblia.core.dao.VersiculoDAO;
 import br.com.biblia.core.enums.LivroEnum;
-import br.com.biblia.core.enums.TipoExpressao;
 import br.com.biblia.core.model.Livro;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
@@ -53,16 +52,16 @@ public class VersiculoAppTest {
 		
 		List<Expressao> expressoes = mateus1_1.getExpressoes();
 		
-		expressoes.add( new Expressao(new ExpressaoKey(1, k.getId(), k.getCapituloId(), k.getLivroId()), 9, 16, "3345", "geração", null, TipoExpressao.DICIONARIO, null) ); 
-		expressoes.add( new Expressao(new ExpressaoKey(2, k.getId(), k.getCapituloId(), k.getLivroId()), 17, 25, "1234", "de Jesus", null,TipoExpressao.DICIONARIO, null) ); 
-		expressoes.add( new Expressao(new ExpressaoKey(3, k.getId(), k.getCapituloId(), k.getLivroId()), 49, 64, "9999", "Filho de Abraão", null, TipoExpressao.DICIONARIO, null) ); 
+		expressoes.add( new Expressao(new ExpressaoKey(1, k.getId(), k.getCapituloId(), k.getLivroId()), 9, 16, "geração", null, null) ); 
+		expressoes.add( new Expressao(new ExpressaoKey(2, k.getId(), k.getCapituloId(), k.getLivroId()), 17, 25, "de Jesus", null, null) ); 
+		expressoes.add( new Expressao(new ExpressaoKey(3, k.getId(), k.getCapituloId(), k.getLivroId()), 49, 64, "Filho de Abraão", null, null) ); 
 		
 		dao.saveAndFlush(mateus1_1);
 		
 		mateus1_1 = dao.findOne(k);
 		
 		String oldExpected = "Livro da geração de Jesus Cristo, Filho de Davi, Filho de Abraão.";
-		String newExpected = "Livro da <span class=\"texto\" dic=\"3345\">geração</span> <span class=\"texto\" dic=\"1234\">de Jesus</span> Cristo, Filho de Davi, <span class=\"texto\" dic=\"9999\">Filho de Abraão</span>.";
+		String newExpected = "Livro da <span class=\"texto\" dic=\"0\">geração</span> <span class=\"texto\" dic=\"1\">de Jesus</span> Cristo, Filho de Davi, <span class=\"texto\" dic=\"2\">Filho de Abraão</span>.";
 		
 		Assert.assertEquals(oldExpected, mateus1_1.getLimpo());
 		Assert.assertEquals(newExpected, mateus1_1.getVersiculoMontado());

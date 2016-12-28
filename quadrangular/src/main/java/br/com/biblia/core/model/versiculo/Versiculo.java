@@ -64,7 +64,7 @@ public class Versiculo {
 			Expressao expressao = expressoes.get(i);
 			newString = newString.replace(expressao.getTexto(), "$"+String.valueOf(i));
 			
-			StringBuilder textoFormatado = new StringBuilder("<span class=\"texto\" dic=\""+expressao.getCodigo()+"\">");
+			StringBuilder textoFormatado = new StringBuilder("<span class=\"texto\" dic=\""+String.valueOf(i)+"\">");
 			textoFormatado.append(expressao.getTexto());
 			textoFormatado.append("</span>");
 			expressao.setTextoFormatado(textoFormatado.toString());

@@ -43,7 +43,7 @@ public class VersiculoDAOTest {
 		Versiculo versiculoToSave = dao.getOne(key);
 		ExpressaoKey expKey = new ExpressaoKey(1, key.getId(), key.getCapituloId(), key.getLivroId());
 		
-		versiculoToSave.getExpressoes().add( new Expressao(expKey, 1, 2, "1", "a", "bla", TipoExpressao.DICIONARIO, null) );
+		versiculoToSave.getExpressoes().add( new Expressao(expKey, 1, 2, "a", "bla", null) );
 		dao.saveAndFlush( versiculoToSave );
 		Versiculo one = dao.getOne( key );
 		Assert.assertNotNull(one);

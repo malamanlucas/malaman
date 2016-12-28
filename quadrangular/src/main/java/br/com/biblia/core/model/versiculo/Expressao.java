@@ -4,8 +4,6 @@ import java.io.IOException;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
@@ -30,16 +28,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Expressao {
 	
-	public Expressao(ExpressaoKey key, Integer inicio, Integer fim, String codigo, String texto, String descricao,
-			TipoExpressao tipo, Versiculo versiculo) {
+	public Expressao(ExpressaoKey key, Integer inicio, Integer fim, String texto, String descricao,
+			Versiculo versiculo) {
 		super();
 		this.key = key;
 		this.inicio = inicio;
 		this.fim = fim;
-		this.codigo = codigo;
 		this.texto = texto;
 		this.descricao = descricao;
-		this.tipo = tipo;
 		this.versiculo = versiculo;
 	}
 
@@ -50,8 +46,6 @@ public class Expressao {
 	
 	private Integer fim;
 	
-	private String codigo;
-	
 	private String texto;
 	
 	private String descricao;
@@ -59,9 +53,6 @@ public class Expressao {
 	@Transient
 	private String textoFormatado;
 
-	@Enumerated(EnumType.STRING)
-	private TipoExpressao tipo;
-	
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="versiculo_id", referencedColumnName="id", insertable=false, updatable=false),

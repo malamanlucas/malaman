@@ -14,10 +14,11 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(of={"sequencia","versiculoId", "livroId", "capituloId"}, includeFieldNames=false)
+@ToString(of={"id","versiculoId", "livroId", "capituloId"}, includeFieldNames=false)
 public class ExpressaoKey implements Serializable {
 
-	private Integer sequencia;
+    @Column(name="expressao_id")
+	private Integer expressaoId;
 	
 	@Column(name="versiculo_id")
 	private Integer versiculoId;
