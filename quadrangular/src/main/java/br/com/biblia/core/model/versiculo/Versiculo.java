@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.assertj.core.util.Lists;
+
 import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.Capitulo;
 import lombok.AllArgsConstructor;
@@ -52,7 +54,7 @@ public class Versiculo {
 	private Capitulo capitulo;
 	
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="versiculo")
-	private List<Expressao> expressoes; 
+	private List<Expressao> expressoes;
 	
 	public String textoSemFormatacao() {
 		return texto == null ? "" : texto.replaceAll("\\[|\\]|=|\\d", ""); 

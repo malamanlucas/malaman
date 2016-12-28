@@ -1,13 +1,17 @@
 package br.com.biblia.core.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
 
 public interface ExpressaoDAO extends JpaRepository<Expressao, ExpressaoKey> {
 
-//	@Query(nativeQuery=true, value="SELECT COALESCE(MAX(numero),0)+1 FROM versiculo WHERE livro_id = :livroId AND capitulo_id = :capituloId")
-//	Integer retrieveNextVerso(@Param("livroId") Integer livroId, @Param("capituloId") Integer capituloId, @Param("versiculoId") Integer versiculoId);
+    @Query(nativeQuery=true,
+            value="SELECT COALESCE(MAX(expressao_id),0)+1 FROM expressao WHERE versiculo_id = :#{#key.versiculoId}"
+                 +" AND capitulo_id = :#{#key.capituloId} AND livro_id = :#{#key.livroId}")
+        Integer retrieveNextVerso(@Param("key") ExpressaoKey key);
 	
 }

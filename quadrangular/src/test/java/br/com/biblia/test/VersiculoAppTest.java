@@ -14,10 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.Application;
 import br.com.biblia.core.apps.versiculo.VersiculoApp;
-import br.com.biblia.core.dao.CapituloDAO;
 import br.com.biblia.core.dao.LivroDAO;
 import br.com.biblia.core.dao.VersiculoDAO;
 import br.com.biblia.core.enums.LivroEnum;
+import br.com.biblia.core.model.CapituloKey;
 import br.com.biblia.core.model.Livro;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
@@ -34,19 +34,24 @@ public class VersiculoAppTest {
 	private LivroDAO livroDAO;
 	
 	@Autowired
-	private CapituloDAO capituloDAO;
-	
-	@Autowired
 	private VersiculoDAO dao;
 	
 	@Autowired
 	private VersiculoApp app;
 	
 	@Test
+	public void testDeleteByKey() {
+	    Livro mateus = livroDAO.findByNome(LivroEnum.MATEUS.getNomeNoBD());
+	    Versiculo mateus1_1 = dao.search(new CapituloKey(1, mateus.getId())).get(0);
+	    
+	    app.deleteByKey( mateus1_1.getKey() );
+	    Assert.assertNull( dao.findOne(mateus1_1.getKey()) );
+	}
+	
+	@Test
 	public void testGetVersiculoMontado() {
 		Livro mateus = livroDAO.findByNome(LivroEnum.MATEUS.getNomeNoBD());
-		
-		Versiculo mateus1_1 = dao.search(mateus.getId(), 1).get(0);
+		Versiculo mateus1_1 = dao.search(new CapituloKey(1, mateus.getId())).get(0);
 		
 		VersiculoKey k = mateus1_1.getKey();
 		

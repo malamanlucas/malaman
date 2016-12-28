@@ -6,12 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.core.dao.DicionarioDAO;
 import br.com.biblia.core.dao.VersiculoDAO;
 import br.com.biblia.core.enums.Idioma;
+import br.com.biblia.core.model.CapituloKey;
 import br.com.biblia.core.model.Dicionario;
 import br.com.biblia.core.model.DicionarioKey;
 import br.com.biblia.core.model.versiculo.Expressao;
@@ -32,7 +31,7 @@ public class VersiculoFacade implements VersiculoApp {
 		VersiculoKey key = entity.getKey();
 		if ( key.getId() == null ) {
 			key.setId( dao.retrieveNextId() );
-			entity.setNumero( dao.retrieveNextVerso( key.getLivroId(), key.getCapituloId() ));
+			entity.setNumero( dao.retrieveNextVerso( key ));
 		}
 		entity.setFormatado( formata(entity.getTexto(), entity.getIdioma()) );
 		entity.setLimpo( limpar(entity.getTexto()) );
@@ -82,26 +81,12 @@ public class VersiculoFacade implements VersiculoApp {
 	}
 
 	public void deleteByKey(VersiculoKey key) {
-		dao.deleteByKey( key.getId(), key.getCapituloId(), key.getLivroId() );
+		dao.delete(key);
 	}
 
 	@Override
-	public List<Versiculo> search(Integer livroId, Integer capituloId) {
-		return dao.search(livroId, capituloId);
-	}
-
-	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
-	public void atualizarLimpo() {
-		
-		List<Versiculo> lst = findAll();
-		
-		lst.forEach( entity -> {
-			entity.setLimpo( limpar(entity.getTexto()));
-			VersiculoKey key = entity.getKey();
-			dao.updateLimpo(entity.getLimpo(), key.getId(), key.getCapituloId(), key.getLivroId());
-		});
-		
+	public List<Versiculo> search(CapituloKey key) {
+		return dao.search(key);
 	}
 
 	@Override

@@ -14,6 +14,7 @@ import br.com.biblia.core.apps.versiculo.VersiculoApp;
 import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.enums.Testamento;
 import br.com.biblia.core.model.Capitulo;
+import br.com.biblia.core.model.CapituloKey;
 import br.com.biblia.core.model.Livro;
 import br.com.biblia.core.model.versiculo.Versiculo;
 import br.com.biblia.core.model.versiculo.VersiculoKey;
@@ -96,7 +97,7 @@ public class VersiculoController {
 	}
 
 	public void searchVersiculo() {
-		list = this.app.search( backingBean.getLivroId(), backingBean.getCapituloId() );
+		list = this.app.search( new CapituloKey(backingBean.getCapituloId(), backingBean.getLivroId()) );
 	}
 
 	public void delete(VersiculoKey key) {

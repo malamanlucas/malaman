@@ -22,6 +22,7 @@ import br.com.biblia.core.model.Dicionario;
 import br.com.biblia.core.model.DicionarioKey;
 import br.com.biblia.core.model.Message;
 import br.com.biblia.core.model.versiculo.Versiculo;
+import br.com.biblia.core.model.versiculo.VersiculoKey;
 import br.com.biblia.web.controller.bible.ExpressaoBackingBean;
 import lombok.Data;
 
@@ -63,7 +64,7 @@ public class ShowVersiculoController {
 		Integer livroId = Integer.valueOf( map.get("livro_id") );
 		Integer capituloId = Integer.valueOf( map.get("capitulo_id") );
 		
-		this.versos = versiculoApp.search(livroId, capituloId);
+		this.versos = versiculoApp.search(new CapituloKey(capituloId, livroId) );
 		
 		this.capitulo = capituloApp.findOne( new CapituloKey(capituloId, livroId) );
 	}

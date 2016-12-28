@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.Application;
 import br.com.biblia.core.dao.VersiculoDAO;
-import br.com.biblia.core.enums.TipoExpressao;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
 import br.com.biblia.core.model.versiculo.Versiculo;
