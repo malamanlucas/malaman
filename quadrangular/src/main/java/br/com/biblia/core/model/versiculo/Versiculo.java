@@ -15,19 +15,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.assertj.core.util.Lists;
-
 import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.Capitulo;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @Table(name = "versiculo")
 @Data
-@AllArgsConstructor
+@AllArgsConstructor @EqualsAndHashCode @Builder
 @NoArgsConstructor
 @ToString(of={"numero", "idioma", "texto",}, includeFieldNames=false)
 public class Versiculo {

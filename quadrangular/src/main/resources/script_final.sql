@@ -48,8 +48,26 @@ CREATE TABLE expressao (
 	descricao    TEXT
 );
 
-CREATE expressao_dicionario (
+CREATE TABLE expressao_dicionario (
+	id           INTEGER NOT NULL,
+	idioma       VARCHAR(20) NOT NULL,
+	expressao_id INTEGER NOT NULL,
+	versiculo_id INTEGER NOT NULL,
+	capitulo_id  INTEGER NOT NULL,
+	livro_id     INTEGER NOT NULL
+);
 
+CREATE TABLE expressao_mapa (
+	id           INTEGER NOT NULL,
+	expressao_id INTEGER NOT NULL,
+	versiculo_id INTEGER NOT NULL,
+	capitulo_id  INTEGER NOT NULL,
+	livro_id     INTEGER NOT NULL
+);
+
+CREATE TABLE mapa (
+	id      INTEGER NOT NULL,
+	nome    TEXT NOT NULL
 );
 
 ALTER TABLE message ADD CONSTRAINT message_pk PRIMARY KEY(id);
@@ -67,6 +85,13 @@ ALTER TABLE versiculo ADD CONSTRAINT versiculo_capitulo_pk FOREIGN KEY(capitulo_
 ALTER TABLE expressao ADD CONSTRAINT expressao_pk PRIMARY KEY(expressao_id, versiculo_id, capitulo_id, livro_id);
 ALTER TABLE expressao ADD CONSTRAINT expressao_versiculo_fk_ FOREIGN KEY(versiculo_id, capitulo_id, livro_id) REFERENCES versiculo(id, capitulo_id, livro_id);
 
+ALTER TABLE expressao_dicionario ADD CONSTRAINT expressao_dicionario_pk PRIMARY KEY(id, idioma, expressao_id, versiculo_id, capitulo_id, livro_id);
+ALTER TABLE expressao_dicionario ADD CONSTRAINT expressao_dicionario_fk FOREIGN KEY(id, idioma) REFERENCES dicionario(id, idioma) ON DELETE CASCADE;
+
+ALTER TABLE mapa ADD CONSTRAINT mapa_pk PRIMARY KEY(id);
+
+ALTER TABLE expressao_mapa ADD CONSTRAINT expressao_mapa_pk PRIMARY KEY(id, expressao_id, versiculo_id, capitulo_id, livro_id);
+ALTER TABLE expressao_mapa ADD CONSTRAINT expressao_mapa_fk FOREIGN KEY(id) REFERENCES mapa(id) ON DELETE CASCADE;
 
 /*
 CREATE TABLE usuario (

@@ -8,15 +8,20 @@ import javax.persistence.Embeddable;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.biblia.core.enums.Idioma;
+import br.com.biblia.core.model.DicionarioKey;
+import br.com.biblia.core.model.DicionarioKey.DicionarioKeyBuilder;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Embeddable
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor @EqualsAndHashCode @Builder
 @ToString(of={"id","livroId", "capituloId"}, includeFieldNames=false)
 public class VersiculoKey implements Serializable {
 	

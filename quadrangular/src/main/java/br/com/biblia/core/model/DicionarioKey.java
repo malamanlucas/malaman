@@ -8,12 +8,14 @@ import javax.persistence.Enumerated;
 
 import br.com.biblia.core.enums.Idioma;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Embeddable
 @Data
-@AllArgsConstructor
+@AllArgsConstructor @EqualsAndHashCode @Builder
 @NoArgsConstructor
 public class DicionarioKey implements Serializable {
 

@@ -40,9 +40,7 @@ public class VersiculoDAOTest {
 	public void testGetOne() {
 		VersiculoKey key = new VersiculoKey(994, 25, 12);
 		Versiculo versiculoToSave = dao.getOne(key);
-		ExpressaoKey expKey = new ExpressaoKey(1, key.getId(), key.getCapituloId(), key.getLivroId());
-		
-		versiculoToSave.getExpressoes().add( new Expressao(expKey, 1, 2, "a", "bla", null) );
+		versiculoToSave.getExpressoes().add( instanceExpressao(1, key, 1, 2, "a", "bla") );
 		dao.saveAndFlush( versiculoToSave );
 		Versiculo one = dao.getOne( key );
 		Assert.assertNotNull(one);
@@ -50,6 +48,22 @@ public class VersiculoDAOTest {
 		Assert.assertNotNull( one.getTexto() );
 		Assert.assertNotNull( one.getExpressoes() );
 		Assert.assertFalse( one.getExpressoes().isEmpty() );
+	}
+	
+	private Expressao instanceExpressao(Integer expressaoId, VersiculoKey k, Integer start, Integer fim, String texto, String descricao) {
+		return Expressao
+					.builder()
+					.key( ExpressaoKey
+								.builder()
+								.expressaoId(expressaoId)
+								.versiculoId(k.getId())
+								.capituloId(k.getCapituloId())
+								.livroId(k.getLivroId())
+								.build() )
+					.inicio(start)
+					.fim(fim)
+					.texto(texto)
+					.build();
 	}
 	
 }

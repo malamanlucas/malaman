@@ -6,14 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Embeddable
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor @EqualsAndHashCode @Builder
 @ToString(of={"id","versiculoId", "livroId", "capituloId"}, includeFieldNames=false)
 public class ExpressaoKey implements Serializable {
 

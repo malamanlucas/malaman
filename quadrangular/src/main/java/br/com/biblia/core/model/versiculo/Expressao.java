@@ -1,19 +1,25 @@
 package br.com.biblia.core.model.versiculo;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.biblia.core.enums.TipoExpressao;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /***
@@ -25,19 +31,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "expressao")
 @Data
-@NoArgsConstructor
+@NoArgsConstructor 
+@AllArgsConstructor @EqualsAndHashCode @Builder
 public class Expressao {
-	
-	public Expressao(ExpressaoKey key, Integer inicio, Integer fim, String texto, String descricao,
-			Versiculo versiculo) {
-		super();
-		this.key = key;
-		this.inicio = inicio;
-		this.fim = fim;
-		this.texto = texto;
-		this.descricao = descricao;
-		this.versiculo = versiculo;
-	}
 
 	@EmbeddedId
 	private ExpressaoKey key = new ExpressaoKey();
@@ -60,6 +56,12 @@ public class Expressao {
 		@JoinColumn(name="livro_id", referencedColumnName="livro_id", insertable=false, updatable=false)
 	})
 	private Versiculo versiculo;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="expressao")
+	private List<ExpressaoDicionario> dicionarios;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="expressao")
+	private List<ExpressaoMapa> mapas;
 
 	public Expressao setVersiculoKeyAsJsonReturningEntity(String json) {
 		try {

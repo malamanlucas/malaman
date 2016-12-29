@@ -4,6 +4,7 @@ import lombok.Getter;
 
 public enum Testamento {
 
+	AMBOS("Ambos"),
 	NOVO("Novo Testamento"),
 	VELHO("Velho Testamento");
 	
@@ -16,6 +17,10 @@ public enum Testamento {
 
 	public boolean isNovo() {
 		return this == NOVO;
+	}
+	
+	public boolean isVelho() {
+		return this == VELHO;
 	}
 	
 }

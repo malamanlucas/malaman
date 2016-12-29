@@ -56,10 +56,10 @@ public class VersiculoAppTest {
 		VersiculoKey k = mateus1_1.getKey();
 		
 		List<Expressao> expressoes = mateus1_1.getExpressoes();
-		
-		expressoes.add( new Expressao(new ExpressaoKey(1, k.getId(), k.getCapituloId(), k.getLivroId()), 9, 16, "geração", null, null) ); 
-		expressoes.add( new Expressao(new ExpressaoKey(2, k.getId(), k.getCapituloId(), k.getLivroId()), 17, 25, "de Jesus", null, null) ); 
-		expressoes.add( new Expressao(new ExpressaoKey(3, k.getId(), k.getCapituloId(), k.getLivroId()), 49, 64, "Filho de Abraão", null, null) ); 
+
+		expressoes.add( instanceExpressao(1, k, 9, 16, "geração") ); 
+		expressoes.add( instanceExpressao(2, k, 17, 25, "de Jesus") ); 
+		expressoes.add( instanceExpressao(3, k, 49, 64, "Filho de Abraão") ); 
 		
 		dao.saveAndFlush(mateus1_1);
 		
@@ -72,6 +72,21 @@ public class VersiculoAppTest {
 		Assert.assertEquals(newExpected, mateus1_1.getVersiculoMontado());
 		
 	}
-	
+
+	private Expressao instanceExpressao(Integer expressaoId, VersiculoKey k, Integer start, Integer fim, String texto) {
+		return Expressao
+					.builder()
+					.key( ExpressaoKey
+								.builder()
+								.expressaoId(expressaoId)
+								.versiculoId(k.getId())
+								.capituloId(k.getCapituloId())
+								.livroId(k.getLivroId())
+								.build() )
+					.inicio(start)
+					.fim(fim)
+					.texto(texto)
+					.build();
+	}
 	
 }
