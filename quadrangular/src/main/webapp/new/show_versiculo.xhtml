@@ -13,23 +13,23 @@
 	<ui:define name="content">
 
 		<style type="text/css">
-.texto {
-	color: red;
-	font-weight: bold;
-}
-
-.list-group {
-	list-style: decimal inside;
-}
-
-.list-group-item {
-	display: list-item;
-}
-
-.versiculo {
-	display: inline;
-}
-</style>
+			.texto {
+				color: red;
+				font-weight: bold;
+			}
+			
+			.list-group {
+				list-style: decimal inside;
+			}
+			
+			.list-group-item {
+				display: list-item;
+			}
+			
+			.versiculo {
+				display: inline;
+			}
+		</style>
 
 		<h:form prependId="false">
 		
@@ -42,14 +42,6 @@
 					'" closable="true" id="modal_expressao" >
 					
 					<b:container fluid="true">
-						<b:row>
-							<b:column span="2">
-								<h:outputText value="Código: " />
-							</b:column>
-							<b:column span="4">
-								<b:inputText value="#{showVersiculoMB.expressaoBackingBean.entity.codigo}" />
-							</b:column>
-						</b:row>
 						<b:row>
 							<b:column span="2">
 								<h:outputText value="Descrição: " />
@@ -66,6 +58,15 @@
 								<b:button value="Cancelar" dismiss="modal" look="danger" />
 							</b:column>
 						</b:row>
+						
+						<p:spacer height="5px" />
+						
+						<b:dataTable value="#{showVersiculoMB.expressaoBackingBean.entity.dicionarios}" var="d"
+							searching="false" paginated="false">
+							<b:dataTableColumn value="#{d.key.id}" label="CÓDIGO" />
+							<b:dataTableColumn value="#{d.key.idioma}" label="IDIOMA" />
+						</b:dataTable>
+						
 					</b:container>
 	
 				</b:modal>

@@ -21,6 +21,7 @@ public class Dicionario {
 	private DicionarioKey key;
 	
 	private String definicao;
+	
 	private boolean existe;	
 	
 }

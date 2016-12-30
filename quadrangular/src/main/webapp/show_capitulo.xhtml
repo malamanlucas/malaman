@@ -19,6 +19,7 @@
 					<h:link value="#{l.key.id.toString()}" outcome="new/show_versiculo.xhtml" styleClass="btn">
 						<f:param name="livro_id" value="#{l.key.livroId}" />
 						<f:param name="capitulo_id" value="#{l.key.id}" />
+						<f:param name="idioma" value="#{showCapituloMB.idioma}" />
 					</h:link>
 <!-- 					<p:commandButton value="#{l.key.id.toString()}" action="show_versiculo.xhtml" ajax="false" process="@this"> -->
 <!-- 						<f:param name="livro_id" value="#{l.key.livroId}" /> -->

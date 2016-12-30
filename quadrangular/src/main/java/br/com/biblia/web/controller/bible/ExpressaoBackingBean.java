@@ -4,16 +4,29 @@ import java.util.Map;
 
 import javax.faces.context.FacesContext;
 
+import com.google.common.collect.Lists;
+
+import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.versiculo.Expressao;
+import br.com.biblia.core.model.versiculo.ExpressaoDicionario;
+import br.com.biblia.core.model.versiculo.ExpressaoDicionarioKey;
+import br.com.biblia.core.model.versiculo.ExpressaoKey;
 import lombok.Data;
 
 @Data
 public class ExpressaoBackingBean {
 
-	private Expressao entity = new Expressao();
+	private Expressao entity;
+	private Idioma idioma;
 
-	public void clean() {
-		entity = new Expressao();
+	public void clean(Idioma idioma) {
+		entity = Expressao
+						.builder()
+						.dicionarios( Lists.newArrayList() )
+						.key( ExpressaoKey
+									   .builder()
+									   .build() )
+						.build();
 	}
 
 	public void init(FacesContext ctx) {

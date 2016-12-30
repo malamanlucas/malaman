@@ -14,6 +14,7 @@
 				<ui:repeat value="#{homeMB.velhoTestamento}" var="l">
 					<h:link value="#{l.nome}" outcome="show_capitulo.xhtml" styleClass="btn">
 						<f:param name="livro_id" value="#{l.id}" />
+						<f:param name="idioma" value="#{l.testamento.idioma}" />
 					</h:link>
 				</ui:repeat>
 			</b:panel>
@@ -22,6 +23,7 @@
 				<ui:repeat value="#{homeMB.novoTestamento}" var="l">
 					<h:link value="#{l.nome}" outcome="show_capitulo.xhtml" styleClass="btn">
 						<f:param name="livro_id" value="#{l.id}" />
+						<f:param name="idioma" value="#{l.testamento.idioma}" />
 					</h:link>
 				</ui:repeat>
 			</b:panel>

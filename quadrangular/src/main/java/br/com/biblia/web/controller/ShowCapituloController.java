@@ -1,6 +1,7 @@
 package br.com.biblia.web.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.context.FacesContext;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.biblia.core.apps.capitulo.CapituloApp;
+import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.Capitulo;
 import br.com.biblia.core.model.Livro;
 import lombok.Data;
@@ -24,11 +26,15 @@ public class ShowCapituloController {
 	
 	List<Capitulo> capitulos;
 	Livro livro;
+
+	private Idioma idioma;
 	
 	@PostConstruct
 	public void init() {
 		FacesContext ctx = FacesContext.getCurrentInstance();
-		String livroId = ctx.getExternalContext().getRequestParameterMap().get("livro_id");
+		Map<String, String> map = ctx.getExternalContext().getRequestParameterMap();
+		String livroId = map.get("livro_id");
+	    idioma = Idioma.valueOf(map.get("idioma"));
 		capitulos = app.searchByLivro( Integer.valueOf(livroId));
 	}
 

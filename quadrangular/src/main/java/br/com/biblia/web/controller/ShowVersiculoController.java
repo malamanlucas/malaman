@@ -67,6 +67,7 @@ public class ShowVersiculoController {
 		this.versos = versiculoApp.search(new CapituloKey(capituloId, livroId) );
 		
 		this.capitulo = capituloApp.findOne( new CapituloKey(capituloId, livroId) );
+		this.expressaoBackingBean.clean(Idioma.valueOf( map.get("idioma")) );
 	}
 	
 	public void initExpressao() {
