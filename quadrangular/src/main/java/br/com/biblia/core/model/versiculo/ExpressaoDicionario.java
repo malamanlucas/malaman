@@ -1,5 +1,7 @@
 package br.com.biblia.core.model.versiculo;
 
+import java.io.Serializable;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -18,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data 
 @NoArgsConstructor
 @AllArgsConstructor @EqualsAndHashCode @Builder
-public class ExpressaoDicionario {
+public class ExpressaoDicionario implements Serializable {
 	
 	@EmbeddedId
 	private ExpressaoDicionarioKey key;

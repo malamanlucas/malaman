@@ -31,15 +31,15 @@
 			}
 		</style>
 
-		<h:form prependId="false">
+		<b:form prependId="false" id="form_versiculo">
 		
-			<p:remoteCommand name="salvarExpressao" action="#{showVersiculoMB.initExpressao}" 
+			<p:remoteCommand name="salvarExpressao" action="#{showVersiculoMB.initExpressao}"
 				oncomplete="$('#modal_expressao').modal();" async="true" update="panel_modal_expressao" />
 
 			<h:panelGroup id="panel_modal_expressao">
 				<b:modal title="Expressão: '#{showVersiculoMB.expressaoBackingBean.entity.texto}
 					: #{showVersiculoMB.expressaoBackingBean.entity.inicio} - #{showVersiculoMB.expressaoBackingBean.entity.fim}
-					'" closable="true" id="modal_expressao" >
+					'" closable="true" id="modal_expressao">
 					
 					<b:container fluid="true">
 						<b:row>
@@ -50,21 +50,24 @@
 								<b:inputTextarea value="#{showVersiculoMB.expressaoBackingBean.entity.descricao}" />
 							</b:column>
 						</b:row>
-						<b:row>
-							<b:column span="2" offset="2">
-								<b:commandButton value="Salvar" look="primary" />
-							</b:column>
-							<b:column span="2">
-								<b:button value="Cancelar" dismiss="modal" look="danger" />
-							</b:column>
-						</b:row>
 						
-						<p:spacer height="5px" />
+						<b:panelGrid columns="2">
+							<b:inputText id="codigo_dicionario" placeholder="Código" value="#{showVersiculoMB.expressaoBackingBean.dicionario.key.id}"  />
+							<b:commandButton action="#{showVersiculoMB.expressaoBackingBean.addDicionario}" 
+								value="Add" look="success" update="datatable_dicionarios codigo_dicionario" />
+						</b:panelGrid>
 						
-						<b:dataTable value="#{showVersiculoMB.expressaoBackingBean.entity.dicionarios}" var="d"
+						<p:remoteCommand name="updateDatatableDicionarios" update="datatable_dicionarios" />
+						
+						<b:dataTable id="datatable_dicionarios" value="#{showVersiculoMB.expressaoBackingBean.entity.dicionarios}" var="d"
 							searching="false" paginated="false">
 							<b:dataTableColumn value="#{d.key.id}" label="CÓDIGO" />
 							<b:dataTableColumn value="#{d.key.idioma}" label="IDIOMA" />
+							<b:dataTableColumn label="AÇÕES">
+								<b:commandButton iconSize="1px" iconAwesome="trash-o" ajax="true"
+							      value="" look="danger" title="Deletar" oncomplete="updateDatatableDicionarios();"
+							      action="#{showVersiculoMB.expressaoBackingBean.delDicionario(d)}" />
+							</b:dataTableColumn>
 						</b:dataTable>
 						
 					</b:container>
@@ -96,7 +99,7 @@
 				</b:panel>
 			</b:container>
 
-		</h:form>
+		</b:form>
 
 		<h:outputScript library="default" name="js/selection.js" />
 		<h:outputScript library="default" name="js/selectionVersiculo.js" />

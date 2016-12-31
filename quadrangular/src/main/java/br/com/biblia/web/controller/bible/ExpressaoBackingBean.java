@@ -18,8 +18,9 @@ public class ExpressaoBackingBean {
 
 	private Expressao entity;
 	private Idioma idioma;
+	private ExpressaoDicionario dicionario;
 
-	public void clean(Idioma idioma) {
+	public void clean() {
 		entity = Expressao
 						.builder()
 						.dicionarios( Lists.newArrayList() )
@@ -27,9 +28,32 @@ public class ExpressaoBackingBean {
 									   .builder()
 									   .build() )
 						.build();
+		cleanDicionario();
+	}
+	
+	public void cleanDicionario() {
+		this.dicionario = ExpressaoDicionario
+										.builder()
+										.key( ExpressaoDicionarioKey
+																 .builder()
+																 .idioma(idioma)
+																 .expressaoKey( entity.getKey() )
+																 .build() ) 
+										.build();
+	}
+	
+	public void delDicionario(ExpressaoDicionario dicionario) {
+		this.entity.getDicionarios().remove(dicionario);
+		System.out.println(this.entity.getDicionarios().size());
+	}
+	
+	public void addDicionario() {
+		this.entity.getDicionarios().add( this.dicionario );
+		cleanDicionario();
 	}
 
 	public void init(FacesContext ctx) {
+		clean();
 		Map<String, String> map = ctx.getExternalContext().getRequestParameterMap();
 		entity.setVersiculoKeyAsJsonReturningEntity(map.get("keyAsJson"));
 		entity.setTexto( map.get("texto") );
