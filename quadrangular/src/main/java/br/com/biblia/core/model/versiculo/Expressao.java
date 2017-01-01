@@ -1,11 +1,13 @@
 package br.com.biblia.core.model.versiculo;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -28,12 +30,14 @@ import lombok.NoArgsConstructor;
  * 
  * @author lucas
  */
-@Entity
+@Entity @EntityListeners(ExpressaoListener.class)
 @Table(name = "expressao")
 @Data
 @NoArgsConstructor 
 @AllArgsConstructor @EqualsAndHashCode @Builder
-public class Expressao {
+public class Expressao
+				extends ExpressaoAudit
+					implements Serializable {
 
 	@EmbeddedId
 	private ExpressaoKey key = new ExpressaoKey();

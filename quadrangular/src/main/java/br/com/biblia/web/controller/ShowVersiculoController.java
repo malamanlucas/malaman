@@ -7,12 +7,16 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.biblia.core.apps.capitulo.CapituloApp;
 import br.com.biblia.core.apps.dicionario.DicionarioApp;
+import br.com.biblia.core.apps.expressao.ExpressaoApp;
 import br.com.biblia.core.apps.message.MessageApp;
 import br.com.biblia.core.apps.versiculo.VersiculoApp;
 import br.com.biblia.core.enums.Idioma;
@@ -29,7 +33,7 @@ import lombok.Data;
 @ManagedBean(name="showVersiculoMB")
 @RestController("showVersiculoMB")
 @Scope("view")
-public class ShowVersiculoController {
+public class ShowVersiculoController implements BeanFactoryAware {
 
 	private ExpressaoBackingBean expressaoBackingBean = new ExpressaoBackingBean();
 	
@@ -52,6 +56,8 @@ public class ShowVersiculoController {
 	private CapituloApp capituloApp;
 
 	private Capitulo capitulo;
+
+	private BeanFactory bf;
 	
 	@PostConstruct
 	public void init() {
@@ -67,6 +73,9 @@ public class ShowVersiculoController {
 		
 		this.capitulo = capituloApp.findOne( new CapituloKey(capituloId, livroId) );
 		this.expressaoBackingBean.setIdioma( Idioma.valueOf(map.get("idioma")) );
+		this.expressaoBackingBean.setExpressaoApp( bf.getBean(ExpressaoApp.class) );
+		
+		//para não dar NullPointer na tela
 		this.expressaoBackingBean.clean();
 	}
 	
@@ -96,6 +105,11 @@ public class ShowVersiculoController {
 		Integer id = Integer.valueOf( map.get("dic") );
 		Idioma idioma = Idioma.valueOf( map.get( "idioma") );
 		this.dicionario = dicApp.findOne( new DicionarioKey( id, idioma) );
+	}
+
+	@Override
+	public void setBeanFactory(BeanFactory bf) throws BeansException {
+		this.bf = bf;
 	}
 	
 }

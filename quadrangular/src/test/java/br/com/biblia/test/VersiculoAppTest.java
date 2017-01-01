@@ -14,25 +14,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.Application;
 import br.com.biblia.core.apps.versiculo.VersiculoApp;
-import br.com.biblia.core.dao.LivroDAO;
 import br.com.biblia.core.dao.VersiculoDAO;
-import br.com.biblia.core.enums.LivroEnum;
-import br.com.biblia.core.model.CapituloKey;
-import br.com.biblia.core.model.Livro;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
 import br.com.biblia.core.model.versiculo.Versiculo;
 import br.com.biblia.core.model.versiculo.VersiculoKey;
+import br.com.biblia.test.base.VersiculoBaseTest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
 @Transactional
 @Rollback
-public class VersiculoAppTest {
+public class VersiculoAppTest extends VersiculoBaseTest {
 
-	@Autowired
-	private LivroDAO livroDAO;
-	
 	@Autowired
 	private VersiculoDAO dao;
 	
@@ -41,17 +35,15 @@ public class VersiculoAppTest {
 	
 	@Test
 	public void testDeleteByKey() {
-	    Livro mateus = livroDAO.findByNome(LivroEnum.MATEUS.getNomeNoBD());
-	    Versiculo mateus1_1 = dao.search(new CapituloKey(1, mateus.getId())).get(0);
 	    
-	    app.deleteByKey( mateus1_1.getKey() );
+		Versiculo mateus1_1 = getMateus1_1();
+		app.deleteByKey( mateus1_1.getKey() );
 	    Assert.assertNull( dao.findOne(mateus1_1.getKey()) );
 	}
 	
 	@Test
 	public void testGetVersiculoMontado() {
-		Livro mateus = livroDAO.findByNome(LivroEnum.MATEUS.getNomeNoBD());
-		Versiculo mateus1_1 = dao.search(new CapituloKey(1, mateus.getId())).get(0);
+		Versiculo mateus1_1 = getMateus1_1();
 		
 		VersiculoKey k = mateus1_1.getKey();
 		

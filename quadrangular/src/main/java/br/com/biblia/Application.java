@@ -33,13 +33,12 @@ import br.com.biblia.web.scope.ViewScope;
 public class Application 
 				extends SpringApplicationBuilder
 					implements WebApplicationInitializer {
-
+	
 	public static void main(String[] args) {
 		Locale.setDefault(new Locale("pt", "BR"));
 		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
-		
 	}
-
+	
 	// @Bean
 	// public HibernateTransactionManager transactionManager(SessionFactory sf)
 	// {
@@ -71,14 +70,14 @@ public class Application
 		servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "false");
 //		servletContext.setInitParameter("primefaces.THEME", "bootstrap");
 //		servletContext.setInitParameter("primefaces.FONT_AWESOME", "true");
-		servletContext.setInitParameter("primefaces.UPLOADER", "commons");
+//		servletContext.setInitParameter("primefaces.UPLOADER", "commons");
 		servletContext.setInitParameter("BootsFaces_USETHEME", "true");
-		servletContext.setInitParameter("BootsFaces_THEME", "default");
-		
+		servletContext.setInitParameter("BootsFaces_THEME", "cosmo");
+//		
 //		servletContext.setInitParameter("net.bootsfaces.get_fontawesome_from_cdn", "true");
 //		servletContext.setInitParameter("net.bootsfaces.get_jquery_from_cdn", "true");
-//		servletContext.setInitParameter("BootsFaces_USE_VIEWPORT",
-//				"width=device-width, initial-scale=1.0, user-scalable=no");
+		servletContext.setInitParameter("BootsFaces_USE_VIEWPORT",
+				"width=device-width, initial-scale=1.0, user-scalable=no");
 //		servletContext.setInitParameter("net.bootsfaces.blockUI", "true");
 	}
 

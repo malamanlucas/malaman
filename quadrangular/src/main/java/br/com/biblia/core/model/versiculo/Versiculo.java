@@ -1,5 +1,6 @@
 package br.com.biblia.core.model.versiculo;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,7 +31,7 @@ import lombok.ToString;
 @AllArgsConstructor @EqualsAndHashCode @Builder
 @NoArgsConstructor
 @ToString(of={"numero", "idioma", "texto",}, includeFieldNames=false)
-public class Versiculo {
+public class Versiculo implements Serializable {
 	
 	@EmbeddedId
 	private VersiculoKey key = new VersiculoKey();

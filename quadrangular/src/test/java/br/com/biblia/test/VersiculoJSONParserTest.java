@@ -24,7 +24,6 @@ public class VersiculoJSONParserTest {
 		Assert.assertNotNull(json);
 		Assert.assertNotNull(value);
 		Assert.assertEquals(new VersiculoKey(value.getVersiculoId(), value.getCapituloId(), value.getLivroId()), key);
-
 	}
 	
 	

@@ -12,6 +12,6 @@ public interface ExpressaoDAO extends JpaRepository<Expressao, ExpressaoKey> {
     @Query(nativeQuery=true,
             value="SELECT COALESCE(MAX(expressao_id),0)+1 FROM expressao WHERE versiculo_id = :#{#key.versiculoId}"
                  +" AND capitulo_id = :#{#key.capituloId} AND livro_id = :#{#key.livroId}")
-        Integer retrieveNextVerso(@Param("key") ExpressaoKey key);
+        Integer retrieveNextExpressaoId(@Param("key") ExpressaoKey key);
 	
 }

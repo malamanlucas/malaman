@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 
 import com.google.common.collect.Lists;
 
+import br.com.biblia.core.apps.expressao.ExpressaoApp;
 import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoDicionario;
@@ -19,7 +20,13 @@ public class ExpressaoBackingBean {
 	private Expressao entity;
 	private Idioma idioma;
 	private ExpressaoDicionario dicionario;
-
+	
+	private ExpressaoApp expressaoApp;
+	
+	public void salvarExpressao() {
+		expressaoApp.save(entity);
+	}
+	
 	public void clean() {
 		entity = Expressao
 						.builder()
@@ -44,10 +51,10 @@ public class ExpressaoBackingBean {
 	
 	public void delDicionario(ExpressaoDicionario dicionario) {
 		this.entity.getDicionarios().remove(dicionario);
-		System.out.println(this.entity.getDicionarios().size());
 	}
 	
 	public void addDicionario() {
+		this.dicionario.getKey().setExpressaoKey( this.entity.getKey() );
 		this.entity.getDicionarios().add( this.dicionario );
 		cleanDicionario();
 	}
