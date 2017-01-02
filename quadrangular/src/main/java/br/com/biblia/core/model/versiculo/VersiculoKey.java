@@ -8,9 +8,6 @@ import javax.persistence.Embeddable;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.biblia.core.enums.Idioma;
-import br.com.biblia.core.model.DicionarioKey;
-import br.com.biblia.core.model.DicionarioKey.DicionarioKeyBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

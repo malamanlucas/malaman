@@ -21,16 +21,35 @@ import br.com.biblia.core.model.versiculo.VersiculoKey;
 import br.com.biblia.test.base.ExpressaoBaseTest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.MOCK)
+@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
 @Transactional
 @Rollback
-public class ExpressoDAOTest extends ExpressaoBaseTest {
+public class ExpressaoDAOTest extends ExpressaoBaseTest {
 
 	@Autowired
 	private ExpressaoDAO dao;
 	
     @Autowired
     private VersiculoDAO versiculoDAO;
+    
+    @Test
+    public void testFindByKeyAndByRange() {
+    	Expressao expressaoExpected = garantirExpressao();
+    	ExpressaoKey expressaoKey = expressaoExpected.getKey();
+    	VersiculoKey key = new VersiculoKey(expressaoKey.getVersiculoId(), expressaoKey.getCapituloId(), expressaoKey.getLivroId());
+		Expressao expressaoFinded = dao.findByKeyAndInicioAndFim(key, expressaoExpected.getInicio(), expressaoExpected.getFim());
+    	Assert.assertNotNull( expressaoFinded );
+    	Assert.assertEquals( expressaoExpected, expressaoFinded );
+    }
+    
+    @Test
+    public void testFindByKeyAndByRangeWhenFilterNotApplyToAnyExpressao() {
+    	Expressao expressaoExpected = garantirExpressao();
+    	ExpressaoKey expressaoKey = expressaoExpected.getKey();
+    	VersiculoKey key = new VersiculoKey(expressaoKey.getVersiculoId(), expressaoKey.getCapituloId(), expressaoKey.getLivroId());
+		Expressao expressaoFinded = dao.findByKeyAndInicioAndFim(key, -1231, -3495);
+    	Assert.assertNull( expressaoFinded );
+    }
     
     @Test
     public void testPrePersist() {

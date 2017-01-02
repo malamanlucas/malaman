@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
@@ -30,14 +29,12 @@ import lombok.NoArgsConstructor;
  * 
  * @author lucas
  */
-@Entity @EntityListeners(ExpressaoListener.class)
+@Entity
 @Table(name = "expressao")
 @Data
 @NoArgsConstructor 
-@AllArgsConstructor @EqualsAndHashCode @Builder
-public class Expressao
-				extends ExpressaoAudit
-					implements Serializable {
+@AllArgsConstructor @EqualsAndHashCode(callSuper=false) @Builder
+public class Expressao implements Serializable {
 
 	@EmbeddedId
 	private ExpressaoKey key = new ExpressaoKey();

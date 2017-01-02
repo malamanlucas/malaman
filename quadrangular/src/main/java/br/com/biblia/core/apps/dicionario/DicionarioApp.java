@@ -16,4 +16,6 @@ public interface DicionarioApp {
 	
 	void deleteById(DicionarioKey key);
 	
+	void createDefaultIfNotExists(Integer codigo, Idioma idioma);
+	
 }

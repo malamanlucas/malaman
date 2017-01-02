@@ -66,6 +66,18 @@ public class ExpressaoBackingBean {
 		entity.setTexto( map.get("texto") );
 		entity.setInicio( Integer.parseInt( map.get("inicio") ) );
 		entity.setFim( Integer.parseInt( map.get("fim") ) );
+		
+		Expressao expressaoFinded = expressaoApp.findByKeyAndInicioAndFim(entity.getKey(), entity.getInicio(), entity.getFim());
+		if ( expressaoFinded != null ) {
+			entity.setDicionarios( expressaoFinded.getDicionarios() );
+			entity.setMapas( expressaoFinded.getMapas() );
+			entity.getKey().setExpressaoId( expressaoFinded.getKey().getExpressaoId() );
+		}
+		
+	}
+	
+	public Idioma[] getAllIdioma() {
+		return Idioma.values();
 	}
 
 }

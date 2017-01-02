@@ -40,4 +40,12 @@ public class DicionarioFacade implements DicionarioApp {
 		dao.delete( key );
 	}
 
+	@Override
+	public void createDefaultIfNotExists(Integer codigo, Idioma idioma) {
+		DicionarioKey key = new DicionarioKey(codigo, idioma);
+		if ( !dao.exists(key) ) {
+			dao.save( new Dicionario( key, "Não há definição para esta palavra", false) );
+		}
+	}
+
 }

@@ -14,7 +14,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.Application;
 import br.com.biblia.core.apps.expressao.ExpressaoApp;
+import br.com.biblia.core.dao.DicionarioDAO;
 import br.com.biblia.core.dao.ExpressaoDAO;
+import br.com.biblia.core.dao.MapaDAO;
+import br.com.biblia.core.enums.Idioma;
+import br.com.biblia.core.model.Dicionario;
+import br.com.biblia.core.model.DicionarioKey;
+import br.com.biblia.core.model.Mapa;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoDicionario;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
@@ -33,6 +39,55 @@ public class ExpressaoAppTest extends ExpressaoBaseTest {
 
 	@Autowired
 	private ExpressaoDAO dao;
+	
+	@Autowired
+	private DicionarioDAO dicionarioDAO;
+	
+	@Autowired
+	private MapaDAO mapaDAO;
+	
+	@Test
+	public void testSaveWhenDoesNotHaveAnyExpressionAndAnyDicionaryAndAnyMapa() {
+		
+		Versiculo mateus1_1 = getMateus1_1();
+		
+		Dicionario dicionario = Dicionario.builder()
+												.key( DicionarioKey.builder()
+																		  .id(-1234)
+																		  .idioma(Idioma.GREGO)
+																		  .build() )
+												.build();
+		Expressao expressao = addOneExpressaoDicionario( dicionario, mateus1_1.getKey() );
+		Mapa mapa = Mapa.builder()
+								.id(-1234)
+								.build();
+		addOneExpressaoMapa(mapa, expressao);
+		
+		expressao.getKey().setExpressaoId(null);
+		
+		Assert.assertNull( expressao.getKey().getExpressaoId() );
+		
+		app.save(expressao);
+		
+		Expressao expressaoInBD = dao.getOne( expressao.getKey() );
+		
+		Assert.assertNotNull( dicionarioDAO.findOne(dicionario.getKey()) );
+		Assert.assertNotNull( mapaDAO.findOne(mapa.getId()) );
+		
+		Assert.assertNotNull(expressaoInBD);
+		Assert.assertNotNull(expressaoInBD.getDescricao());
+		Assert.assertNotNull(expressaoInBD.getTexto());
+		Assert.assertNotNull(expressaoInBD.getFim());
+		Assert.assertNotNull(expressaoInBD.getInicio());
+		Assert.assertNotNull(expressaoInBD.getFim());
+		
+		assertExpressaoKey( expressaoInBD.getKey() );
+		Assert.assertEquals( new Integer(1), expressaoInBD.getKey().getExpressaoId() );
+		
+		assertDicionarios( expressao.getDicionarios() );
+		assertMapas( expressao.getMapas() );
+		
+	}
 	
 	@Test
 	public void testSaveWhenDoesNotHaveAnyExpression() {

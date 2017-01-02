@@ -7,12 +7,10 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
-import br.com.biblia.core.dao.DicionarioDAO;
+import br.com.biblia.core.apps.dicionario.DicionarioApp;
 import br.com.biblia.core.dao.VersiculoDAO;
 import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.CapituloKey;
-import br.com.biblia.core.model.Dicionario;
-import br.com.biblia.core.model.DicionarioKey;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.Versiculo;
 import br.com.biblia.core.model.versiculo.VersiculoKey;
@@ -25,7 +23,7 @@ public class VersiculoFacade implements VersiculoApp {
 	private VersiculoDAO dao;
 	
 	@Autowired
-	private DicionarioDAO dicDao;
+	private DicionarioApp dicionarioApp;
 
 	public Versiculo save(Versiculo entity) {
 		VersiculoKey key = entity.getKey();
@@ -55,7 +53,7 @@ public class VersiculoFacade implements VersiculoApp {
 			int end = a.indexOf("]");
 			String codigo = a.substring(end+1, a.indexOf("="));
 			
-			definirPalavra(codigo, idioma);
+			dicionarioApp.createDefaultIfNotExists( Integer.valueOf(codigo), idioma );
 			
 			nova.append( String.format("<span class=\"texto\" dic=\"%s\">", codigo) );
 			nova.append( a.substring(1, end) );
@@ -66,14 +64,6 @@ public class VersiculoFacade implements VersiculoApp {
 		}
 		nova.append( a );
 		return nova.toString();
-	}
-
-	private void definirPalavra(String codigo, Idioma idioma) {
-		Integer dicId = Integer.valueOf(codigo);
-		DicionarioKey key = new DicionarioKey(dicId, idioma);
-		if ( !dicDao.exists(key) ) {
-			dicDao.save( new Dicionario( key, "Não há definição para esta palavra", false) );
-		}
 	}
 
 	public List<Versiculo> findAll() {

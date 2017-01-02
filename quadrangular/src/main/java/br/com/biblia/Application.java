@@ -21,6 +21,7 @@ import org.springframework.web.WebApplicationInitializer;
 
 import com.sun.faces.config.ConfigureListener;
 
+import br.com.biblia.web.config.AutowireHelper;
 import br.com.biblia.web.scope.ViewScope;
 
 /**
@@ -37,6 +38,11 @@ public class Application
 	public static void main(String[] args) {
 		Locale.setDefault(new Locale("pt", "BR"));
 		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+	}
+	
+	@Bean
+	public AutowireHelper autowireHelper(){
+	    return AutowireHelper.getInstance();
 	}
 	
 	// @Bean

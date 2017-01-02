@@ -14,11 +14,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 @NoArgsConstructor @AllArgsConstructor @Builder @EqualsAndHashCode
 @Data
 @Entity(name="mapa")
+@ToString(of={"id","nome","testamento"}, includeFieldNames=false)
 public class Mapa implements Serializable {
 
 	@Id

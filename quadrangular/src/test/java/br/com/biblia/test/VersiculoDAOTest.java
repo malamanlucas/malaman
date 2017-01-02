@@ -18,12 +18,13 @@ import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
 import br.com.biblia.core.model.versiculo.Versiculo;
 import br.com.biblia.core.model.versiculo.VersiculoKey;
+import br.com.biblia.test.base.VersiculoBaseTest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
 @Transactional
 @Rollback
-public class VersiculoDAOTest {
+public class VersiculoDAOTest extends VersiculoBaseTest {
 
 	@Autowired
 	private VersiculoDAO dao;

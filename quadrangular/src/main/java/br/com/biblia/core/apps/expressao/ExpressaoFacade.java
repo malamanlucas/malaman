@@ -4,14 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.core.dao.ExpressaoDAO;
 import br.com.biblia.core.model.versiculo.Expressao;
+import br.com.biblia.core.model.versiculo.ExpressaoKey;
+import br.com.biblia.core.model.versiculo.VersiculoKey;
 
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 @Service
-@Transactional
+@Transactional(propagation=Propagation.REQUIRED)
 public class ExpressaoFacade implements ExpressaoApp {
 
 	@Autowired
@@ -33,6 +36,12 @@ public class ExpressaoFacade implements ExpressaoApp {
 		}
 		
 		return dao.save(expressao);
+	}
+
+	@Override
+	public Expressao findByKeyAndInicioAndFim(ExpressaoKey key, Integer inicio, Integer fim) {
+		VersiculoKey versiculoKey = new VersiculoKey(key.getVersiculoId(), key.getCapituloId(), key.getLivroId());
+		return dao.findByKeyAndInicioAndFim(versiculoKey, inicio, fim);
 	}
 
 	

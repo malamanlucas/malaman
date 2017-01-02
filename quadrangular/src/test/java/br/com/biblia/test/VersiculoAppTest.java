@@ -2,6 +2,7 @@ package br.com.biblia.test;
 
 import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,11 +48,12 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 		
 		VersiculoKey k = mateus1_1.getKey();
 		
-		List<Expressao> expressoes = mateus1_1.getExpressoes();
+		List<Expressao> expressoes = Lists.newArrayList();
 
 		expressoes.add( instanceExpressao(1, k, 9, 16, "geração") ); 
 		expressoes.add( instanceExpressao(2, k, 17, 25, "de Jesus") ); 
-		expressoes.add( instanceExpressao(3, k, 49, 64, "Filho de Abraão") ); 
+		expressoes.add( instanceExpressao(3, k, 49, 64, "Filho de Abraão") );
+		mateus1_1.setExpressoes(expressoes);
 		
 		dao.saveAndFlush(mateus1_1);
 		
