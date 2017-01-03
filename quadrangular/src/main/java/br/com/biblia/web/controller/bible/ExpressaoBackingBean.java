@@ -1,30 +1,48 @@
-package br.com.biblia.web.controller.bible;
+ package br.com.biblia.web.controller.bible;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.google.common.collect.Lists;
 
 import br.com.biblia.core.apps.expressao.ExpressaoApp;
+import br.com.biblia.core.apps.versiculo.VersiculoApp;
 import br.com.biblia.core.enums.Idioma;
+import br.com.biblia.core.model.CapituloKey;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoDicionario;
 import br.com.biblia.core.model.versiculo.ExpressaoDicionarioKey;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
+import br.com.biblia.core.model.versiculo.Versiculo;
+import br.com.biblia.web.config.AutowireHelper;
 import lombok.Data;
 
 @Data
 public class ExpressaoBackingBean {
 
+	public ExpressaoBackingBean() {
+		AutowireHelper.autowire(this, expressaoApp);
+	}
+	
 	private Expressao entity;
 	private Idioma idioma;
 	private ExpressaoDicionario dicionario;
+	private CapituloKey capituloKey;
+	private List<Versiculo> versos;
 	
+	@Autowired
 	private ExpressaoApp expressaoApp;
+	
+	@Autowired
+	private VersiculoApp versiculoApp;
 	
 	public void salvarExpressao() {
 		expressaoApp.save(entity);
+		this.versos = versiculoApp.search(capituloKey);
 	}
 	
 	public void clean() {

@@ -16,7 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.biblia.Application;
 import br.com.biblia.core.apps.versiculo.VersiculoApp;
 import br.com.biblia.core.dao.VersiculoDAO;
+import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.versiculo.Expressao;
+import br.com.biblia.core.model.versiculo.ExpressaoDicionario;
+import br.com.biblia.core.model.versiculo.ExpressaoDicionarioKey;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
 import br.com.biblia.core.model.versiculo.Versiculo;
 import br.com.biblia.core.model.versiculo.VersiculoKey;
@@ -50,25 +53,27 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 		
 		List<Expressao> expressoes = Lists.newArrayList();
 
-		expressoes.add( instanceExpressao(1, k, 9, 16, "geração") ); 
-		expressoes.add( instanceExpressao(2, k, 17, 25, "de Jesus") ); 
-		expressoes.add( instanceExpressao(3, k, 49, 64, "Filho de Abraão") );
+		expressoes.add( instanceExpressao(1, k, 9, 16, "geração", 1, 2) ); 
+		expressoes.add( instanceExpressao(2, k, 17, 25, "de Jesus", 2) ); 
+//		expressoes.add( instanceExpressao(3, k, 49, 64, "Filho de Abraão") );
 		mateus1_1.setExpressoes(expressoes);
 		
 		dao.saveAndFlush(mateus1_1);
 		
 		mateus1_1 = dao.findOne(k);
 		
+		System.out.println( mateus1_1.getVersiculoMontado() );
+		
 		String oldExpected = "Livro da geração de Jesus Cristo, Filho de Davi, Filho de Abraão.";
-		String newExpected = "Livro da <span class=\"texto\" dic=\"0\">geração</span> <span class=\"texto\" dic=\"1\">de Jesus</span> Cristo, Filho de Davi, <span class=\"texto\" dic=\"2\">Filho de Abraão</span>.";
+		String newExpected = "Livro da <span class=\"texto\" dic=\"1,2\">geração</span> <span class=\"texto\" dic=\"2\">de Jesus</span> Cristo, Filho de Davi, Filho de Abraão.";
 		
 		Assert.assertEquals(oldExpected, mateus1_1.getLimpo());
 		Assert.assertEquals(newExpected, mateus1_1.getVersiculoMontado());
 		
 	}
 
-	private Expressao instanceExpressao(Integer expressaoId, VersiculoKey k, Integer start, Integer fim, String texto) {
-		return Expressao
+	private Expressao instanceExpressao(Integer expressaoId, VersiculoKey k, Integer start, Integer fim, String texto, Integer... dics) {
+		Expressao expressao = Expressao
 					.builder()
 					.key( ExpressaoKey
 								.builder()
@@ -81,6 +86,14 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 					.fim(fim)
 					.texto(texto)
 					.build();
+		
+		expressao.setDicionarios( Lists.newArrayList() );
+		for (Integer dic : dics) {
+			expressao.getDicionarios().add( ExpressaoDicionario.builder()
+																	  .key( new ExpressaoDicionarioKey(dic, Idioma.GREGO, expressao.getKey()))
+																	  .build() );
+		}
+		return expressao;
 	}
 	
 }

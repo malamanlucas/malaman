@@ -15,7 +15,7 @@
 		<style type="text/css">
 			.texto {
 				color: red;
-				font-weight: bold;
+				text-decoration: underline;
 			}
 			
 			.list-group {
@@ -26,15 +26,22 @@
 				display: list-item;
 			}
 			
+			.lista_limpa {
+				opacity: 0.3;
+			}
+			
 			.versiculo {
 				display: inline;
 			}
 		</style>
 
-		<b:form prependId="false" id="form_versiculo">
+		<h:form prependId="false" id="form_versiculo">
 		
-			<p:remoteCommand name="salvarExpressao" action="#{showVersiculoMB.initExpressao}"
+			<p:remoteCommand name="initExpressao" action="#{showVersiculoMB.initExpressao}"
 				oncomplete="$('#modal_expressao').modal();" update="@(.modal_expressao)" />
+			
+			<p:remoteCommand name="salvarExpressao" action="#{showVersiculoMB.expressaoBackingBean.salvarExpressao}"
+				oncomplete="$('#modal_expressao').modal('hide'); return false;" update="panel_versiculos" />
 				
 			<b:modal title="Expressão: '#{showVersiculoMB.expressaoBackingBean.entity.texto}
 				: #{showVersiculoMB.expressaoBackingBean.entity.inicio} - #{showVersiculoMB.expressaoBackingBean.entity.fim}
@@ -87,44 +94,59 @@
 						</b:column>
 					</b:row>
 					
-					<b:commandButton value="Salvar" look="success" size="large" ajax="true"
-						action="#{showVersiculoMB.expressaoBackingBean.salvarExpressao}"
-						oncomplete="$('.modal_expressao').modal('hide');" update="@(.modal_expressao)" />
-					
+					<b:button value="Salvar" look="success" size="large" onclick="salvarExpressao();" />
 				</b:container>
 
 			</b:modal>
 
 			<b:container fluid="true" style="font-size: 1.4em;">
 
-				<b:panel titleStyle="text-align: center" collapsed="false"
+				<b:panel id="panel_versiculos" styleClass="panel_versiculos" titleStyle="text-align: center" collapsed="false"
 					collapsible="false">
 					<f:facet name="heading">
 						<b>#{showVersiculoMB.capitulo.livro.nome} - Capítulo
 							#{showVersiculoMB.capitulo.key.id}</b>
 					</f:facet>
+					
 					<ul class="list-group">
 						<ui:repeat var="v" value="#{showVersiculoMB.versos}"
 							varStatus="status">
-
 							<li class="list-group-item" id="versiculo_${status.index}">
 								<div class="versiculo" json="#{v.key.toJson()}">
-									<h:outputText value="${v.limpo}" escape="true" />
+									<h:outputText value="${v.getVersiculoMontado()}" escape="false" />
 								</div>
 							</li>
 						</ui:repeat>
 					</ul>
+					
+					<ul class="list-group lista_limpa">
+						<ui:repeat var="v" value="#{showVersiculoMB.versos}"
+							varStatus="status">
+							<li class="list-group-item" id="versiculo_${status.index}">
+								<div class="versiculo" json="#{v.key.toJson()}">
+									<h:outputText value="${v.limpo}" escape="false" />
+								</div>
+							</li>
+						</ui:repeat>
+					</ul>
+					
 				</b:panel>
 			</b:container>
 
-		</b:form>
+		</h:form>
 
 		<h:outputScript library="default" name="js/selection.js" />
 		<h:outputScript library="default" name="js/selectionVersiculo.js" />
 		<script type="text/javascript">
 			$(document).ready(function(){
-				$('#modal_expressao').modal();
-			});
+				var f = function() {
+					$(".list-group").css("position", "absolute");
+					
+					$(".panel-body").css("height", $(".list-group:eq(0)").height()+"px" );
+				};
+				f();
+				$(window).resize(f);
+			})
 		</script>
 	</ui:define>
 </ui:composition>

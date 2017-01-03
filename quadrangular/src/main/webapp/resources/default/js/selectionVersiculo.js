@@ -1,8 +1,8 @@
 $.fn.textSelected = function() {
-	var selection = getSelection(this[0]);
+	var selection = window.getSelection();
 	if (selection.type == "Range") {
-		var idPaiOriginal = $(this).parent().attr("id");
-		var idPaiSelecionado = $(selection.focusNode.parentElement).parent().attr("id")
+		var idPaiOriginal = $(this).parents("li").attr("id");
+		var idPaiSelecionado = $(selection.focusNode.parentElement).parents("li").attr("id")
 		if ( idPaiOriginal == idPaiSelecionado ) {
 			
 			var start = selection.anchorOffset,
@@ -22,7 +22,7 @@ $.fn.textSelected = function() {
 
 $(document).ready(function() {
 
-	$(".versiculo").off("mouseup").on("mouseup", function() {
+	$(".lista_limpa .versiculo").off("mouseup").on("mouseup", function() {
 
 		var expressao = $(this).textSelected();
 		var keyAsJson = $(this).attr("json");
@@ -30,7 +30,7 @@ $(document).ready(function() {
 		if ( expressao != undefined && expressao != null && expressao.text != "") {
 			console.log( expressao.text + " - " + keyAsJson );
 			
-			salvarExpressao([
+			initExpressao([
 				{
 					name: "keyAsJson",
 					value: keyAsJson

@@ -65,16 +65,37 @@ public class Versiculo implements Serializable {
 		String newString = limpo;
 		for (int i = 0; i < expressoes.size(); i++) {
 			Expressao expressao = expressoes.get(i);
+			List<ExpressaoDicionario> dicionarios = expressao.getDicionarios();
+			
+			if (dicionarios.isEmpty())
+				break;
+			
 			newString = newString.replace(expressao.getTexto(), "$"+String.valueOf(i));
 			
-			StringBuilder textoFormatado = new StringBuilder("<span class=\"texto\" dic=\""+String.valueOf(i)+"\">");
-			textoFormatado.append(expressao.getTexto());
-			textoFormatado.append("</span>");
-			expressao.setTextoFormatado(textoFormatado.toString());
+			StringBuilder b = null;
+			for (ExpressaoDicionario dicionario : dicionarios) {
+				if ( b == null ) {
+					b = new StringBuilder();
+					b.append(dicionario.getKey().getId());
+				} else {
+					b.append( "," );
+					b.append( dicionario.getKey().getId() );
+				}
+			}
+			
+			if ( b != null ) {
+				StringBuilder textoFormatado = new StringBuilder("<span class=\"texto\" dic=\""+b.toString()+"\">");
+				textoFormatado.append(expressao.getTexto());
+				textoFormatado.append("</span>");
+				expressao.setTextoFormatado(textoFormatado.toString());
+			}
+			
 		}
 		
 		for (int i = 0; i < expressoes.size(); i++) {
 			Expressao expressao = expressoes.get(i);
+			if (expressao.getTextoFormatado() == null)
+				break;
 			newString = newString.replace("$"+String.valueOf(i), expressao.getTextoFormatado());
 		}
 		return newString;

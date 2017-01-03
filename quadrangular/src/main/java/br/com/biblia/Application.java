@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -28,9 +29,10 @@ import br.com.biblia.web.scope.ViewScope;
  * Created by Alex on 28/02/2015.
  */
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
+//@Configuration
+//@EnableAutoConfiguration
+//@ComponentScan
+@SpringBootApplication
 public class Application 
 				extends SpringApplicationBuilder
 					implements WebApplicationInitializer {
@@ -70,7 +72,7 @@ public class Application
 		servletContext.setInitParameter("javax.faces.DEFAULT_SUFFIX", ".xhtml");
 		servletContext.setInitParameter("javax.faces.PARTIAL_STATE_SAVING_METHOD", "true");
 		servletContext.setInitParameter("javax.faces.PROJECT_STAGE", "Production");
-		// servletContext.setInitParameter("facelets.DEVELOPMENT", "true");
+		 servletContext.setInitParameter("facelets.DEVELOPMENT", "true");
 		servletContext.setInitParameter("javax.faces.FACELETS_REFRESH_PERIOD", "1");
 
 		servletContext.setInitParameter("primefaces.CLIENT_SIDE_VALIDATION", "false");
