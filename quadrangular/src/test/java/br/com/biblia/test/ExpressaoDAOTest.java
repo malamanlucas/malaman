@@ -33,6 +33,21 @@ public class ExpressaoDAOTest extends ExpressaoBaseTest {
     private VersiculoDAO versiculoDAO;
     
     @Test
+    public void testDeleteByKeyAndByRange() {
+    	
+    	Expressao expressaoExpected = garantirExpressao();
+    	ExpressaoKey expressaoKey = expressaoExpected.getKey();
+    	
+    	VersiculoKey key = new VersiculoKey(expressaoKey.getVersiculoId(), expressaoKey.getCapituloId(), expressaoKey.getLivroId());
+    	
+    	dao.deleteByKeyAndInicioAndFim(key, expressaoExpected.getInicio(), expressaoExpected.getFim());
+    	
+    	Expressao expressaoFinded = dao.findByKeyAndInicioAndFim(key, expressaoExpected.getInicio(), expressaoExpected.getFim());
+    	Assert.assertNull( expressaoFinded );
+    	
+    }
+    
+    @Test
     public void testFindByKeyAndByRange() {
     	Expressao expressaoExpected = garantirExpressao();
     	ExpressaoKey expressaoKey = expressaoExpected.getKey();

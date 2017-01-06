@@ -1,4 +1,4 @@
-package br.com.biblia.web.controller;
+package br.com.biblia.web.controller.utils;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;

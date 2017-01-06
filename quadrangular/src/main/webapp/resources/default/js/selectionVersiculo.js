@@ -20,8 +20,20 @@ $.fn.textSelected = function() {
 	}
 };
 
-$(document).ready(function() {
+$(document).ready(function(){
+	
+	bindVersiculoSelect();
+	var f = function() {
+		$(".panel-body").css("height", $(".list-group:eq(0)").height()+"px" );
+	};
+	f();
+	$(window).resize(f);
+	
+});
 
+function bindVersiculoSelect() {
+	$(".list-group").css("position", "absolute");
+	
 	$(".lista_limpa .versiculo").off("mouseup").on("mouseup", function() {
 
 		var expressao = $(this).textSelected();
@@ -52,8 +64,7 @@ $(document).ready(function() {
 		}
 
 	});
-
-});
+}
 
 function bindClick() {
 	$(".texto").click(function() {

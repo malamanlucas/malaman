@@ -52,6 +52,8 @@ public class ShowVersiculoController {
 	private CapituloApp capituloApp;
 
 	private Capitulo capitulo;
+	
+	private CapituloKey capituloKey;
 
 	@PostConstruct
 	public void init() {
@@ -63,13 +65,11 @@ public class ShowVersiculoController {
 		Integer livroId = Integer.valueOf( map.get("livro_id") );
 		Integer capituloId = Integer.valueOf( map.get("capitulo_id") );
 		
-		CapituloKey capituloKey = new CapituloKey(capituloId, livroId);
+		capituloKey = new CapituloKey(capituloId, livroId);
 		this.versos = versiculoApp.search( capituloKey );
 		
-		this.capitulo = capituloApp.findOne( new CapituloKey(capituloId, livroId) );
+		this.capitulo = capituloApp.findOne( capituloKey );
 		this.expressaoBackingBean.setIdioma( Idioma.valueOf(map.get("idioma")) );
-		this.expressaoBackingBean.setCapituloKey(capituloKey);
-		this.expressaoBackingBean.setVersos(versos);
 		
 		//para não dar NullPointer na tela
 		this.expressaoBackingBean.clean();
@@ -77,6 +77,11 @@ public class ShowVersiculoController {
 	
 	public void initExpressao() {
 		this.expressaoBackingBean.init( FacesContext.getCurrentInstance() );
+	}
+	
+	public void salvarExpressao() {
+		this.expressaoBackingBean.getExpressaoApp().save( this.expressaoBackingBean.getEntity() );
+		this.versos = versiculoApp.search(capituloKey);
 	}
 	
 	public void message() {

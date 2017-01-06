@@ -38,4 +38,26 @@ public abstract class VersiculoBaseTest {
 		return mateus1_1;
 	}
 	
+	protected Versiculo getMateus1_2() {
+		Livro mateus = livroDAO.findByNome(LivroEnum.MATEUS.getNomeNoBD());
+        
+        Versiculo mateus1_2 = versiculoDAO.search(new CapituloKey(1, mateus.getId())).get(1);
+        mateus1_2 = versiculoDAO.getOne(mateus1_2.getKey());
+        entityManager.detach(mateus1_2);
+        Assert.assertNotNull(mateus1_2);
+        Assert.assertNotNull(mateus1_2.getKey().getId());
+		return mateus1_2;
+	}
+	
+	protected Versiculo getMateus1_16() {
+		Livro mateus = livroDAO.findByNome(LivroEnum.MATEUS.getNomeNoBD());
+        
+        Versiculo mateus1_16 = versiculoDAO.search(new CapituloKey(15, mateus.getId())).get(1);
+        mateus1_16 = versiculoDAO.getOne(mateus1_16.getKey());
+        entityManager.detach(mateus1_16);
+        Assert.assertNotNull(mateus1_16);
+        Assert.assertNotNull(mateus1_16.getKey().getId());
+		return mateus1_16;
+	}
+	
 }

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import br.com.biblia.core.dao.ExpressaoDAO;
 import br.com.biblia.core.model.versiculo.Expressao;
@@ -23,19 +24,25 @@ public class ExpressaoFacade implements ExpressaoApp {
 	@Override
 	public Expressao save(Expressao expressao) {
 		
-		if (expressao.getKey().getExpressaoId() == null) {
-			expressao.getKey().setExpressaoId( dao.retrieveNextExpressaoId(expressao.getKey()) );
+		if ( CollectionUtils.isEmpty(expressao.getDicionarios()) && CollectionUtils.isEmpty(expressao.getMapas()) ) {
+			VersiculoKey versiculoKey = new VersiculoKey(expressao.getKey().getVersiculoId(), expressao.getKey().getCapituloId(), expressao.getKey().getLivroId());
+			dao.deleteByKeyAndInicioAndFim(versiculoKey, expressao.getInicio(), expressao.getFim());
+			return expressao;
+		} else { 
+			if (expressao.getKey().getExpressaoId() == null) {
+				expressao.getKey().setExpressaoId( dao.retrieveNextExpressaoId(expressao.getKey()) );
+			}
+			
+			if ( expressao.getDicionarios() != null ) {
+				expressao.getDicionarios().forEach( t -> t.getKey().setExpressaoKey( expressao.getKey() ) );
+			}
+			
+			if ( expressao.getMapas() != null ) {
+				expressao.getMapas().forEach( t -> t.getKey().setExpressaoKey( expressao.getKey() ) );
+			}
+			return dao.save(expressao);
 		}
 		
-		if ( expressao.getDicionarios() != null ) {
-			expressao.getDicionarios().forEach( t -> t.getKey().setExpressaoKey( expressao.getKey() ) );
-		}
-		
-		if ( expressao.getMapas() != null ) {
-			expressao.getMapas().forEach( t -> t.getKey().setExpressaoKey( expressao.getKey() ) );
-		}
-		
-		return dao.save(expressao);
 	}
 
 	@Override

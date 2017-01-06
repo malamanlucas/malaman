@@ -63,6 +63,7 @@ public class Versiculo implements Serializable {
 	
 	public String getVersiculoMontado() {
 		String newString = limpo;
+		Integer offset = 0;
 		for (int i = 0; i < expressoes.size(); i++) {
 			Expressao expressao = expressoes.get(i);
 			List<ExpressaoDicionario> dicionarios = expressao.getDicionarios();
@@ -70,7 +71,11 @@ public class Versiculo implements Serializable {
 			if (dicionarios.isEmpty())
 				break;
 			
-			newString = newString.replace(expressao.getTexto(), "$"+String.valueOf(i));
+			StringBuilder sb = new StringBuilder( newString );
+			sb.replace( expressao.getInicio()-offset, expressao.getFim()-offset, "$"+String.valueOf(i) );
+			newString = sb.toString();
+			
+			offset += (expressao.getTexto().length() - (1+String.valueOf(i).length()));
 			
 			StringBuilder b = null;
 			for (ExpressaoDicionario dicionario : dicionarios) {
@@ -94,8 +99,6 @@ public class Versiculo implements Serializable {
 		
 		for (int i = 0; i < expressoes.size(); i++) {
 			Expressao expressao = expressoes.get(i);
-			if (expressao.getTextoFormatado() == null)
-				break;
 			newString = newString.replace("$"+String.valueOf(i), expressao.getTextoFormatado());
 		}
 		return newString;
