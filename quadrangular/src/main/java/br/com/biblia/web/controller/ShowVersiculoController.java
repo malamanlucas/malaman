@@ -15,6 +15,7 @@ import br.com.biblia.core.apps.capitulo.CapituloApp;
 import br.com.biblia.core.apps.dicionario.DicionarioApp;
 import br.com.biblia.core.apps.message.MessageApp;
 import br.com.biblia.core.apps.versiculo.VersiculoApp;
+import br.com.biblia.core.dao.LivroDAO;
 import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.Capitulo;
 import br.com.biblia.core.model.CapituloKey;
@@ -54,6 +55,11 @@ public class ShowVersiculoController {
 	private Capitulo capitulo;
 	
 	private CapituloKey capituloKey;
+	
+	@Autowired 
+	private LivroDAO livroDAO;
+	
+	private Integer qtdCapitulo;
 
 	@PostConstruct
 	public void init() {
@@ -73,6 +79,7 @@ public class ShowVersiculoController {
 		
 		//para não dar NullPointer na tela
 		this.expressaoBackingBean.clean();
+		this.qtdCapitulo = livroDAO.getQtdCapitulosById( livroId );
 	}
 	
 	public void initExpressao() {

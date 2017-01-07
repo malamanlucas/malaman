@@ -19,4 +19,10 @@ public interface LivroDAO extends JpaRepository<Livro, Integer> {
 	
 	Livro findByNome(String nome);
 	
+	@Query("SELECT SIZE(l.capitulos) FROM Livro l WHERE l.nome = :nome")
+	Integer getQtdCapitulosByNome(@Param("nome") String nome);
+	
+	@Query("SELECT SIZE(l.capitulos) FROM Livro l WHERE l.id = :id")
+	Integer getQtdCapitulosById(@Param("id") Integer id);
+	
 }
