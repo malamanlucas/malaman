@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.assertj.core.util.Lists;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +55,6 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 
 		expressoes.add( instanceExpressao(1, k, 9, 16, "geração", 1, 2) ); 
 		expressoes.add( instanceExpressao(2, k, 17, 25, "de Jesus", 2) ); 
-//		expressoes.add( instanceExpressao(3, k, 49, 64, "Filho de Abraão") );
 		mateus1_1.setExpressoes(expressoes);
 		
 		dao.saveAndFlush(mateus1_1);
@@ -67,7 +65,6 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 		
 		String oldExpected = "Livro da geração de Jesus Cristo, Filho de Davi, Filho de Abraão.";
 		String newExpected = "Livro da <span class=\"texto\" dic=\"1,2\">geração</span> <span class=\"texto\" dic=\"2\">de Jesus</span> Cristo, Filho de Davi, Filho de Abraão.";
-//							 "Livro da <span class="texto" dic="1,2">geração</span> de Je<span class="texto" dic="2">de Jesus</span>to, Filho de Davi, Filho de Abraão."
 		
 		Assert.assertEquals(oldExpected, mateus1_1.getLimpo());
 		Assert.assertEquals(newExpected, mateus1_1.getVersiculoMontado());
@@ -99,29 +96,29 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 		
 	}
 	
-	@Test @Ignore
-	public void testGetVersiculoMontadoWhenMateus1_16() {
-		Versiculo mateus1_16 = getMateus1_2();
+	@Test
+	public void testGetVersiculoMontadoWhenMateus5_6() {
+		Versiculo mateus5_6 = getMateus5_6();
 		
-		VersiculoKey k = mateus1_16.getKey();
+		VersiculoKey k = mateus5_6.getKey();
 		
 		List<Expressao> expressoes = Lists.newArrayList();
 
-		expressoes.add( instanceExpressao(1, k, 22, 28, "marido", 1) );
-		expressoes.add( instanceExpressao(1, k, 32, 37, "Maria", 1) ); 
-		mateus1_16.setExpressoes(expressoes);
+		expressoes.add( instanceExpressao(1, k, 16, 31, "os que têm fome", 3983) );
+		expressoes.add( instanceExpressao(2, k, 42, 49, "justiça", 1343) );
+		mateus5_6.setExpressoes(expressoes);
 		
-		dao.saveAndFlush(mateus1_16);
+		dao.saveAndFlush(mateus5_6);
 		
-		mateus1_16 = dao.findOne(k);
+		mateus5_6 = dao.findOne(k);
 		
-		System.out.println( mateus1_16.getVersiculoMontado() );
+		System.out.println( mateus5_6.getVersiculoMontado() );
 		
-		String oldExpected = "e Jacó gerou a José, marido de Maria, da qual nasceu Jesus, que se chama o Cristo.";
-		String newExpected = "e Jacó gerou a José, marido de Maria, da qual nasceu Jesus, que se chama o Cristo.";
+		String oldExpected = "bem-aventurados os que têm fome e sede de justiça, porque eles serão fartos;";
+		String newExpected = "bem-aventurados <span class=\"texto\" dic=\"3983\">os que têm fome</span> e sede de <span class=\"texto\" dic=\"1343\">justiça</span>, porque eles serão fartos;";
 		
-		Assert.assertEquals(oldExpected, mateus1_16.getLimpo());
-		Assert.assertEquals(newExpected, mateus1_16.getVersiculoMontado());
+		Assert.assertEquals(oldExpected, mateus5_6.getLimpo());
+		Assert.assertEquals(newExpected, mateus5_6.getVersiculoMontado());
 		
 	}
 

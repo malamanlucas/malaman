@@ -60,4 +60,15 @@ public abstract class VersiculoBaseTest {
 		return mateus1_16;
 	}
 	
+	protected Versiculo getMateus5_6() {
+		Livro mateus = livroDAO.findByNome(LivroEnum.MATEUS.getNomeNoBD());
+        
+        Versiculo mateus5_6 = versiculoDAO.search(new CapituloKey(5, mateus.getId())).get(5);
+        mateus5_6 = versiculoDAO.getOne(mateus5_6.getKey());
+        entityManager.detach(mateus5_6);
+        Assert.assertNotNull(mateus5_6);
+        Assert.assertNotNull(mateus5_6.getKey().getId());
+		return mateus5_6;
+	}
+	
 }
