@@ -28,6 +28,7 @@ public class ShowCapituloController {
 	Livro livro;
 
 	private Idioma idioma;
+	private Boolean isAdmin;
 	
 	@PostConstruct
 	public void init() {
@@ -35,6 +36,7 @@ public class ShowCapituloController {
 		Map<String, String> map = ctx.getExternalContext().getRequestParameterMap();
 		String livroId = map.get("livro_id");
 	    idioma = Idioma.valueOf(map.get("idioma"));
+	    isAdmin = Boolean.valueOf( map.get( "isAdmin" ) );
 		capitulos = app.searchByLivro( Integer.valueOf(livroId));
 	}
 

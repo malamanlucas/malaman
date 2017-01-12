@@ -26,9 +26,9 @@
 				display: list-item;
 			}
 			
-/* 			.lista_limpa { */
-/* 				opacity: 0.3; */
-/* 			} */
+			.lista_limpa {
+				opacity: 0.3;
+			}
 			
 			.versiculo {
 				display: inline;
@@ -81,6 +81,63 @@
 			<p:remoteCommand name="salvarExpressao" action="#{showVersiculoMB.salvarExpressao}"
 				oncomplete="$('#modal_expressao').modal('hide'); bindVersiculoSelect(); $(window).trigger('resize'); return false;" update="@(.panel_versiculos)" />
 				
+			<b:modal title="Expressão: '#{showVersiculoMB.expressaoBackingBean.entity.texto}
+				: #{showVersiculoMB.expressaoBackingBean.entity.inicio} - #{showVersiculoMB.expressaoBackingBean.entity.fim}
+				'" closable="true" id="modal_expressao" styleClass="modal_expressao" size="modal-lg" >
+				
+				<b:container fluid="true">
+					<b:row>
+						<b:column span="2">
+							<h:outputText value="Texto: " />
+						</b:column>
+						<b:column span="10">
+							<b:inputText readonly="true" value="#{showVersiculoMB.expressaoBackingBean.entity.texto}" />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="2">
+							<h:outputText value="Descrição: " />
+						</b:column>
+						<b:column span="10">
+							<b:inputTextarea value="#{showVersiculoMB.expressaoBackingBean.entity.descricao}" />
+						</b:column>
+					</b:row>
+					
+					<b:row id="panel_dicionario">
+						
+						<b:column largeScreen="4" smallScreen="6" mediumScreen="6">
+							<b:inputText tabindex="15" styleClass="codigo_dic" largeScreen="10" smallScreen="10" mediumScreen="10"
+								placeholder="Código" value="#{showVersiculoMB.expressaoBackingBean.dicionario.key.id}" />
+							
+							<b:commandButton largeScreen="2" smallScreen="2" mediumScreen="2" value="" 
+								iconAwesome="plus" iconSize="1px" look="primary" oncomplete="$('.codigo_dic').focus()"
+								update="panel_dicionario" action="#{showVersiculoMB.expressaoBackingBean.addDicionario}" />
+							<b:selectOneMenu largeScreen="10" smallScreen="10" mediumScreen="10" 
+								value="#{showVersiculoMB.expressaoBackingBean.dicionario.key.idioma}">
+								<f:selectItems value="#{showVersiculoMB.expressaoBackingBean.allIdioma}" />
+							</b:selectOneMenu>
+						</b:column>
+						
+						<b:column largeScreen="8" smallScreen="12" mediumScreen="8">
+							<b:dataTable id="datatable_dicionarios" styleClass="datatable_dicionario" value="#{showVersiculoMB.expressaoBackingBean.entity.dicionarios}" var="d"
+								searching="false" paginated="true" pageLength="3" pageLengthMenu="3,6,9"
+								customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json">
+								<b:dataTableColumn value="#{d.key.id}" label="CÓDIGO" />
+								<b:dataTableColumn value="#{d.key.idioma}" label="IDIOMA" />
+								<b:dataTableColumn label="AÇÕES">
+									<b:commandButton iconSize="1px" iconAwesome="trash-o" ajax="true"
+								      value="" look="danger" title="Deletar" update="@(.datatable_dicionario)"
+								      action="#{showVersiculoMB.expressaoBackingBean.delDicionario(d)}" />
+								</b:dataTableColumn>
+							</b:dataTable>
+						</b:column>
+					</b:row>
+					
+					<b:button value="Salvar" tabindex="16" look="success" size="large" onclick="salvarExpressao();" />
+				</b:container>
+
+			</b:modal>
+			
 			<div id="cabecalho_versiculo">
 			
 				<div style="display:table; width:100%; height:100%;">
@@ -103,6 +160,10 @@
 				<h:panelGroup id="panel_versiculos" styleClass="panel_versiculos">
 					<b:panel titleStyle="text-align: center" collapsed="false"
 						collapsible="false">
+<!-- 						<f:facet name="heading"> -->
+<!-- 							<b style="position: static">#{showVersiculoMB.capitulo.livro.nome} - Capítulo -->
+<!-- 								#{showVersiculoMB.capitulo.key.id}</b> -->
+<!-- 						</f:facet> -->
 						
 						<ul class="list-group">
 							<ui:repeat var="v" value="#{showVersiculoMB.versos}"
@@ -115,6 +176,17 @@
 							</ui:repeat>
 						</ul>
 						
+						<ul class="list-group lista_limpa">
+							<ui:repeat var="v" value="#{showVersiculoMB.versos}"
+								varStatus="status">
+								<li class="list-group-item" id="versiculo_${status.index}">
+									<div class="versiculo" json="#{v.key.toJson()}">
+										<h:outputText value="${v.limpo}" escape="false" />
+									</div>
+								</li>
+							</ui:repeat>
+						</ul>
+						
 					</b:panel>
 				</h:panelGroup>
 			</b:container>
@@ -122,7 +194,7 @@
 		</h:form>
 
 		<h:outputScript library="default" name="js/selection.js" />
-<!-- 		<h:outputScript library="default" name="js/selectionVersiculo.js" /> -->
+		<h:outputScript library="default" name="js/selectionVersiculo.js" />
 	</ui:define>
 </ui:composition>
 

@@ -1,4 +1,4 @@
-package br.com.biblia.web.controller;
+package br.com.biblia.web.controller.home;
 
 import java.util.List;
 
@@ -23,6 +23,8 @@ public class HomeController {
 	
 	List<Livro> novoTestamento;
 	List<Livro> velhoTestamento;
+
+	private LivroInfo livroInfo = LivroInfo.builder().build();
 	
 	@PostConstruct
 	public void init() {

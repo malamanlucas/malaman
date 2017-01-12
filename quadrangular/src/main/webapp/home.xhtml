@@ -1,5 +1,9 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
 	xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 </h:head>
@@ -7,28 +11,63 @@
 <ui:composition template="index.xhtml">
 
 	<ui:define name="content">
-	
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#amodal").modal("show");
+			});
+		</script>
+
+
+
 		<h:form prependId="false">
+			
+			<b:modal title="Modo exibição dos versículos" closable="true"
+				id="amodal" styleClass="amodal">
+	
+				<b:container fluid="true" style="text-align:center">
+				
+					<h:link value="#{homeMB.livroInfo.nome}" outcome="show_capitulo.xhtml"
+							styleClass="btn">
+<!-- 						<f:param name="livro_id" value="#{homeMB.livroInfo.livroId}" /> -->
+<!-- 						<f:param name="idioma" value="#{homeMB.livroInfo.idioma}" /> -->
+<!-- 						<f:param name="isAdmin" value="#{homeMB.livroInfo.isAdmin}" /> -->
+					</h:link>
+					
+	
+					<b:buttonGroup orientation="horizontal">
+	
+						<b:button value="EXIBIÇÃO" />
+						<b:button value="EDIÇÃO" />
+	
+					</b:buttonGroup>
+	
+				</b:container>
+	
+			</b:modal>
 
 			<b:panel title="Velho Testamento">
-				<ui:repeat value="#{homeMB.velhoTestamento}" var="l">
-					<h:link value="#{l.nome}" outcome="show_capitulo.xhtml" styleClass="btn">
-						<f:param name="livro_id" value="#{l.id}" />
-						<f:param name="idioma" value="#{l.testamento.idioma}" />
-					</h:link>
-				</ui:repeat>
+<!-- 				<b:buttonGroup size="lg"> -->
+				<b:buttonToolbar>
+					<ui:repeat value="#{homeMB.velhoTestamento}" var="l">
+						<b:button value="#{l.nome}" />
+					</ui:repeat>
+				</b:buttonToolbar>
+<!-- 				</b:buttonGroup> -->
 			</b:panel>
-			
+
 			<b:panel title="Novo Testamento">
 				<ui:repeat value="#{homeMB.novoTestamento}" var="l">
-					<h:link value="#{l.nome}" outcome="show_capitulo.xhtml" styleClass="btn">
+					<h:link value="#{l.nome}" outcome="show_capitulo.xhtml"
+						styleClass="btn">
 						<f:param name="livro_id" value="#{l.id}" />
 						<f:param name="idioma" value="#{l.testamento.idioma}" />
+						<f:param name="isAdmin" value="true" />
 					</h:link>
 				</ui:repeat>
 			</b:panel>
 		</h:form>
-		
+
 	</ui:define>
 </ui:composition>
 
