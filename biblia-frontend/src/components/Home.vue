@@ -1,7 +1,6 @@
 <template>
    <div class="container">
      
-     
      <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">Velho Testamento</h3>
@@ -49,36 +48,26 @@ export default {
     }
   },
   beforeCreate: function () {
-    window.alert('Before Create!')
   },
   created: function () {
-    window.alert('Create!')
     this.loadLivros('VELHO')
     this.loadLivros('NOVO')
   },
   beforeMount: function () {
-    window.alert('Before Mount!')
   },
   mounted: function () {
-    window.alert('Mounted!')
   },
   beforeUpdate: function () {
-    window.alert('Before Update!')
   },
   updated: function () {
-    window.alert('Updated!')
   },
   activated: function () {
-    window.alert('Activated!')
   },
   deactivated: function () {
-    window.alert('Deactivated!')
   },
   beforeDestroy: function () {
-    window.alert('Before Destroy!')
   },
   destroyed: function () {
-    window.alert('Destroyed!')
   }
 }
 </script>
