@@ -6,6 +6,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +28,7 @@ public class Capitulo {
 	@EmbeddedId
 	private CapituloKey key = new CapituloKey();
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="livro_id", referencedColumnName="id", insertable=false, updatable=false)
 	private Livro livro;

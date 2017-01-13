@@ -11,20 +11,24 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.com.biblia.core.enums.Testamento;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Entity
+@Entity @Builder
 @Table(name = "livro")
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force=true)
 @EqualsAndHashCode
 @ToString(of={"id","nome","ordem","testamento"})
+@JsonIgnoreProperties("capitulos")
 public class Livro {
 	
 	public Livro(Integer id) {
@@ -39,7 +43,7 @@ public class Livro {
 	@Enumerated(EnumType.STRING)
 	private Testamento testamento;
 	
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy="livro")
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy="livro")
 	private List<Capitulo> capitulos;
 		
 }
