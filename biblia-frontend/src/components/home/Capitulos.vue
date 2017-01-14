@@ -1,0 +1,48 @@
+<template>
+  <div>
+     <button class="btn btn-sm btn-danger" @click="goBack">Voltar</button>
+     <div class="panel panel-default">
+  	  <div class="panel-heading">
+  	    <div class="panel-title"> {{ $route.params.livro.nome }} </div>
+  	  </div>
+  	  <div class="panel-body">
+  	  	
+  	  	<div class="btn-group-lg">
+  	     	<a class="btn btn-default" href="#"
+  	     	   v-for="capitulo in capitulos">{{capitulo.key.id}}</a>
+  	  	</div>
+  	  	
+  	  </div>
+  	</div>
+  </div>
+</template>
+<script>
+export default {
+  name: 'capitulos',
+  data () {
+    return {
+      capitulos: []
+    }
+  },
+  methods: {
+    loadCapitulos (livroId) {
+      this.$http.get('http://localhost:9090/api/capitulos/', {
+        params: {
+          livroId: livroId
+        }
+      })
+        .then(function (response) {
+          this.capitulos = response.body
+        })
+    },
+    goBack () {
+      this.$router.push({
+        name: 'home'
+      })
+    }
+  },
+  mounted: function () {
+    this.loadCapitulos(this.$route.params.livro.id)
+  }
+}
+</script>

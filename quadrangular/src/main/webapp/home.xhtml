@@ -18,33 +18,35 @@
 			});
 		</script>
 
+		<b:modal title="Modo exibição dos versículos" closable="true"
+			id="amodal" styleClass="amodal">
 
-
-		<h:form prependId="false">
+			<b:container fluid="true" style="text-align:center">
 			
-			<b:modal title="Modo exibição dos versículos" closable="true"
-				id="amodal" styleClass="amodal">
-	
-				<b:container fluid="true" style="text-align:center">
 				
-					<h:link value="#{homeMB.livroInfo.nome}" outcome="show_capitulo.xhtml"
-							styleClass="btn">
+
+				<b:buttonGroup orientation="horizontal">
+
+					<b:button value="EXIBIÇÃO" />
+					<b:button value="EDIÇÃO" />
+
+				</b:buttonGroup>
+
+			</b:container>
+
+		</b:modal>
+		
+		<p:remoteCommand name="abrirCapitulo" />
+		
+			<h:link value="#{homeMB.livroInfo.nome}" outcome="show_capitulo.xhtml"
+					styleClass="btn">
 <!-- 						<f:param name="livro_id" value="#{homeMB.livroInfo.livroId}" /> -->
 <!-- 						<f:param name="idioma" value="#{homeMB.livroInfo.idioma}" /> -->
-<!-- 						<f:param name="isAdmin" value="#{homeMB.livroInfo.isAdmin}" /> -->
-					</h:link>
-					
-	
-					<b:buttonGroup orientation="horizontal">
-	
-						<b:button value="EXIBIÇÃO" />
-						<b:button value="EDIÇÃO" />
-	
-					</b:buttonGroup>
-	
-				</b:container>
-	
-			</b:modal>
+						<f:param name="isAdmin" value="#{homeMB.livroInfo.isAdmin}" />
+			</h:link>
+			
+		<h:form prependId="false">
+			
 
 			<b:panel title="Velho Testamento">
 <!-- 				<b:buttonGroup size="lg"> -->
