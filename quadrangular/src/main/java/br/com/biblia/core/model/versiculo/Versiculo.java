@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.Capitulo;
 import lombok.AllArgsConstructor;
@@ -31,6 +33,7 @@ import lombok.ToString;
 @AllArgsConstructor @EqualsAndHashCode @Builder
 @NoArgsConstructor
 @ToString(of={"numero", "idioma", "texto",}, includeFieldNames=false)
+@JsonIgnoreProperties({"capitulo, expressoes"})
 public class Versiculo implements Serializable {
 	
 	@EmbeddedId

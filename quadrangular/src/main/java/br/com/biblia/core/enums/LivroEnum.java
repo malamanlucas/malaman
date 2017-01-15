@@ -11,7 +11,7 @@ public enum LivroEnum {
 	
 	GENESIS ("Gênesis", "Genesis", 50, "Gen", HEBRAICO),
 	EXODO ("Êxodo", "Exodo", 40, "Ex", HEBRAICO),
-	LEVITICOS ("Leviticos", "Leviticos", 27, "Lev", HEBRAICO),
+	LEVITICO ("Levítico", "Levitico", 27, "Lev", HEBRAICO),
 	NUMEROS ("Números", "Numeros", 36, "Num", HEBRAICO),
 	DEUTERONOMIO ("Deuteronomio", "Deuteronomio", 34, "Deut", HEBRAICO),
 	JOSUE ("Josué", "Josue", 24, "Josh", HEBRAICO),
@@ -48,33 +48,33 @@ public enum LivroEnum {
 	AGEU ("Ageu", "Ageu", 2, "Hag", HEBRAICO),
 	ZACARIAS ("Zacarias", "Zacarias", 14, "Zech", HEBRAICO),
 	MALAQUIAS ("Malaquias", "Malaquias", 4, "Mal", HEBRAICO),
-	MATEUS ("Mateus", "Mateus", 28, "Matt", GREGO),
-	MARCOS ("Marcos", "Marcos", 16, "Mark", GREGO),
-	LUCAS ("Lucas", "Lucas", 24, "Luke", GREGO),
-	JOAO ("João", "Joao", 21, "John", GREGO),
-	ATOS ("Atos", "Atos", 28, "Acts", GREGO),
-	ROMANOS ("Romanos", "Romanos", 16, "Rom", GREGO),
-	PRIMEIRA_CORÍNTIOS ("1 Coríntios", "1 Corintios", 16, "1Cor", GREGO),
-	SEGUNDA_CORÍNTIOS ("2 Coríntios", "2 Corintios", 13, "2Cor", GREGO),
-	GÁTALAS ("Gátalas", "Gatalas", 6, "Gal", GREGO),
-	EFÉSIOS ("Efésios", "Efesios", 6, "Eph", GREGO),
-	FILIPENSES ("Filipenses", "Filipenses", 4, "Phil", GREGO),
-	COLOSSENSES ("Colossenses", "Colossenses", 4, "Col", GREGO),
-	PRIMEIRA_TESSALONICENSES ("1 Tessalonicenses", "1 Tessalonicenses", 5, "1Thess", GREGO),
-	SEGUNDA_TESSALONICENSES ("2 Tessalonicenses", "2 Tessalonicenses", 3, "2Thess", GREGO),
-	PRIMEIRA_TIMOTEO ("1 Timóteo", "1 Timoteo", 6, "1Tim", GREGO),
-	SEGUNDA_TIMOTEO ("2 Timóteo", "2 Timoteo", 4, "2Tim", GREGO),
-	TITO ("Tito", "Tito", 3, "Titus", GREGO),
-	FILEMOM ("Filemom", "Filemom", 1, "Phlm", GREGO),
-	HEBREUS ("Hebreus", "Hebreus", 13, "Heb", GREGO),
-	TIAGO ("Tiago", "Tiago", 5, "Jas", GREGO),
-	PRIMEIRA_PEDRO ("1 Pedro", "1 Pedro", 5, "1Pet", GREGO),
-	SEGUNDA_PEDRO ("2 Pedro", "2 Pedro", 3, "2Pet", GREGO),
-	PRIMEIRA_JOAO ("1 João", "1 Joao", 5, "1John", GREGO),
-	SEGUNDA_JOAO ("2 João", "2 Joao", 1, "2John", GREGO),
-	TERCEIRA_JOAO ("3 João", "3 Joao", 1, "3John", GREGO),
-	JUDAS ("Judas", "Judas", 1, "Jude", GREGO),
-	APOCALIPSE ("Apocalipse", "Apocalipse", 22, "Rev", GREGO);
+	MATEUS ("Mateus", "Mateus", 28, "Matt", GREGO);
+//	MARCOS ("Marcos", "Marcos", 16, "Mark", GREGO),
+//	LUCAS ("Lucas", "Lucas", 24, "Luke", GREGO),
+//	JOAO ("João", "Joao", 21, "John", GREGO),
+//	ATOS ("Atos", "Atos", 28, "Acts", GREGO),
+//	ROMANOS ("Romanos", "Romanos", 16, "Rom", GREGO),
+//	PRIMEIRA_CORÍNTIOS ("1 Coríntios", "1 Corintios", 16, "1Cor", GREGO),
+//	SEGUNDA_CORÍNTIOS ("2 Coríntios", "2 Corintios", 13, "2Cor", GREGO),
+//	GÁTALAS ("Gátalas", "Gatalas", 6, "Gal", GREGO),
+//	EFÉSIOS ("Efésios", "Efesios", 6, "Eph", GREGO),
+//	FILIPENSES ("Filipenses", "Filipenses", 4, "Phil", GREGO),
+//	COLOSSENSES ("Colossenses", "Colossenses", 4, "Col", GREGO),
+//	PRIMEIRA_TESSALONICENSES ("1 Tessalonicenses", "1 Tessalonicenses", 5, "1Thess", GREGO),
+//	SEGUNDA_TESSALONICENSES ("2 Tessalonicenses", "2 Tessalonicenses", 3, "2Thess", GREGO),
+//	PRIMEIRA_TIMOTEO ("1 Timóteo", "1 Timoteo", 6, "1Tim", GREGO),
+//	SEGUNDA_TIMOTEO ("2 Timóteo", "2 Timoteo", 4, "2Tim", GREGO),
+//	TITO ("Tito", "Tito", 3, "Titus", GREGO),
+//	FILEMOM ("Filemom", "Filemom", 1, "Phlm", GREGO),
+//	HEBREUS ("Hebreus", "Hebreus", 13, "Heb", GREGO),
+//	TIAGO ("Tiago", "Tiago", 5, "Jas", GREGO),
+//	PRIMEIRA_PEDRO ("1 Pedro", "1 Pedro", 5, "1Pet", GREGO),
+//	SEGUNDA_PEDRO ("2 Pedro", "2 Pedro", 3, "2Pet", GREGO),
+//	PRIMEIRA_JOAO ("1 João", "1 Joao", 5, "1John", GREGO),
+//	SEGUNDA_JOAO ("2 João", "2 Joao", 1, "2John", GREGO),
+//	TERCEIRA_JOAO ("3 João", "3 Joao", 1, "3John", GREGO),
+//	JUDAS ("Judas", "Judas", 1, "Jude", GREGO),
+//	APOCALIPSE ("Apocalipse", "Apocalipse", 22, "Rev", GREGO);
 	
 	private static Map<String, LivroEnum> map;
 	
@@ -115,14 +115,14 @@ public enum LivroEnum {
 	}
 
 	public boolean isStartingWithNumber() {
-//		return this == PRIMEIRO_SAMUEL || this == SEGUNDO_SAMUEL || 
-//		return this == LivroEnum.PRIMEIRO_REIS || this == LivroEnum.SEGUNDO_REIS ||
-//			   this == PRIMEIRO_CRONICAS || this == SEGUNDO_CRONICAS;
-		return this == PRIMEIRA_CORÍNTIOS || this == LivroEnum.SEGUNDA_CORÍNTIOS ||
-			   this == PRIMEIRA_TESSALONICENSES || this == LivroEnum.PRIMEIRA_JOAO ||
-			   this == PRIMEIRA_PEDRO || this == PRIMEIRA_TIMOTEO || 
-			   this == SEGUNDA_JOAO || this == SEGUNDA_PEDRO || this == SEGUNDA_TESSALONICENSES ||
-			   this == SEGUNDA_TIMOTEO || this == TERCEIRA_JOAO;
+		return this == PRIMEIRO_SAMUEL || this == SEGUNDO_SAMUEL || 
+			   this == LivroEnum.PRIMEIRO_REIS || this == LivroEnum.SEGUNDO_REIS ||
+			   this == PRIMEIRO_CRONICAS || this == SEGUNDO_CRONICAS;
+//		return this == PRIMEIRA_CORÍNTIOS || this == LivroEnum.SEGUNDA_CORÍNTIOS ||
+//			   this == PRIMEIRA_TESSALONICENSES || this == LivroEnum.PRIMEIRA_JOAO ||
+//			   this == PRIMEIRA_PEDRO || this == PRIMEIRA_TIMOTEO || 
+//			   this == SEGUNDA_JOAO || this == SEGUNDA_PEDRO || this == SEGUNDA_TESSALONICENSES ||
+//			   this == SEGUNDA_TIMOTEO || this == TERCEIRA_JOAO;
 	}
 	
 	

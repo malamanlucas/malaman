@@ -6,7 +6,7 @@
 	  <div class="panel-body">
 	  	
 	  	<div class="btn-group-lg">
-	     	<a @click="goCapitulo(livro)" class="btn btn-default" href="#" v-for="livro in livros">{{livro.nome}}</a>
+	     	<a @click="goCapitulo(livro)" class="btn btn-default" v-for="livro in livros">{{livro.nome}}</a>
 	  	</div>
 	  	
 	  </div>

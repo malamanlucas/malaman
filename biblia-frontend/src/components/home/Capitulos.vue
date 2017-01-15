@@ -8,7 +8,7 @@
   	  <div class="panel-body">
   	  	
   	  	<div class="btn-group-lg">
-  	     	<a class="btn btn-default" href="#"
+  	     	<a class="btn btn-default" @click="goVersiculos(capitulo)" v-bind:title="capitulo.titulo"
   	     	   v-for="capitulo in capitulos">{{capitulo.key.id}}</a>
   	  	</div>
   	  	
@@ -21,7 +21,8 @@ export default {
   name: 'capitulos',
   data () {
     return {
-      capitulos: []
+      capitulos: [],
+      livro: this.$route.params.livro
     }
   },
   methods: {
@@ -39,10 +40,19 @@ export default {
       this.$router.push({
         name: 'home'
       })
+    },
+    goVersiculos (capitulo) {
+      this.$router.push({
+        name: 'versiculos',
+        params: {
+          livro: this.livro,
+          capitulo: capitulo
+        }
+      })
     }
   },
   mounted: function () {
-    this.loadCapitulos(this.$route.params.livro.id)
+    this.loadCapitulos(this.livro.id)
   }
 }
 </script>

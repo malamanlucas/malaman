@@ -7,11 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -48,14 +51,14 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 //					.build();
 //			jdbcTemplate = new JdbcTemplate(dataSource);
 //				
-////			LivroEnum[] values = new LivroEnum[]{ LivroEnum.FILEMOM, LivroEnum.TIAGO };
+////			LivroEnum[] values = LivroEnum.values();
 //			
-////			for (LivroEnum enum1 : values) {
-////				System.out.println("Inserindo: "+enum1.name());
-////				internalImport(enum1);
-////			}
-//			
-//			internalImport(LivroEnum.MATEUS);
+//			for (LivroEnum enum1 : values) {
+//				if (enum1 == LivroEnum.MATEUS)
+//					continue;
+//				System.out.println("Inserindo: "+enum1.name());
+//				internalImport(enum1);
+//			}
 //			
 //		}
 	
@@ -70,7 +73,7 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 				String url = null;
 				if ( livro.isStartingWithNumber()) {
 					url = String.format("https://www.biblegateway.com/passage/?search=%s+%s&version=ARC&interface=print", livro.getNomeSemAcentuacao().replace(" ", "%20"), capituloId);
-				} else if ( livro == LivroEnum.LAMENTACOES) {
+				} else if ( livro == LivroEnum.LAMENTACOES || livro == LivroEnum.LEVITICO ) {
 					url = String.format("https://www.biblegateway.com/passage/?search=%s+%s&version=ARC&interface=print", livro.getNomeNoBD(), capituloId);
 				} else {
 					url = String.format("https://www.biblegateway.com/passage/?search=%s+%s&version=ARC&interface=print", livro.getNomeSemAcentuacao(), capituloId);
@@ -87,7 +90,7 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 			StringBuffer titulo = new StringBuffer();
 			for (Element e : elements) {
 				String nodeName = e.parent().nodeName();
-				if (numeroVersiculo == 0) { // titulo capitulo
+				if (numeroVersiculo == 0 && !nodeName.equals("p")) { // titulo capitulo
 					titulo.append(e.text());
 					jdbcTemplate.update( "UPDATE capitulo SET titulo=? WHERE id=? AND livro_id=?",titulo.toString(), capituloId, livroId);
 					numeroVersiculo++;
@@ -96,6 +99,9 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 					jdbcTemplate.update( "UPDATE capitulo SET titulo=? WHERE id=? AND livro_id=?",titulo.toString(), capituloId, livroId);
 				} else { // versiculo
 					if (nodeName.equals("p")) {
+						if (numeroVersiculo == 0) {
+							numeroVersiculo++;
+						}
 						String versiculo = e.text().substring(2);
 						versiculos.add( new VersData(versiculo, numeroVersiculo, capituloId, livroId) );
 						numeroVersiculo++;
@@ -103,19 +109,19 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 				}
 			}
 			
-			String sqlUpdate = "UPDATE versiculo SET limpo=? WHERE numero=? AND capitulo_id=? AND livro_id=?;";
-			jdbcTemplate.batchUpdate(sqlUpdate, new BatchPreparedStatementSetter() {
-				public void setValues(PreparedStatement ps, int i) throws SQLException {
-					VersData e = versiculos.get(i);
-					ps.setString(1, e.getText());
-					ps.setInt(2, e.getNumeroVersiculo());
-					ps.setInt(3, e.getCapituloId());
-					ps.setInt(4, e.getLivroId());
-				}
-				public int getBatchSize() {
-					return versiculos.size();
-				}
-			});
+//			String sqlUpdate = "UPDATE versiculo SET limpo=? WHERE numero=? AND capitulo_id=? AND livro_id=?;";
+//			jdbcTemplate.batchUpdate(sqlUpdate, new BatchPreparedStatementSetter() {
+//				public void setValues(PreparedStatement ps, int i) throws SQLException {
+//					VersData e = versiculos.get(i);
+//					ps.setString(1, e.getText());
+//					ps.setInt(2, e.getNumeroVersiculo());
+//					ps.setInt(3, e.getCapituloId());
+//					ps.setInt(4, e.getLivroId());
+//				}
+//				public int getBatchSize() {
+//					return versiculos.size();
+//				}
+//			});
 			
 			String sqlInsert = "INSERT INTO versiculo(id,capitulo_id,livro_Id,texto,idioma,formatado,numero,limpo) VALUES(?,?,?,?,?,?,?,?)";
 			for (VersData e : versiculos) {
