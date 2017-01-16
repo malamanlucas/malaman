@@ -22,10 +22,30 @@
   	  </div>
   	  <div class="panel-body" id="panel-versiculos-body">
   	    <ul class="list-group">
-  	      <li class="list-group-item" v-for="versiculo in versiculos" v-html="versiculo.formatado"></li>
+  	      <li class="list-group-item" v-for="versiculo in versiculos" 
+  	       v-html="versiculo.versiculoMontado"></li>
   	    </ul>
   	  </div>
   	</div>
+  	
+  	<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>One fine body&hellip;</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+  	
   </div>
 </template>
 <style>
@@ -80,6 +100,11 @@ export default {
         }
       })
     },
+    loadExpressions (dics, idioma) {
+      this.$http.get('http://localhost:9090/api/dicionarios/').then(function (response) {
+        window.alert(response)
+      })
+    },
     goNextChapter () {
     },
     goBeforeChapter () {
@@ -87,6 +112,14 @@ export default {
   },
   mounted: function () {
     this.loadVersiculos(this.$route.params.livro.id, this.$route.params.capitulo.key.id)
+  },
+  updated: function () {
+    let loadExpressions = this.loadExpressions
+    window.jQuery('.texto').off('click').on('click', function () {
+      let _$ = window.jQuery
+      _$('#myModal').modal('show')
+      loadExpressions([1], 'GREGO')
+    })
   }
 }
 </script>

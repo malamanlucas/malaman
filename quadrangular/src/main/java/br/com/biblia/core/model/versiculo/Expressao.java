@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.AllArgsConstructor;
@@ -32,8 +33,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "expressao")
 @Data
-@NoArgsConstructor 
+@NoArgsConstructor(force=true)
 @AllArgsConstructor @EqualsAndHashCode(callSuper=false) @Builder
+@JsonIgnoreProperties({"versiculo", "dicionarios", "mapas"})
 public class Expressao implements Serializable {
 
 	@EmbeddedId

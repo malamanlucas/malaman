@@ -1,6 +1,5 @@
 package br.com.biblia.core.model.versiculo;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -33,16 +32,14 @@ import lombok.ToString;
 @AllArgsConstructor @EqualsAndHashCode @Builder
 @NoArgsConstructor
 @ToString(of={"numero", "idioma", "texto",}, includeFieldNames=false)
-@JsonIgnoreProperties({"capitulo, expressoes"})
-public class Versiculo implements Serializable {
+@JsonIgnoreProperties({"expressoes"})
+public class Versiculo {
 	
 	@EmbeddedId
 	private VersiculoKey key = new VersiculoKey();
 	
 	private String texto;
-	private String formatado;
 	private Integer numero;
-	private String limpo;
 	
 	@Column(name="qtd_aumento")
 	private Integer qtdAumentado;
@@ -65,7 +62,7 @@ public class Versiculo implements Serializable {
 	}
 	
 	public String getVersiculoMontado() {
-		String newString = limpo;
+		String newString = texto;
 		Integer offset = 0;
 		for (int i = 0; i < expressoes.size(); i++) {
 			Expressao expressao = expressoes.get(i);

@@ -66,7 +66,6 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 		String oldExpected = "Livro da geração de Jesus Cristo, Filho de Davi, Filho de Abraão.";
 		String newExpected = "Livro da <span class=\"texto\" dic=\"1,2\">geração</span> <span class=\"texto\" dic=\"2\">de Jesus</span> Cristo, Filho de Davi, Filho de Abraão.";
 		
-		Assert.assertEquals(oldExpected, mateus1_1.getLimpo());
 		Assert.assertEquals(newExpected, mateus1_1.getVersiculoMontado());
 		
 	}
@@ -91,7 +90,6 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 		String oldExpected = "Abraão gerou a Isaque, e Isaque gerou a Jacó, e Jacó gerou a Judá e a seus irmãos,";
 		String newExpected = "Abraão <span class=\"texto\" dic=\"1\">gerou</span> a Isaque, e Isaque gerou a Jacó, e Jacó gerou a Judá e a seus irmãos,";
 		
-		Assert.assertEquals(oldExpected, mateus1_2.getLimpo());
 		Assert.assertEquals(newExpected, mateus1_2.getVersiculoMontado());
 		
 	}
@@ -117,7 +115,6 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 		String oldExpected = "bem-aventurados os que têm fome e sede de justiça, porque eles serão fartos;";
 		String newExpected = "bem-aventurados <span class=\"texto\" dic=\"3983\">os que têm fome</span> e sede de <span class=\"texto\" dic=\"1343\">justiça</span>, porque eles serão fartos;";
 		
-		Assert.assertEquals(oldExpected, mateus5_6.getLimpo());
 		Assert.assertEquals(newExpected, mateus5_6.getVersiculoMontado());
 		
 	}

@@ -45,7 +45,6 @@ public class VersiculoDAOTest extends VersiculoBaseTest {
 		dao.saveAndFlush( versiculoToSave );
 		Versiculo one = dao.getOne( key );
 		Assert.assertNotNull(one);
-		Assert.assertNotNull( one.getFormatado() );
 		Assert.assertNotNull( one.getTexto() );
 		Assert.assertNotNull( one.getExpressoes() );
 		Assert.assertFalse( one.getExpressoes().isEmpty() );

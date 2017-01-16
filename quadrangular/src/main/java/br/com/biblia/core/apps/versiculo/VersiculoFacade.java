@@ -31,8 +31,6 @@ public class VersiculoFacade implements VersiculoApp {
 			key.setId( dao.retrieveNextId() );
 			entity.setNumero( dao.retrieveNextVerso( key ));
 		}
-		entity.setFormatado( formata(entity.getTexto(), entity.getIdioma()) );
-		entity.setLimpo( limpar(entity.getTexto()) );
 		dao.save( entity );
 		return entity;
 	}
