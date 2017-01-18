@@ -46,7 +46,8 @@ export default {
         name: 'versiculos',
         params: {
           livro: this.livro,
-          capitulo: capitulo
+          capitulo: capitulo,
+          ultimoCapitulo: capitulo.length
         }
       })
     }

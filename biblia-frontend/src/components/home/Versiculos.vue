@@ -36,11 +36,19 @@
             <h4 class="modal-title">Modal title</h4>
           </div>
           <div class="modal-body">
-            <p>One fine body&hellip;</p>
+            
+            <div class="panel panel-default" v-for="dic in dicionarios">
+              <div class="panel-heading">
+                <h3 class="panel-title"> {{dic.key.id}} - {{dic.key.idioma}} </h3>
+              </div>
+              <div class="panel-body">
+                <div style="white-space:pre-wrap">{{dic.definicao}}</div>
+              </div>
+            </div>
+            
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -77,7 +85,9 @@ export default {
   name: 'versiculos',
   data () {
     return {
-      versiculos: []
+      versiculos: [],
+      dicionarios: [],
+      idioma: null
     }
   },
   methods: {
@@ -101,8 +111,12 @@ export default {
       })
     },
     loadExpressions (dics, idioma) {
-      this.$http.get('http://localhost:9090/api/dicionarios/').then(function (response) {
-        window.alert(response)
+      this.$http.post('http://localhost:9090/api/dicionarios/', dics, {
+        params: {
+          'idioma': idioma
+        }
+      }).then(function (response) {
+        this.dicionarios = response.body
       })
     },
     goNextChapter () {
@@ -112,13 +126,16 @@ export default {
   },
   mounted: function () {
     this.loadVersiculos(this.$route.params.livro.id, this.$route.params.capitulo.key.id)
+    this.idioma = this.$route.params.livro.testamento.idioma
   },
   updated: function () {
     let loadExpressions = this.loadExpressions
+    let idioma = this.idioma
     window.jQuery('.texto').off('click').on('click', function () {
       let _$ = window.jQuery
       _$('#myModal').modal('show')
-      loadExpressions([1], 'GREGO')
+      let dics = _$(this).attr('dic').split(',')
+      loadExpressions(dics, idioma)
     })
   }
 }
