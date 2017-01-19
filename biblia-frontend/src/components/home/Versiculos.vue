@@ -10,10 +10,11 @@
     	        <em>{{ $route.params.capitulo.titulo }}</em>
 	           </div>
 	           <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1 pull-right">
-      	      <button type="button" class="btn btn-danger">
+      	      <button v-if="!isFirstChapter()" type="button" class="btn btn-danger">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
               </button>
-      	      <button type="button" class="btn btn-success">
+      	      <button v-if="!isLastChapter()" type="button" class="btn btn-success" 
+      	        @click="goNextChapter()">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
               </button>
 	           </div>
@@ -33,7 +34,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Modal title</h4>
+            <h4 class="modal-title">Expressão: '<span id="currentExpression"></span>'</h4>
           </div>
           <div class="modal-body">
             
@@ -120,8 +121,24 @@ export default {
       })
     },
     goNextChapter () {
+      let currentCapitulo = this.$route.params.capitulo
+      let next = this.$route.params.capitulos[currentCapitulo.key.id]
+      this.$router.replace({
+        path: '/versiculos',
+        params: {
+          'livro': this.$route.params.livro,
+          'capitulo': next,
+          'capitulos': this.$route.params.capitulos
+        }
+      })
     },
     goBeforeChapter () {
+    },
+    isLastChapter () {
+      return this.$route.params.capitulo.key.id === this.$route.params.capitulos.length
+    },
+    isFirstChapter () {
+      return this.$route.params.capitulo.key.id === 1
     }
   },
   mounted: function () {
@@ -134,6 +151,7 @@ export default {
     window.jQuery('.texto').off('click').on('click', function () {
       let _$ = window.jQuery
       _$('#myModal').modal('show')
+      _$('#currentExpression').text(_$(this).text())
       let dics = _$(this).attr('dic').split(',')
       loadExpressions(dics, idioma)
     })

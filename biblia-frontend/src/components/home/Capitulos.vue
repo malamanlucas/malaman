@@ -42,12 +42,13 @@ export default {
       })
     },
     goVersiculos (capitulo) {
+      // ao invez de  redirecionar, devo fazer uma nova requisição aqui e atualizar a tela
       this.$router.push({
         name: 'versiculos',
         params: {
-          livro: this.livro,
-          capitulo: capitulo,
-          ultimoCapitulo: capitulo.length
+          'livro': this.livro,
+          'capitulo': capitulo,
+          'capitulos': this.capitulos
         }
       })
     }
