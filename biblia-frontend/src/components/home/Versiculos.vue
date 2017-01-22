@@ -6,15 +6,16 @@
   	    <div class="panel-title">
 	        <div class="row">
 	           <div class="col-xs-9 col-sm-10 col-md-10 col-lg-11">
-      	      {{ $route.params.livro.nome }} - Capitulo {{ $route.params.capitulo.key.id}} -
-    	        <em>{{ $route.params.capitulo.titulo }}</em>
+      	      {{ livro.nome }} - Capitulo {{ capitulo.key.id}} -
+    	        <em>{{ capitulo.titulo }}</em>
 	           </div>
 	           <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1 pull-right">
-      	      <button v-if="!isFirstChapter()" type="button" class="btn btn-danger">
+      	      <button type="button" class="btn btn-danger" @click="goBeforeChapter()" 
+      	        v-bind:style="{visibility: isFirstChapter}">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
               </button>
-      	      <button v-if="!isLastChapter()" type="button" class="btn btn-success" 
-      	        @click="goNextChapter()">
+      	      <button type="button" class="btn btn-success" @click="goNextChapter()"
+      	        v-bind:style="{visibility: isLastChapter}">
                 <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
               </button>
 	           </div>
@@ -88,15 +89,25 @@ export default {
     return {
       versiculos: [],
       dicionarios: [],
-      idioma: null
+      idioma: null,
+      livro: null,
+      capitulo: null
+    }
+  },
+  computed: {
+    isFirstChapter () {
+      return this.capitulo.key.id === 1 ? 'hidden' : 'visible'
+    },
+    isLastChapter () {
+      return this.capitulo.key.id === this.$route.params.capitulos.length ? 'hidden' : 'visible'
     }
   },
   methods: {
-    loadVersiculos (livroId, capituloId) {
+    loadVersiculos () {
       this.$http.get('http://localhost:9090/api/versiculos/', {
         params: {
-          livroId: livroId,
-          capituloId: capituloId
+          livroId: this.livro.id,
+          capituloId: this.capitulo.key.id
         }
       })
         .then(function (response) {
@@ -107,7 +118,7 @@ export default {
       this.$router.push({
         name: 'capitulos',
         params: {
-          livro: this.$route.params.livro
+          livro: this.livro
         }
       })
     },
@@ -121,28 +132,20 @@ export default {
       })
     },
     goNextChapter () {
-      let currentCapitulo = this.$route.params.capitulo
-      let next = this.$route.params.capitulos[currentCapitulo.key.id]
-      this.$router.replace({
-        path: '/versiculos',
-        params: {
-          'livro': this.$route.params.livro,
-          'capitulo': next,
-          'capitulos': this.$route.params.capitulos
-        }
-      })
+      this.capitulo = this.$route.params.capitulos[this.capitulo.key.id]
+      this.loadVersiculos()
     },
     goBeforeChapter () {
-    },
-    isLastChapter () {
-      return this.$route.params.capitulo.key.id === this.$route.params.capitulos.length
-    },
-    isFirstChapter () {
-      return this.$route.params.capitulo.key.id === 1
+      this.capitulo = this.$route.params.capitulos[this.capitulo.key.id - 2]
+      this.loadVersiculos()
     }
   },
+  beforeMount: function () {
+    this.livro = this.$route.params.livro
+    this.capitulo = this.$route.params.capitulo
+  },
   mounted: function () {
-    this.loadVersiculos(this.$route.params.livro.id, this.$route.params.capitulo.key.id)
+    this.loadVersiculos()
     this.idioma = this.$route.params.livro.testamento.idioma
   },
   updated: function () {
