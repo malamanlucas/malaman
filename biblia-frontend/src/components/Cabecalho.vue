@@ -16,6 +16,14 @@
           <li><a>Capítulo</a></li>
           <li><a>Versículo</a></li>
         </ul>
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <select class="form-control">
+              <option>Visualização</option>
+              <option>Edição</option>
+            </select>
+          </div>
+        </form>
       </div><!--/.nav-collapse -->
     </div>
   </nav>
