@@ -18,18 +18,37 @@
         </ul>
         <form class="navbar-form navbar-right">
           <div class="form-group">
-            <select class="form-control">
-              <option>Visualização</option>
-              <option>Edição</option>
+            <select class="form-control" v-model="actionVersiculos">
+              <option value="VIEW">Visualização</option>
+              <option value="EDIT">Edição</option>
             </select>
+            <strong>{{showOp}}</strong>
           </div>
         </form>
       </div><!--/.nav-collapse -->
     </div>
   </nav>
 </template>
+
 <script>
 export default {
-  name: 'cabecalho'
+  name: 'cabecalho',
+  data: () => ({
+    actionVersiculos: null
+  }),
+  computed: {
+    showOp: function () {
+      this.$store.commit('setActionVersiculos', this.actionVersiculos)
+      return this.actionVersiculos
+    }
+  },
+  methods: {
+    test: (value) => {
+      window.alert('test')
+    }
+  },
+  mounted: function () {
+    this.actionVersiculos = this.$store.state.actionVersiculos
+  }
 }
 </script>

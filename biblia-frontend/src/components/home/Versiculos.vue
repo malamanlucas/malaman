@@ -10,7 +10,7 @@
     	        <em>{{ capitulo.titulo }}</em>
 	           </div>
 	           <div class="col-xs-3 col-sm-2 col-md-2 col-lg-1 pull-right">
-      	      <button type="button" class="btn btn-danger" @click="goBeforeChapter()" 
+      	      <button type="button" class="btn btn-danger" @click="goBeforeChapter()"
       	        v-bind:style="{visibility: isFirstChapter}">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
               </button>
@@ -24,12 +24,12 @@
   	  </div>
   	  <div class="panel-body" id="panel-versiculos-body">
   	    <ul class="list-group">
-  	      <li class="list-group-item" v-for="versiculo in versiculos" 
+  	      <li class="list-group-item" v-for="versiculo in versiculos"
   	       v-html="versiculo.versiculoMontado"></li>
   	    </ul>
   	  </div>
   	</div>
-  	
+
   	<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -38,7 +38,7 @@
             <h4 class="modal-title">Expressão: '<span id="currentExpression"></span>'</h4>
           </div>
           <div class="modal-body">
-            
+
             <div class="panel panel-default" v-for="dic in dicionarios">
               <div class="panel-heading">
                 <h3 class="panel-title"> {{dic.key.id}} - {{dic.key.idioma}} </h3>
@@ -47,7 +47,7 @@
                 <div style="white-space:pre-wrap">{{dic.definicao}}</div>
               </div>
             </div>
-            
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -55,7 +55,7 @@
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-  	
+
   </div>
 </template>
 <style>
@@ -63,24 +63,24 @@
     height: 700px;
     overflow: auto;
   }
-  
+
   .texto {
     color: red;
     cursor: pointer
   }
-  
+
   .texto:hover {
     font-weight: bolder;
   }
-  
+
   .list-group {
     list-style: decimal inside;
   }
-  
+
   .list-group-item {
     display: list-item;
   }
-  
+
 </style>
 <script>
 export default {

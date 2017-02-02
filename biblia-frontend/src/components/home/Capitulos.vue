@@ -6,12 +6,12 @@
   	    <div class="panel-title"> {{ $route.params.livro.nome }} </div>
   	  </div>
   	  <div class="panel-body">
-  	  	
+
   	  	<div class="btn-group-lg">
   	     	<a class="btn btn-default" @click="goVersiculos(capitulo)" v-bind:title="capitulo.titulo"
   	     	   v-for="capitulo in capitulos">{{capitulo.key.id}}</a>
   	  	</div>
-  	  	
+
   	  </div>
   	</div>
   </div>

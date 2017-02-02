@@ -1,11 +1,16 @@
 <template>
   <div>
-    <Cabecalho></Cabecalho>
+    <Cabecalho ref="cabecalho"></Cabecalho>
     <div class="container-fluid">
-      <router-view></router-view>
+      <transition name="fade">
+        <router-view></router-view>
+      </transition>
     </div>
   </div>
 </template>
+
+<style lang="scss">
+</style>
 
 <script>
 import Cabecalho from './components/Cabecalho'
