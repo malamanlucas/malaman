@@ -18,7 +18,7 @@
         </ul>
         <form class="navbar-form navbar-right">
           <div class="form-group">
-            <select class="form-control" v-model="actionVersiculos">
+            <select id="select-actionVersiculos" class="form-control" v-model="actionVersiculos">
               <option value="VIEW">Visualização</option>
               <option value="EDIT">Edição</option>
             </select>
@@ -42,13 +42,9 @@ export default {
       return this.actionVersiculos
     }
   },
-  methods: {
-    test: (value) => {
-      window.alert('test')
-    }
-  },
   mounted: function () {
-    this.actionVersiculos = this.$store.state.actionVersiculos
+    this.actionVersiculos = window.jQuery('#select-actionVersiculos option:eq(0)').val()
+    this.$store.commit('setActionVersiculos', this.actionVersiculos)
   }
 }
 </script>

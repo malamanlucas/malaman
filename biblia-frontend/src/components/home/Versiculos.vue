@@ -23,10 +23,42 @@
 	      </div>
   	  </div>
   	  <div class="panel-body" id="panel-versiculos-body">
-  	    <ul class="list-group">
-  	      <li class="list-group-item" v-for="versiculo in versiculos"
-  	       v-html="versiculo.versiculoMontado"></li>
-  	    </ul>
+
+        <span v-if="isViewPermission">
+    	    <ul class="list-group">
+    	      <li class="list-group-item" v-for="versiculo in versiculos"
+    	       v-html="versiculo.versiculoMontado"></li>
+    	    </ul>
+        </span>
+        <span v-else>
+
+          <ul class="list-group">
+            <li class="list-group-item editing" v-for="versiculo in versiculos">
+              <div :json="versiculo.key.json" v-html="versiculo.versiculoMontado" class="versiculo" />
+            </li>
+
+            <!-- <ui:repeat var="v" value="#{showVersiculoMB.versos}"
+              varStatus="status">
+              <li class="list-group-item" id="versiculo_${status.index}">
+                <div class="versiculo" json="#{v.key.toJson()}">
+                  <h:outputText value="${v.getVersiculoMontado()}" escape="false" />
+                </div>
+              </li>
+            </ui:repeat>
+          </ul>
+
+          <ul class="list-group lista_limpa">
+            <ui:repeat var="v" value="#{showVersiculoMB.versos}"
+              varStatus="status">
+              <li class="list-group-item" id="versiculo_${status.index}">
+                <div class="versiculo" json="#{v.key.toJson()}">
+                  <h:outputText value="${v.texto}" escape="false" />
+                </div>
+              </li>
+            </ui:repeat>
+          </ul> -->
+
+        </span>
   	  </div>
   	</div>
 
@@ -58,31 +90,36 @@
 
   </div>
 </template>
-<style>
+<style lang="scss">
   #panel-versiculos-body {
     height: 700px;
     overflow: auto;
   }
 
-  .texto {
-    color: red;
-    cursor: pointer
-  }
-
-  .texto:hover {
-    font-weight: bolder;
+  li:not(.editing) {
+    .texto {
+      color: red;
+      cursor: pointer;
+      &:hover {
+        font-weight: bolder;
+      }
+    }
   }
 
   .list-group {
     list-style: decimal inside;
-  }
-
-  .list-group-item {
-    display: list-item;
+    .list-group-item {
+      display: list-item;
+      .versiculo {
+        display: inline;
+      }
+    }
   }
 
 </style>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'versiculos',
   data () {
@@ -100,7 +137,8 @@ export default {
     },
     isLastChapter () {
       return this.capitulo.key.id === this.$route.params.capitulos.length ? 'hidden' : 'visible'
-    }
+    },
+    ...mapGetters(['isViewPermission'])
   },
   methods: {
     loadVersiculos () {
@@ -149,15 +187,17 @@ export default {
     this.idioma = this.$route.params.livro.testamento.idioma
   },
   updated: function () {
-    let loadExpressions = this.loadExpressions
-    let idioma = this.idioma
-    window.jQuery('.texto').off('click').on('click', function () {
-      let _$ = window.jQuery
-      _$('#myModal').modal('show')
-      _$('#currentExpression').text(_$(this).text())
-      let dics = _$(this).attr('dic').split(',')
-      loadExpressions(dics, idioma)
-    })
+    if (this.isViewPermission) {
+      let loadExpressions = this.loadExpressions
+      let idioma = this.idioma
+      window.jQuery('.texto').off('click').on('click', function () {
+        let _$ = window.jQuery
+        _$('#myModal').modal('show')
+        _$('#currentExpression').text(_$(this).text())
+        let dics = _$(this).attr('dic').split(',')
+        loadExpressions(dics, idioma)
+      })
+    }
   }
 }
 </script>

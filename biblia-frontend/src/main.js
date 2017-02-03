@@ -29,6 +29,11 @@ const store = new Vuex.Store({
     setActionVersiculos: function (state, payload) {
       state.actionVersiculos = payload
     }
+  },
+  getters: {
+    isViewPermission: function (state) {
+      return state.actionVersiculos === 'VIEW'
+    }
   }
 })
 
