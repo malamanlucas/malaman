@@ -169,7 +169,7 @@
 							<ui:repeat var="v" value="#{showVersiculoMB.versos}"
 								varStatus="status">
 								<li class="list-group-item" id="versiculo_${status.index}">
-									<div class="versiculo" json="#{v.key.toJson()}">
+									<div class="versiculo" json="#{v.key.json}">
 										<h:outputText value="${v.getVersiculoMontado()}" escape="false" />
 									</div>
 								</li>
@@ -180,8 +180,8 @@
 							<ui:repeat var="v" value="#{showVersiculoMB.versos}"
 								varStatus="status">
 								<li class="list-group-item" id="versiculo_${status.index}">
-									<div class="versiculo" json="#{v.key.toJson()}">
-										<h:outputText value="${v.limpo}" escape="false" />
+									<div class="versiculo" json="#{v.key.json}">
+										<h:outputText value="${v.texto}" escape="false" />
 									</div>
 								</li>
 							</ui:repeat>
