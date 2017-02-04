@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -29,7 +30,13 @@ public class VersiculoKey implements Serializable {
 	
 	@Column(name="livro_id")
 	private Integer livroId;
+
+	public String getJson() throws JsonProcessingException {
+		VersiculoKeyAsJson object = new VersiculoKeyAsJson(id, capituloId, livroId);
+		return new ObjectMapper().writer().writeValueAsString(object);
+	}
 	
+	@JsonIgnore
 	public String toJson() {
 		try {
 			return new ObjectMapper().writer().writeValueAsString(this);
@@ -38,5 +45,11 @@ public class VersiculoKey implements Serializable {
 		}
 	}
 	
+	@Data @AllArgsConstructor @NoArgsConstructor
+	class VersiculoKeyAsJson { 
+		private Integer id;
+		private Integer capituloId;
+		private Integer livroId;
+	}
 	
 }
