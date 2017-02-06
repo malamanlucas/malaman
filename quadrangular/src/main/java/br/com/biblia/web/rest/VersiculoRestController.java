@@ -15,12 +15,12 @@ import br.com.biblia.core.model.versiculo.Versiculo;
 @RestController
 @RequestMapping("/api/versiculos")
 public class VersiculoRestController {
-	
+
 	@Autowired
     private VersiculoApp app;
-    
+
     @GetMapping(value="/")
-    public List<Versiculo> findAll(@RequestParam("livroId") Integer livroId, 
+    public List<Versiculo> findAll(@RequestParam("livroId") Integer livroId,
     							   @RequestParam("capituloId") Integer capituloId) {
         return app.search( new CapituloKey(capituloId, livroId) );
     }
