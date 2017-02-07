@@ -9,6 +9,30 @@
               <h4 class="modal-title">Expressão: '{{ expressaoSelecionada.text }}: {{ expressaoSelecionada.start }} - {{ expressaoSelecionada.end}}'</h4>
             </div>
             <div class="modal-body">
+              <div class="container-fluid">
+                <form>
+                  <div class="form-group row">
+                    <label for="exampleTextarea" class="col-form-label col-sm-2 col-md-2 col-lg-2 col-xs-2">Descrição</label>
+                    <textarea class="col-sm-8 col-lg-8 col-xs-8 col-md-8" id="exampleTextarea" rows="3"></textarea>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="col-sm-2">
+                      <button class="btn btn-primary" type="button" name="button">Adicionar</button>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-3">
+                      <select class="form-control" name="">
+                        <option value="GREGO">GREGO</option>
+                        <option value="HEBRAICO">HEBRAICO</option>
+                        <option value="ARAMAICO">ARAMAICO</option>
+                      </select>
+                    </div>
+                  </div>
+                </form>
 
               <table id="datatable_id" class="table table-responsive table-bordered table-bordered">
                 <thead>
@@ -20,6 +44,7 @@
                 </thead>
               </table>
             </div>
+          </div>
 
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -73,30 +98,32 @@ export default {
       text: '',
       start: null,
       end: null
-    }
+    },
+    dt: null
   }),
   methods: {
-    carregarDadosModal (_this) {
-      let options = {
-        "paging":   false,
-        "ordering": false,
-        "info":     false,
-        "dom": 't',
-        columns: [
-          {data: 'codigo'},
-          {data: 'idioma'},
-          {data: 'acoes'}
-        ]
+    createTable(_this) {
+      if ( !$.fn.DataTable.isDataTable( '#datatable_id' ) ) {
+        let options = {
+          "paging":   false,
+          "ordering": false,
+          "info":     false,
+          "dom": 't',
+          "language": {
+            "emptyTable": "Nao há expressões"
+          },
+          columns: [
+            {data: 'codigo'},
+            {data: 'idioma'},
+            {data: 'acoes'}
+          ]
+        }
+        _this.dt = $("#datatable_id").DataTable(options)
+        _this.dt.draw()
       }
-      let a = $("#datatable_id").DataTable(options)
-
-      a.row.add({
-        codigo: 123,
-        idioma: 'GREGO',
-        acoes: null
-      })
-
-      a.draw();
+    },
+    carregarDadosModal (_this) {
+      _this.createTable(_this)
     },
     bindVersiculoSelect (_this) {
       $(".list-group").css("position", "absolute");
@@ -112,7 +139,7 @@ export default {
           // this.$nextTick(() => {
           window.jQuery('#myModal').modal('show')
           // })
-          this.carregarDadosModal(_this)
+          _this.carregarDadosModal(_this)
 
           // initExpressao([
           // 	{
