@@ -35,7 +35,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor(force=true)
 @AllArgsConstructor @EqualsAndHashCode(callSuper=false) @Builder
-@JsonIgnoreProperties({"versiculo", "dicionarios", "mapas"})
+@JsonIgnoreProperties({"versiculo"})
 public class Expressao implements Serializable {
 
 	@EmbeddedId

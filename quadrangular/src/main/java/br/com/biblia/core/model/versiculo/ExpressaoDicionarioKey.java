@@ -7,6 +7,8 @@ import javax.persistence.Embedded;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.com.biblia.core.enums.Idioma;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,6 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor @EqualsAndHashCode @Builder
 @Embeddable
+@JsonIgnoreProperties({"expressaoKey"})
 public class ExpressaoDicionarioKey implements Serializable {
 	
 	private Integer id;

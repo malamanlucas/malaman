@@ -16,5 +16,10 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		super.addViewControllers( registry );
 	}
 	
+//	@Bean
+//    public HttpMessageConverters customConverters() {
+////        return new HttpMessageConverters(new MappingJackson2HttpMessageConverter());
+//		return null;
+//    }
 	
 }

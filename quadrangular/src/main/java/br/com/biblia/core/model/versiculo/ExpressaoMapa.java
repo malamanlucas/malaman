@@ -10,6 +10,8 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.com.biblia.core.listener.ExpressaoMapaListener;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,6 +24,7 @@ import lombok.NoArgsConstructor;
 @Data 
 @NoArgsConstructor
 @AllArgsConstructor @EqualsAndHashCode @Builder
+@JsonIgnoreProperties({"expressao"})
 public class ExpressaoMapa implements Serializable {
 	
 	@EmbeddedId

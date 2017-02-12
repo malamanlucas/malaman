@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.biblia.core.apps.expressao.ExpressaoApp;
+import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoKey;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,14 +21,12 @@ public class ExpressaoRestController {
 	private ExpressaoApp app;
 	
     @PostMapping(value="/")
-    public String findAll(@RequestBody ExpressaoSearchParam param) {
-    	System.out.println(param);
-//		app.findByKeyAndInicioAndFim(key, inicio, fim);
-    	return "qweqwewq";
+    public Expressao findAll(@RequestBody ExpressaoSearchParam param) {
+    	return app.findByKeyAndInicioAndFim(param.getKey(), param.getStart(), param.getEnd());
     }
     
     @Data @AllArgsConstructor @NoArgsConstructor
-    class ExpressaoSearchParam {
+    static class ExpressaoSearchParam {
     	private ExpressaoKey key;
     	private Integer start;
     	private Integer end;

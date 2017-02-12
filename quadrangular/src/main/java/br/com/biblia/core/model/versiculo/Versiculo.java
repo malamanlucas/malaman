@@ -32,7 +32,6 @@ import lombok.ToString;
 @AllArgsConstructor @EqualsAndHashCode @Builder
 @NoArgsConstructor
 @ToString(of={"numero", "idioma", "texto",}, includeFieldNames=false)
-@JsonIgnoreProperties({"expressoes"})
 public class Versiculo {
 	
 	@EmbeddedId

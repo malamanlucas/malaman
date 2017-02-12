@@ -63,9 +63,7 @@
 
         <ul class="list-group lista_limpa">
           <li class="list-group-item" v-for="versiculo in versiculos">
-            <div :json="versiculo.key.json" class="versiculo">
-              {{ versiculo.texto }}
-            </div>
+            <div :json="versiculo.key.json" class="versiculo" v-text="versiculo.texto"></div>
           </li>
         </ul>
       </div>
@@ -115,15 +113,35 @@ export default {
           columns: [
             {data: 'codigo'},
             {data: 'idioma'},
-            {data: 'acoes'}
+            {data: 'acoes', defaultContent: ''}
           ]
         }
         _this.dt = $("#datatable_id").DataTable(options)
         _this.dt.draw()
       }
     },
-    carregarDadosModal (_this) {
+    carregarDadosModal (_this, key) {
       _this.createTable(_this)
+      let versiculo = _this.versiculos.filter(v => {
+          return v.numero == key.id
+      })[0]
+      let expressao = versiculo.expressoes.filter(e => {
+        if (e.inicio === _this.expressaoSelecionada.start &&
+        e.fim    === _this.expressaoSelecionada.end)
+          return e
+      })[0]
+
+      _this.dt.clear()
+      if (expressao != undefined) { // popula as tabelas
+        expressao.dicionarios.forEach(d => {
+          _this.dt.row.add({
+            'codigo': d.key.id,
+            'idioma': d.key.idioma
+          })
+        })
+      }
+      _this.dt.draw()
+
     },
     bindVersiculoSelect (_this) {
       $(".list-group").css("position", "absolute");
@@ -136,30 +154,8 @@ export default {
         if ( expressao != undefined && expressao != null && expressao.text != "") {
           console.log( expressao.text + " - " + keyAsJson );
           _this.expressaoSelecionada = expressao;
-          // this.$nextTick(() => {
           window.jQuery('#myModal').modal('show')
-          // })
-          _this.carregarDadosModal(_this)
-
-          // initExpressao([
-          // 	{
-          // 		name: "keyAsJson",
-          // 		value: keyAsJson
-          // 	},
-          // 	{
-          // 		name: "texto",
-          // 		value: expressao.text
-          // 	},
-          // 	{
-          // 		name: "inicio",
-          // 		value: expressao.start
-          // 	},
-          // 	{
-          // 		name: "fim",
-          // 		value: expressao.end
-          // 	}
-          // ]);
-
+          _this.carregarDadosModal(_this, JSON.parse(keyAsJson))
         }
 
       });
