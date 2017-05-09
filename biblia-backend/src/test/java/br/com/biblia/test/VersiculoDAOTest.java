@@ -39,8 +39,8 @@ public class VersiculoDAOTest extends VersiculoBaseTest {
 	
 	@Test
 	public void testGetOne() {
-		VersiculoKey key = new VersiculoKey(994, 25, 12);
-		Versiculo versiculoToSave = dao.getOne(key);
+		Versiculo versiculoToSave = dao.findAll().get(0);
+		VersiculoKey key = versiculoToSave.getKey();
 		versiculoToSave.getExpressoes().add( instanceExpressao(1, key, 1, 2, "a", "bla") );
 		dao.saveAndFlush( versiculoToSave );
 		Versiculo one = dao.getOne( key );

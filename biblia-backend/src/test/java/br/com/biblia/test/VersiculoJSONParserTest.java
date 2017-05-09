@@ -16,7 +16,7 @@ public class VersiculoJSONParserTest {
 	public void testConvertVersiculoKeyToJson() throws Exception {
 		VersiculoKey key = new VersiculoKey(1,2,3);
 		
-		String json = key.toJson();
+		String json = key.getJson();
 		
 		ExpressaoKey value = new Expressao().setVersiculoKeyAsJsonReturningEntity(json).getKey();
 		

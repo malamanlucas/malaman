@@ -35,16 +35,7 @@ public class VersiculoKey implements Serializable {
 		VersiculoKeyAsJson object = new VersiculoKeyAsJson(id, capituloId, livroId);
 		return new ObjectMapper().writer().writeValueAsString(object);
 	}
-	
-	@JsonIgnore
-	public String toJson() {
-		try {
-			return new ObjectMapper().writer().writeValueAsString(this);
-		} catch (JsonProcessingException e) {
-			throw new RuntimeException(e.getMessage(),e);
-		}
-	}
-	
+
 	@Data @AllArgsConstructor @NoArgsConstructor
 	class VersiculoKeyAsJson { 
 		private Integer id;
