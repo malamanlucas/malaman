@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: br.com.biblia.test.VersiculoDAOTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.732 sec <<< FAILURE! - in br.com.biblia.test.VersiculoDAOTest
+testGetOne(br.com.biblia.test.VersiculoDAOTest)  Time elapsed: 0.034 sec  <<< ERROR!
+javax.persistence.EntityNotFoundException: Unable to find br.com.biblia.core.model.versiculo.Versiculo with id VersiculoKey(994, 25, 12)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl$JpaEntityNotFoundDelegate.handleEntityNotFound(EntityManagerFactoryBuilderImpl.java:144)
+	at org.hibernate.proxy.AbstractLazyInitializer.checkTargetState(AbstractLazyInitializer.java:242)
+	at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:159)
+	at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:266)
+	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.invoke(JavassistLazyInitializer.java:73)
+	at br.com.biblia.core.model.versiculo.Versiculo_$$_jvstf1d_5.getExpressoes(Versiculo_$$_jvstf1d_5.java)
+	at br.com.biblia.test.VersiculoDAOTest.testGetOne(VersiculoDAOTest.java:44)
+

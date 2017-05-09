@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: br.com.biblia.test.VersiculoJSONParserTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.09 sec <<< FAILURE! - in br.com.biblia.test.VersiculoJSONParserTest
+testConvertVersiculoKeyToJson(br.com.biblia.test.VersiculoJSONParserTest)  Time elapsed: 0.058 sec  <<< ERROR!
+java.lang.RuntimeException: Unrecognized field "json" (class br.com.biblia.core.model.versiculo.VersiculoKey), not marked as ignorable (3 known properties: "livroId", "id", "capituloId"])
+ at [Source: {"id":1,"capituloId":2,"livroId":3,"json":"{\"id\":1,\"capituloId\":2,\"livroId\":3}"}; line: 1, column: 44] (through reference chain: br.com.biblia.core.model.versiculo.VersiculoKey["json"])
+	at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:62)
+	at com.fasterxml.jackson.databind.DeserializationContext.handleUnknownProperty(DeserializationContext.java:834)
+	at com.fasterxml.jackson.databind.deser.std.StdDeserializer.handleUnknownProperty(StdDeserializer.java:1093)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownProperty(BeanDeserializerBase.java:1477)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.handleUnknownVanilla(BeanDeserializerBase.java:1455)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:246)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer._deserializeUsingPropertyBased(BeanDeserializer.java:420)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializerBase.deserializeFromObjectUsingNonDefault(BeanDeserializerBase.java:1198)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserializeFromObject(BeanDeserializer.java:314)
+	at com.fasterxml.jackson.databind.deser.BeanDeserializer.deserialize(BeanDeserializer.java:148)
+	at com.fasterxml.jackson.databind.ObjectReader._bindAndClose(ObjectReader.java:1626)
+	at com.fasterxml.jackson.databind.ObjectReader.readValue(ObjectReader.java:1220)
+	at br.com.biblia.core.model.versiculo.Expressao.setVersiculoKeyAsJsonReturningEntity(Expressao.java:74)
+	at br.com.biblia.test.VersiculoJSONParserTest.testConvertVersiculoKeyToJson(VersiculoJSONParserTest.java:21)
+
