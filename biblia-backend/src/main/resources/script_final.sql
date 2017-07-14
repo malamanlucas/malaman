@@ -10,7 +10,8 @@ CREATE TABLE livro (
 	id         INTEGER     NOT NULL,
 	nome       VARCHAR(30) NOT NULL,
 	testamento VARCHAR(30) NOT NULL,
-	ordem      INTEGER     NOT NULL
+	ordem      INTEGER     NOT NULL,
+	abreviacao VARCHAR(4)  NOT NULL
 );
 
 CREATE TABLE capitulo (
