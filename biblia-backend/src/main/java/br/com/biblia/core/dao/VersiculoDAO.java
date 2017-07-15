@@ -21,6 +21,9 @@ public interface VersiculoDAO extends JpaRepository<Versiculo, VersiculoKey> {
 	        + " AND capitulo_id = :#{#key.capituloId}")
 	Integer retrieveNextVerso(@Param("key") VersiculoKey key);
 	
+	@Query("SELECT COUNT(p) FROM Versiculo p WHERE LOWER(p.texto) LIKE :#{'%' + #termo + '%'}")
+	Integer getOcorrenciasTermo(@Param("termo") String termo);
+	
 	@Query("SELECT p FROM Versiculo p WHERE p.key.livroId = :#{#key.livroId} "
 	        + "AND p.key.capituloId = :#{#key.id} ORDER BY id ASC")
 	List<Versiculo> search(@Param("key") CapituloKey key);

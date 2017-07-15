@@ -1,6 +1,7 @@
 package br.com.biblia;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 import javax.faces.webapp.FacesServlet;
@@ -19,6 +20,10 @@ import org.springframework.web.WebApplicationInitializer;
 
 import com.sun.faces.config.ConfigureListener;
 
+import br.com.biblia.core.apps.livro.LivroFacade;
+import br.com.biblia.core.dao.LivroDAO;
+import br.com.biblia.core.enums.LivroEnum;
+import br.com.biblia.core.model.Livro;
 import br.com.biblia.web.config.AutowireHelper;
 import br.com.biblia.web.scope.ViewScope;
 

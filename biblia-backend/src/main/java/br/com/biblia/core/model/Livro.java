@@ -39,6 +39,7 @@ public class Livro {
 	private Integer id;
 	private String nome;
 	private Integer ordem;
+	private String sigla;
 	
 	@Enumerated(EnumType.STRING)
 	private Testamento testamento;

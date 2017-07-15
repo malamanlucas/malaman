@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import br.com.biblia.core.apps.dicionario.DicionarioApp;
+import br.com.biblia.core.dao.SentencaDAO;
 import br.com.biblia.core.dao.VersiculoDAO;
 import br.com.biblia.core.enums.Idioma;
 import br.com.biblia.core.model.CapituloKey;
+import br.com.biblia.core.model.Sentenca;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.Versiculo;
 import br.com.biblia.core.model.versiculo.VersiculoKey;
@@ -24,6 +26,9 @@ public class VersiculoFacade implements VersiculoApp {
 	
 	@Autowired
 	private DicionarioApp dicionarioApp;
+	
+	@Autowired
+	private SentencaDAO sentencaDAO;
 
 	public Versiculo save(Versiculo entity) {
 		VersiculoKey key = entity.getKey();
@@ -80,7 +85,16 @@ public class VersiculoFacade implements VersiculoApp {
 	@Override
 	public void salvarExpressao(Expressao expressao) {
 		
-		
+	}
+
+	@Override
+	public Integer qtdOcorrenciasTermo(String termo) {
+		return dao.getOcorrenciasTermo(termo);
+	}
+
+	@Override
+	public List<Sentenca> searchSentencasByTermo(String termo) {
+		return sentencaDAO.searchByTermo(termo);
 	}
 	
 }
