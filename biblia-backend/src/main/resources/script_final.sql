@@ -71,6 +71,15 @@ CREATE TABLE mapa (
 	nome    TEXT NOT NULL
 );
 
+CREATE OR REPLACE VIEW sentenca as 
+SELECT 
+	l.ordem||''||v.capitulo_id||''||v.numero as "sentenca_id",
+	l.sigla, l.testamento, l.ordem, v.capitulo_id, v.numero, v.texto,
+	l.sigla||' '||v.capitulo_id||'.'||v.numero||' '||v.texto  as "texto_montado"
+	FROM versiculo v
+INNER JOIN livro l ON (l.id = v.livro_id)
+ORDER BY l.testamento DESC, l.ordem, v.capitulo_id, v.numero
+
 ALTER TABLE message ADD CONSTRAINT message_pk PRIMARY KEY(id);
 
 ALTER TABLE livro ADD CONSTRAINT livro_pk PRIMARY KEY(id);

@@ -17,6 +17,7 @@ import br.com.biblia.Application;
 import br.com.biblia.core.apps.versiculo.VersiculoApp;
 import br.com.biblia.core.dao.VersiculoDAO;
 import br.com.biblia.core.enums.Idioma;
+import br.com.biblia.core.model.Sentenca;
 import br.com.biblia.core.model.versiculo.Expressao;
 import br.com.biblia.core.model.versiculo.ExpressaoDicionario;
 import br.com.biblia.core.model.versiculo.ExpressaoDicionarioKey;
@@ -36,6 +37,24 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 	
 	@Autowired
 	private VersiculoApp app;
+	
+	@Test
+	public void testSearchSentencasByTermo() {
+		
+		List<Sentenca> lstSentenca = app.searchSentencasByTermo("trombeta");
+		
+		Assert.assertNotNull(lstSentenca);
+		Assert.assertEquals(74, lstSentenca.size());
+		
+	}
+	
+	@Test
+	public void testCountOcorrenciasTermo() {
+		Integer qtd = app.qtdOcorrenciasTermo("trombeta");
+		
+		Assert.assertNotNull(qtd);
+		Assert.assertEquals(new Integer(74), qtd);
+	}
 	
 	@Test
 	public void testDeleteByKey() {

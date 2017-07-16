@@ -1,16 +1,22 @@
 package br.com.biblia;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.expression.Expression;
 import org.springframework.expression.spel.standard.SpelExpression;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
+
+import com.google.common.collect.Lists;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		SpelExpressionParser parser = new SpelExpressionParser();
-		Expression expression = parser.parseExpression("'qweqwewq'.concat('%')");
-		System.out.println(expression.getValue());
+		List<Integer> i = Lists.newArrayList(1,2,3,4);
+		
+		List<String> a = i.stream().map(x -> x.toString()).collect(Collectors.toList());
+		
 		
 	}
 	

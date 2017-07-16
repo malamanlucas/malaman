@@ -16,6 +16,7 @@ import br.com.biblia.core.enums.Testamento;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Embeddable
 @Data
@@ -27,7 +28,8 @@ import lombok.NoArgsConstructor;
 public class Sentenca implements Serializable {
 
 	@Id
-	private Integer id;
+	@Column(name="sentenca_id")
+	private String id;
 	
 	private String sigla;
 	
@@ -44,5 +46,8 @@ public class Sentenca implements Serializable {
 	private Integer versiculo;
 	
 	private String texto;
+	
+	@Column(name="texto_montado")
+	private String textoMontado;
 	
 }

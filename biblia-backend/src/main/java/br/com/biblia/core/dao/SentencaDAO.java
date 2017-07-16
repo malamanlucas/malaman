@@ -10,7 +10,8 @@ import br.com.biblia.core.model.Sentenca;
 
 public interface SentencaDAO extends JpaRepository<Sentenca, Integer> {
 
-	@Query("SELECT s FROM Sentenca s WHERE LOWER(s.texto) LIKE :#{'%' + #termo + '%'}")
+	@Query("SELECT s FROM Sentenca s WHERE LOWER(s.texto) LIKE :#{'%' + #termo + '%'}"
+			+ " ORDER BY s.testamento DESC, s.ordemLivro, s.capitulo, s.versiculo")
 	List<Sentenca> searchByTermo(@Param("termo") String termo);
 	
 }
