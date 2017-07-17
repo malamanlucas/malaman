@@ -10,19 +10,15 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureTestEntityManager;
-
 import br.com.biblia.core.enums.Testamento;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Embeddable
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@AutoConfigureTestEntityManager
 @Entity
 @Table(name = "sentenca")
 public class Sentenca implements Serializable {

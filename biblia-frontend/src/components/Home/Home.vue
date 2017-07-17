@@ -9,15 +9,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand">Fuja dos falsos profetas!</a>
+          <router-link to="/" class="navbar-brand">Fuja dos falsos profetas!</router-link>
+          <!-- <a href="#" class="navbar-brand">Fuja dos falsos profetas!</a> -->
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li>
-              <a href="#">Livros</a>
+              <router-link to="/livros">Livros</router-link>
             </li>
             <li>
-              <a href="#">Sentença</a>
+              <router-link to="/sentenca">Sentença</router-link>
             </li>
           </ul>
         </div>
@@ -42,5 +43,6 @@
 <style lang="scss" scoped>
   .body {
     padding-top: 70px;
+    padding-bottom: 70px;
   }
 </style>

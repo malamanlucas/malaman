@@ -49,6 +49,16 @@ public class VersiculoAppTest extends VersiculoBaseTest {
 	}
 	
 	@Test
+	public void testSearchSentencasByTermoWhenIsUppercase() {
+		
+		List<Sentenca> lstSentenca = app.searchSentencasByTermo("TrOmBetA");
+		
+		Assert.assertNotNull(lstSentenca);
+		Assert.assertEquals(74, lstSentenca.size());
+		
+	}
+	
+	@Test
 	public void testCountOcorrenciasTermo() {
 		Integer qtd = app.qtdOcorrenciasTermo("trombeta");
 		

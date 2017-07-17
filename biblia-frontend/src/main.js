@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Axios from 'axios'
+import VeeValidate from 'vee-validate'
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.js'
@@ -13,6 +14,10 @@ Vue.config.productionTip = false
 
 Vue.prototype.$http = Axios
 Axios.defaults.baseURL = 'http://localhost:9090'
+
+Vue.use(VeeValidate, {
+  errorBagName: 'validation'
+})
 
 /* eslint-disable no-new */
 new Vue({

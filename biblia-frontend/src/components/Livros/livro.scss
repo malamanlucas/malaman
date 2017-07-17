@@ -1,0 +1,27 @@
+
+.testamento {
+  border: 1px solid black;
+  border-radius: 5px 0px 5px 5px;
+
+  &:last-child {
+    border-radius: 0px 5px 5px 0px;
+    border-left: none;
+  }
+
+  &__title {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  &__livro {
+
+    &__nome {
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,15 @@
+
+.hasError {
+  border-color: red !important;
+}
+
+.list {
+  &__title {
+    margin: 7px 0px;
+    font-weight: bold;
+  }
+
+  &__item {
+    font-style: italic;
+  }
+}
