@@ -56,7 +56,7 @@ public enum LivroEnum {
 	ROMANOS ("Romanos", "Romanos", 16, "Rom", "Rm", GREGO),
 	PRIMEIRA_CORÍNTIOS ("1 Coríntios", "1 Corintios", 16, "1Cor", "1 Co", GREGO),
 	SEGUNDA_CORÍNTIOS ("2 Coríntios", "2 Corintios", 13, "2Cor", "2 Co", GREGO),
-	GÁTALAS ("Gátalas", "Gatalas", 6, "Gal", "Gl", GREGO),
+	GALATAS ("Gálatas", "Galatas", 6, "Gal", "Gl", GREGO),
 	EFÉSIOS ("Efésios", "Efesios", 6, "Eph", "Ef", GREGO),
 	FILIPENSES ("Filipenses", "Filipenses", 4, "Phil", "Fp", GREGO),
 	COLOSSENSES ("Colossenses", "Colossenses", 4, "Col", "Cl", GREGO),

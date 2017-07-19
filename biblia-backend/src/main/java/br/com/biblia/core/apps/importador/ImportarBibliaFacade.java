@@ -40,27 +40,27 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 
 	static JdbcTemplate jdbcTemplate;
 	
-//		public static void main(String[] args) {
+		public static void main(String[] args) {
+			LivroEnum[] values = LivroEnum.values();
+			DataSource dataSource = DataSourceBuilder
+					.create()
+					.password("postgres")
+					.username("postgres")
+					.driverClassName("org.postgresql.Driver")
+					.url("jdbc:postgresql://localhost:5432/postgres")
+					.build();
+			jdbcTemplate = new JdbcTemplate(dataSource);
+				
 //			LivroEnum[] values = LivroEnum.values();
-//			DataSource dataSource = DataSourceBuilder
-//					.create()
-//					.password("postgres")
-//					.username("postgres")
-//					.driverClassName("org.postgresql.Driver")
-//					.url("jdbc:postgresql://localhost:5432/postgres")
-//					.build();
-//			jdbcTemplate = new JdbcTemplate(dataSource);
-//				
-////			LivroEnum[] values = LivroEnum.values();
-//			
+			
 //			for (LivroEnum enum1 : values) {
 //				if (enum1 == LivroEnum.MATEUS)
 //					continue;
 //				System.out.println("Inserindo: "+enum1.name());
-//				internalImport(enum1);
+				internalImport(LivroEnum.GALATAS);
 //			}
-//			
-//		}
+			
+		}
 	
 	private static void internalImport(LivroEnum livro) {
 		
