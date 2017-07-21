@@ -57,7 +57,7 @@ public class ImportarBibliaFacade implements ImportarBiblia {
 //				if (enum1 == LivroEnum.MATEUS)
 //					continue;
 //				System.out.println("Inserindo: "+enum1.name());
-				internalImport(LivroEnum.GALATAS);
+				internalImport(LivroEnum.PRIMEIRA_JOAO);
 //			}
 			
 		}

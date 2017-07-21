@@ -54,8 +54,8 @@ public enum LivroEnum {
 	JOAO ("João", "Joao", 21, "John", "Jo", GREGO),
 	ATOS ("Atos", "Atos", 28, "Acts", "At", GREGO),
 	ROMANOS ("Romanos", "Romanos", 16, "Rom", "Rm", GREGO),
-	PRIMEIRA_CORÍNTIOS ("1 Coríntios", "1 Corintios", 16, "1Cor", "1 Co", GREGO),
-	SEGUNDA_CORÍNTIOS ("2 Coríntios", "2 Corintios", 13, "2Cor", "2 Co", GREGO),
+	PRIMEIRA_CORINTIOS ("1 Coríntios", "1 Corintios", 16, "1Cor", "1 Co", GREGO),
+	SEGUNDA_CORINTIOS ("2 Coríntios", "2 Corintios", 13, "2Cor", "2 Co", GREGO),
 	GALATAS ("Gálatas", "Galatas", 6, "Gal", "Gl", GREGO),
 	EFÉSIOS ("Efésios", "Efesios", 6, "Eph", "Ef", GREGO),
 	FILIPENSES ("Filipenses", "Filipenses", 4, "Phil", "Fp", GREGO),
@@ -133,14 +133,14 @@ public enum LivroEnum {
 	}
 
 	public boolean isStartingWithNumber() {
-		return this == PRIMEIRO_SAMUEL || this == SEGUNDO_SAMUEL || 
-			   this == LivroEnum.PRIMEIRO_REIS || this == LivroEnum.SEGUNDO_REIS ||
-			   this == PRIMEIRO_CRONICAS || this == SEGUNDO_CRONICAS;
-//		return this == PRIMEIRA_CORÍNTIOS || this == LivroEnum.SEGUNDA_CORÍNTIOS ||
-//			   this == PRIMEIRA_TESSALONICENSES || this == LivroEnum.PRIMEIRA_JOAO ||
-//			   this == PRIMEIRA_PEDRO || this == PRIMEIRA_TIMOTEO || 
-//			   this == SEGUNDA_JOAO || this == SEGUNDA_PEDRO || this == SEGUNDA_TESSALONICENSES ||
-//			   this == SEGUNDA_TIMOTEO || this == TERCEIRA_JOAO;
+//		return this == PRIMEIRO_SAMUEL || this == SEGUNDO_SAMUEL || 
+//			   this == LivroEnum.PRIMEIRO_REIS || this == LivroEnum.SEGUNDO_REIS ||
+//			   this == PRIMEIRO_CRONICAS || this == SEGUNDO_CRONICAS;
+		return this == PRIMEIRA_CORINTIOS || this == LivroEnum.SEGUNDA_CORINTIOS ||
+			   this == PRIMEIRA_TESSALONICENSES || this == LivroEnum.PRIMEIRA_JOAO ||
+			   this == PRIMEIRA_PEDRO || this == PRIMEIRA_TIMOTEO || 
+			   this == SEGUNDA_JOAO || this == SEGUNDA_PEDRO || this == SEGUNDA_TESSALONICENSES ||
+			   this == SEGUNDA_TIMOTEO || this == TERCEIRA_JOAO;
 	}
 	
 	
