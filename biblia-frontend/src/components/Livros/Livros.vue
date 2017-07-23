@@ -11,6 +11,8 @@
       </div>
     </div>
 
+    <loading ref="loading"></loading>
+
   </div>
 
 </template>
@@ -24,7 +26,7 @@
     }),
     methods: {
       populateTestamento (testamento) {
-        this.$http.get('/api/livros/', {
+        return this.$http.get('/api/livros/', {
           params: {
             'testamento': testamento.value
           }
@@ -33,11 +35,17 @@
             nome: testamento.label,
             livros: response.data
           })
+
+          return Promise.resolve(response)
         })
       }
     },
     mounted () {
-      Object.values(params.TESTAMENTO).forEach(this.populateTestamento)
+      this.$refs.loading.show()
+      Promise.all(Object.values(params.TESTAMENTO).map(this.populateTestamento))
+        .then(() => {
+          this.$refs.loading.hide()
+        })
     }
   }
 </script>

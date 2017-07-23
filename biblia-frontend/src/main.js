@@ -19,6 +19,8 @@ Vue.use(VeeValidate, {
   errorBagName: 'validation'
 })
 
+import './core'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

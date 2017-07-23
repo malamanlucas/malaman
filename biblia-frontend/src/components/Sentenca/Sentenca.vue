@@ -17,6 +17,8 @@
       </div>
     </div>
 
+    <loading ref="loading"></loading>
+
     <div class="row list" v-if="sentencas">
       <div class="col-xs-12 list__title text-info h4 text-center">
         {{ sentencas.total }} ocorrência(s)
@@ -39,15 +41,21 @@
     }),
     methods: {
       buscar () {
-        if (!this.validation.any()) {
-          this.$http.get('/api/sentencas/format', {
-            params: {
-              'termo': this.termo
+        this.sentencas = null
+        this.$validator.validateAll()
+          .then(isValid => {
+            if (isValid) {
+              this.$refs.loading.show()
+              this.$http.get('/api/sentencas/format', {
+                params: {
+                  'termo': this.termo
+                }
+              }).then(response => {
+                this.sentencas = response.data
+                this.$refs.loading.hide()
+              })
             }
-          }).then(response => {
-            this.sentencas = response.data
           })
-        }
       }
     }
   }
