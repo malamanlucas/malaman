@@ -11,13 +11,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.Application;
-import br.com.biblia.core.dao.ExpressaoDAO;
-import br.com.biblia.core.dao.VersiculoDAO;
-import br.com.biblia.core.model.Dicionario;
-import br.com.biblia.core.model.versiculo.Expressao;
-import br.com.biblia.core.model.versiculo.ExpressaoKey;
-import br.com.biblia.core.model.versiculo.Versiculo;
-import br.com.biblia.core.model.versiculo.VersiculoKey;
+import br.com.biblia.dao.ExpressaoDAO;
+import br.com.biblia.dao.VersiculoDAO;
+import br.com.biblia.model.Dicionario;
+import br.com.biblia.model.versiculo.Expressao;
+import br.com.biblia.model.versiculo.ExpressaoKey;
+import br.com.biblia.model.versiculo.Versiculo;
+import br.com.biblia.model.versiculo.VersiculoKey;
 import br.com.biblia.test.base.ExpressaoBaseTest;
 
 @RunWith(SpringRunner.class)

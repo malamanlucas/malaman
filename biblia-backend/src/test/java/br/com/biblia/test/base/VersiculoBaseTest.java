@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 
-import br.com.biblia.core.dao.LivroDAO;
-import br.com.biblia.core.dao.VersiculoDAO;
-import br.com.biblia.core.enums.LivroEnum;
-import br.com.biblia.core.model.CapituloKey;
-import br.com.biblia.core.model.Livro;
-import br.com.biblia.core.model.versiculo.Versiculo;
+import br.com.biblia.dao.LivroDAO;
+import br.com.biblia.dao.VersiculoDAO;
+import br.com.biblia.enums.LivroEnum;
+import br.com.biblia.model.CapituloKey;
+import br.com.biblia.model.Livro;
+import br.com.biblia.model.versiculo.Versiculo;
 
 @Sql(executionPhase=ExecutionPhase.BEFORE_TEST_METHOD, statements="DELETE FROM expressao")
 public abstract class VersiculoBaseTest {

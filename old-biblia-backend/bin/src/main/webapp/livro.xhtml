@@ -1,0 +1,102 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+</h:head>
+<ui:composition template="index.xhtml">
+
+	<ui:define name="content">
+		<script type="text/javascript">
+			$(document).ready(function() {
+			});
+		</script>
+		
+		<h:form prependId="false">
+
+			<p:defaultCommand target="btn_salvar" />
+
+			<h:panelGroup id="form_livro">
+				<h:inputHidden value="#{livroMB.entity.id}" />
+
+				<div class="ui-fluid">
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Testamento" />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:selectOneButton value="#{livroMB.testamento}">
+								<f:selectItems value="#{livroMB.allTestamento()}" var="i" itemLabel="#{i.descricao}" itemValue="#{i}" />
+								<p:ajax event="change" process="@this" update="datatable_livro" listener="#{livroMB.search}" />
+							</p:selectOneButton>
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Nome" />
+						</div>
+
+						<div class="ui-g-12 ui-md-12 ui-lg-12">
+							<p:inputText value="#{livroMB.entity.nome}" />
+						</div>
+					</div>
+				</div>
+
+				<div class="ui-g">
+					<div class="ui-g-3 ui-md-2 ui-lg-2">
+						<h:outputText value="Ordem:" />
+					</div>
+
+					<div class="ui-g-8 ui-md-8 ui-lg-8">
+						<p:inputText id="nro" value="#{livroMB.entity.ordem}" />
+						<p:slider for="nro" maxValue="40" />
+					</div>
+				</div>
+
+
+				<div class="ui-g">
+					<div class="ui-g-2 ui-md-2 ui-lg-1">
+						<p:commandButton id="btn_salvar" value="Salvar" update="form_livro, datatable_livro" process="form_livro" action="#{livroMB.save}" />
+					</div>
+				</div>
+
+
+			</h:panelGroup>
+
+			<p:dataTable rowHover="true" id="datatable_livro" value="#{livroMB.list}" var="i" styleClass="table table-striped table-bordered" rows="15"
+				emptyMessage="Nâo há registro" paginator="true" reflow="true" paginatorPosition="bottom">
+
+				<p:column headerText="Ordem">
+					<h:outputText value="#{i.ordem}" />
+				</p:column>
+
+				<p:column headerText="Nome">
+					<h:outputText value="#{i.nome}" />
+				</p:column>
+
+				<p:column headerText="Testamento">
+					<h:outputText value="#{i.testamento.descricao}" />
+				</p:column>
+
+				<p:column headerText="Ações">
+
+					<p:panelGrid>
+						<p:commandButton ajax="true" icon="fa fa fa-edit" update="form_livro">
+							<f:setPropertyActionListener value="#{i}" target="#{livroMB.entity}" />
+						</p:commandButton>
+						<p:commandButton ajax="true" icon="fa fa-eraser" update="datatable_livro, form_livro" action="#{livroMB.delete(i.id)}" />
+					</p:panelGrid>
+
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

@@ -1,0 +1,129 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+</h:head>
+
+<ui:composition template="index_new.xhtml">
+
+	<ui:define name="content">
+
+		<style type="text/css">
+			.texto {
+				color: red;
+				text-decoration: underline;
+			}
+			
+			.list-group {
+				list-style: decimal inside;
+			}
+			
+			.list-group-item {
+				display: list-item;
+			}
+			
+/* 			.lista_limpa { */
+/* 				opacity: 0.3; */
+/* 			} */
+			
+			.versiculo {
+				display: inline;
+			}
+			
+			#cabecalho_versiculo {
+				position:fixed; 
+				width:100%; 
+				background-color: gray; 
+				z-index: 1030; 
+				border: 1px solid #e7e7e7; 
+				background-color: #f8f8f8;
+				height: 50px;
+				text-align: center;
+				font-size: 2em;
+				top: 50px;
+			}
+			
+			.iconRight, .iconLeft {
+				cursor: pointer;
+				margin-top: 5px;
+				border: 1px solid transparent;
+			}
+			
+			.iconRight:hover, .iconLeft:hover {
+				border: 1px solid black;
+				border-radius: 5px;
+				background-color: #f0f0f0
+			}
+			
+		</style>
+		
+		<h:link id="nextChapter" value="rightChapter" outcome="show_versiculo.xhtml" style="display:none">
+			<f:param name="livro_id" value="#{showVersiculoMB.capituloKey.livroId}" />
+			<f:param name="capitulo_id" value="#{showVersiculoMB.capituloKey.id+1}" />
+			<f:param name="idioma" value="#{showVersiculoMB.expressaoBackingBean.idioma}" />
+		</h:link>
+		
+		<h:link id="beforeChapter" value="rightChapter" outcome="show_versiculo.xhtml" style="display:none">
+			<f:param name="livro_id" value="#{showVersiculoMB.capituloKey.livroId}" />
+			<f:param name="capitulo_id" value="#{showVersiculoMB.capituloKey.id-1}" />
+			<f:param name="idioma" value="#{showVersiculoMB.expressaoBackingBean.idioma}" />
+		</h:link>
+
+		<h:form prependId="false" id="form_versiculo">
+		
+			<p:remoteCommand id="ref" name="initExpressao" action="#{showVersiculoMB.initExpressao}"
+				oncomplete="$('#modal_expressao').modal(); $('.codigo_dic').focus()" update="@(.modal_expressao)" />
+			
+			<p:remoteCommand name="salvarExpressao" action="#{showVersiculoMB.salvarExpressao}"
+				oncomplete="$('#modal_expressao').modal('hide'); bindVersiculoSelect(); $(window).trigger('resize'); return false;" update="@(.panel_versiculos)" />
+				
+			<div id="cabecalho_versiculo">
+			
+				<div style="display:table; width:100%; height:100%;">
+					<div style="display: table-cell; vertical-align: middle">
+						<b>#{showVersiculoMB.capitulo.livro.nome} - Capítulo #{showVersiculoMB.capitulo.key.id}</b>
+						
+						<b:icon rendered="#{showVersiculoMB.capituloKey.id > 1}" 
+							onclick="location.href = $('#beforeChapter').attr('href')" name="arrow-left" styleClass="iconLeft" style="float:left; margin-left: 5px"  />
+							
+						<b:icon rendered="#{showVersiculoMB.capituloKey.id lt showVersiculoMB.qtdCapitulo}"
+							onclick="location.href = $('#nextChapter').attr('href')" name="arrow-right" styleClass="iconRight" style="float:right; margin-right: 5px"/>
+					</div>
+				</div>
+			</div>
+			
+			<p:spacer height="50px" />
+					
+			<b:container fluid="true" style="font-size: 1.4em;">
+
+				<h:panelGroup id="panel_versiculos" styleClass="panel_versiculos">
+					<b:panel titleStyle="text-align: center" collapsed="false"
+						collapsible="false">
+						
+						<ul class="list-group">
+							<ui:repeat var="v" value="#{showVersiculoMB.versos}"
+								varStatus="status">
+								<li class="list-group-item" id="versiculo_${status.index}">
+									<div class="versiculo" json="#{v.key.toJson()}">
+										<h:outputText value="${v.getVersiculoMontado()}" escape="false" />
+									</div>
+								</li>
+							</ui:repeat>
+						</ul>
+						
+					</b:panel>
+				</h:panelGroup>
+			</b:container>
+
+		</h:form>
+
+		<h:outputScript library="default" name="js/selection.js" />
+<!-- 		<h:outputScript library="default" name="js/selectionVersiculo.js" /> -->
+	</ui:define>
+</ui:composition>
+
+</html>

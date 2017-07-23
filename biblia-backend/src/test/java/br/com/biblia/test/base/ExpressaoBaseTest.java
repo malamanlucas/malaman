@@ -2,25 +2,24 @@ package br.com.biblia.test.base;
 
 import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.google.common.collect.Lists;
-
-import br.com.biblia.core.dao.DicionarioDAO;
-import br.com.biblia.core.dao.ExpressaoDAO;
-import br.com.biblia.core.dao.MapaDAO;
-import br.com.biblia.core.enums.Idioma;
-import br.com.biblia.core.model.Dicionario;
-import br.com.biblia.core.model.DicionarioKey;
-import br.com.biblia.core.model.Mapa;
-import br.com.biblia.core.model.versiculo.Expressao;
-import br.com.biblia.core.model.versiculo.ExpressaoDicionario;
-import br.com.biblia.core.model.versiculo.ExpressaoDicionarioKey;
-import br.com.biblia.core.model.versiculo.ExpressaoKey;
-import br.com.biblia.core.model.versiculo.ExpressaoMapa;
-import br.com.biblia.core.model.versiculo.ExpressaoMapaKey;
-import br.com.biblia.core.model.versiculo.Versiculo;
-import br.com.biblia.core.model.versiculo.VersiculoKey;
+import br.com.biblia.dao.DicionarioDAO;
+import br.com.biblia.dao.ExpressaoDAO;
+import br.com.biblia.dao.MapaDAO;
+import br.com.biblia.enums.Idioma;
+import br.com.biblia.model.Dicionario;
+import br.com.biblia.model.DicionarioKey;
+import br.com.biblia.model.Mapa;
+import br.com.biblia.model.versiculo.Expressao;
+import br.com.biblia.model.versiculo.ExpressaoDicionario;
+import br.com.biblia.model.versiculo.ExpressaoDicionarioKey;
+import br.com.biblia.model.versiculo.ExpressaoKey;
+import br.com.biblia.model.versiculo.ExpressaoMapa;
+import br.com.biblia.model.versiculo.ExpressaoMapaKey;
+import br.com.biblia.model.versiculo.Versiculo;
+import br.com.biblia.model.versiculo.VersiculoKey;
 
 public abstract class ExpressaoBaseTest extends VersiculoBaseTest {
 

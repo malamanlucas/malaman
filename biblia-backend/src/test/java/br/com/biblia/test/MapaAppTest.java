@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.Application;
-import br.com.biblia.core.apps.mapa.MapaApp;
+import br.com.biblia.apps.mapa.MapaApp;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)

@@ -5,9 +5,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.biblia.core.model.versiculo.Expressao;
-import br.com.biblia.core.model.versiculo.ExpressaoKey;
-import br.com.biblia.core.model.versiculo.VersiculoKey;
+import br.com.biblia.model.versiculo.Expressao;
+import br.com.biblia.model.versiculo.ExpressaoKey;
+import br.com.biblia.model.versiculo.VersiculoKey;
 
 @RunWith(SpringRunner.class)
 public class VersiculoJSONParserTest {

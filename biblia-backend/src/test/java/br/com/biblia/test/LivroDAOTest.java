@@ -11,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.biblia.Application;
-import br.com.biblia.core.dao.LivroDAO;
-import br.com.biblia.core.enums.LivroEnum;
+import br.com.biblia.dao.LivroDAO;
+import br.com.biblia.enums.LivroEnum;
 import br.com.biblia.test.base.VersiculoBaseTest;
 
 @RunWith(SpringRunner.class)

@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Implementation-Title: old-biblia-backend
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: lucasm
+Implementation-Vendor-Id: br.com.biblia
+Build-Jdk: 1.8.0_131
+Implementation-URL: http://projects.spring.io/spring-boot/old-biblia-b
+ ackend/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: br.com.biblia.Application
+

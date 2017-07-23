@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+</h:head>
+
+<ui:composition template="index.xhtml">
+
+	<ui:define name="content">
+
+		<!-- 		<div class="ui-fluid" style="font-size: 2em"> -->
+		
+		<h:form prependId="false">
+
+			<!-- 				<div class="ui-g"> -->
+			<b:container fluid="true">
+				
+				<h:panelGroup rendered="#{showCapituloMB.isAdmin}">
+					<ui:repeat value="#{showCapituloMB.capitulos}" var="l">
+						<h:link value="#{l.key.id.toString()}" outcome="new/versiculo_expressao_edit.xhtml" styleClass="btn">
+							<f:param name="livro_id" value="#{l.key.livroId}" />
+							<f:param name="capitulo_id" value="#{l.key.id}" />
+							<f:param name="idioma" value="#{showCapituloMB.idioma}" />
+						</h:link>
+					</ui:repeat>
+				</h:panelGroup>
+				
+				<h:panelGroup rendered="#{!showCapituloMB.isAdmin}">
+					<ui:repeat value="#{showCapituloMB.capitulos}" var="l">
+						<h:link value="#{l.key.id.toString()}" outcome="new/show_versiculo.xhtml" styleClass="btn">
+							<f:param name="livro_id" value="#{l.key.livroId}" />
+							<f:param name="capitulo_id" value="#{l.key.id}" />
+							<f:param name="idioma" value="#{showCapituloMB.idioma}" />
+						</h:link>
+					</ui:repeat>
+				</h:panelGroup>
+				
+			</b:container>
+			<!-- 				</div> -->
+
+		</h:form>
+		<!-- 		</div> -->
+
+	</ui:define>
+</ui:composition>
+
+</html>

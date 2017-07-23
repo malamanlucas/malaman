@@ -1,0 +1,93 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui" xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+</h:head>
+<ui:composition template="index.xhtml">
+
+	<ui:define name="content">
+		<script type="text/javascript">
+			$(document).ready(function() {
+					
+				
+				
+			});
+		</script>
+		
+		<div id="abc">
+			qweqwewqewqewqeqw
+		</div>
+		
+		
+		<h:form prependId="false">
+			<p:defaultCommand target="btn_salvar" />
+
+			<h:panelGroup id="form_message">
+				<h:inputHidden value="#{messageMB.entity.id}" />
+
+				<div class="ui-fluid">
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Título: " />
+						</div>
+
+						<div class="ui-g-8 ui-md-5 ui-lg-3">
+							<p:inputText value="#{messageMB.entity.title}" />
+						</div>
+					</div>
+
+					<div class="ui-g">
+						<div class="ui-g-3 ui-md-2 ui-lg-2">
+							<h:outputText value="Mensagem: " />
+						</div>
+
+						<div class="ui-g-12 ui-md-12 ui-lg-12">
+							<p:inputText value="#{messageMB.entity.texto}" />
+						</div>
+					</div>
+				</div>
+
+				<div class="ui-g">
+					<div class="ui-g-2 ui-md-2 ui-lg-1">
+						<p:commandButton id="btn_salvar" value="Salvar" update="form_message, datatable_message" process="form_message" action="#{messageMB.save}" />
+					</div>
+				</div>
+
+			</h:panelGroup>
+
+			<p:dataTable rowHover="true" id="datatable_message" value="#{messageMB.list}" var="i" styleClass="table table-striped table-bordered" rows="15"
+				emptyMessage="Nâo há registro" paginator="true" reflow="true" paginatorPosition="bottom">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{i.id}" />
+				</p:column>
+				
+				<p:column headerText="Título">
+					<h:outputText value="#{i.title}" />
+				</p:column>
+				
+				<p:column headerText="Mensagem">
+					<h:outputText value="#{i.texto}" />
+				</p:column>
+
+				<p:column headerText="Ações">
+
+					<p:panelGrid>
+						<p:commandButton ajax="true" icon="fa fa fa-edit" update="form_message">
+							<f:setPropertyActionListener value="#{i}" target="#{messageMB.entity}" />
+						</p:commandButton>
+						<p:commandButton ajax="true" icon="fa fa-eraser" update="datatable_message, form_message" action="#{messageMB.delete(i.id)}" />
+					</p:panelGrid>
+
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

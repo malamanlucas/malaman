@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<h:head>
+	<style type="text/css">
+#container {
+	width: 1300px;
+	margin: 0.4% auto;
+	min-height: 600px;
+}
+</style>
+
+</h:head>
+<h:body>
+
+	<pe:blockUI widgetVar="loader">
+		<h:panelGrid columns="2">
+			<h:graphicImage library="img" name="ajax-loader.gif" style="margin-right: 12px; vertical-align: middle;" />
+			<h:outputText value="This is a non-centered message. Please wait..." style="white-space: nowrap;" />
+		</h:panelGrid>
+	</pe:blockUI>
+
+	<div id="container">
+
+		<p:growl autoUpdate="true" showDetail="true" />
+		<h:form prependId="false">
+			<p:menubar>
+				<p:menuitem value=" Home" icon="fa fa-home" iconPos="left" />
+
+				<f:facet name="options">
+					<p:panelGrid>
+							Olá Vicente
+						<p:spacer width="5" />
+						<p:commandButton value="Logout" />
+					</p:panelGrid>
+				</f:facet>
+			</p:menubar>
+
+		</h:form>
+
+		<p:spacer height="5" />
+
+		<ui:insert name="content">
+		</ui:insert>
+
+		<p:spacer height="20" />
+	</div>
+
+
+</h:body>
+</html>

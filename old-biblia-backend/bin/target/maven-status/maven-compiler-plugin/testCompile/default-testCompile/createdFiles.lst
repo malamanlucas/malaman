@@ -1,0 +1,11 @@
+br/com/biblia/test/VersiculoJSONParserTest.class
+br/com/biblia/test/base/EntityModifier.class
+br/com/biblia/test/VersiculoDAOTest.class
+br/com/biblia/test/ExpressaoDAOTest.class
+br/com/biblia/test/ExpressaoAppTest.class
+br/com/biblia/test/DicionarioDaoTest.class
+br/com/biblia/test/VersiculoAppTest.class
+br/com/biblia/test/base/ExpressaoBaseTest.class
+br/com/biblia/test/LivroDAOTest.class
+br/com/biblia/test/base/VersiculoBaseTest.class
+br/com/biblia/test/MapaAppTest.class

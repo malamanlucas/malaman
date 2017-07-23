@@ -1,0 +1,201 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+</h:head>
+
+<ui:composition template="index_new.xhtml">
+
+	<ui:define name="content">
+
+		<style type="text/css">
+			.texto {
+				color: red;
+				text-decoration: underline;
+			}
+			
+			.list-group {
+				list-style: decimal inside;
+			}
+			
+			.list-group-item {
+				display: list-item;
+			}
+			
+			.lista_limpa {
+				opacity: 0.3;
+			}
+			
+			.versiculo {
+				display: inline;
+			}
+			
+			#cabecalho_versiculo {
+				position:fixed; 
+				width:100%; 
+				background-color: gray; 
+				z-index: 1030; 
+				border: 1px solid #e7e7e7; 
+				background-color: #f8f8f8;
+				height: 50px;
+				text-align: center;
+				font-size: 2em;
+				top: 50px;
+			}
+			
+			.iconRight, .iconLeft {
+				cursor: pointer;
+				margin-top: 5px;
+				border: 1px solid transparent;
+			}
+			
+			.iconRight:hover, .iconLeft:hover {
+				border: 1px solid black;
+				border-radius: 5px;
+				background-color: #f0f0f0
+			}
+			
+		</style>
+		
+		<h:link id="nextChapter" value="rightChapter" outcome="show_versiculo.xhtml" style="display:none">
+			<f:param name="livro_id" value="#{showVersiculoMB.capituloKey.livroId}" />
+			<f:param name="capitulo_id" value="#{showVersiculoMB.capituloKey.id+1}" />
+			<f:param name="idioma" value="#{showVersiculoMB.expressaoBackingBean.idioma}" />
+		</h:link>
+		
+		<h:link id="beforeChapter" value="rightChapter" outcome="show_versiculo.xhtml" style="display:none">
+			<f:param name="livro_id" value="#{showVersiculoMB.capituloKey.livroId}" />
+			<f:param name="capitulo_id" value="#{showVersiculoMB.capituloKey.id-1}" />
+			<f:param name="idioma" value="#{showVersiculoMB.expressaoBackingBean.idioma}" />
+		</h:link>
+
+		<h:form prependId="false" id="form_versiculo">
+		
+			<p:remoteCommand id="ref" name="initExpressao" action="#{showVersiculoMB.initExpressao}"
+				oncomplete="$('#modal_expressao').modal(); $('.codigo_dic').focus()" update="@(.modal_expressao)" />
+			
+			<p:remoteCommand name="salvarExpressao" action="#{showVersiculoMB.salvarExpressao}"
+				oncomplete="$('#modal_expressao').modal('hide'); bindVersiculoSelect(); $(window).trigger('resize'); return false;" update="@(.panel_versiculos)" />
+				
+			<b:modal title="Expressão: '#{showVersiculoMB.expressaoBackingBean.entity.texto}
+				: #{showVersiculoMB.expressaoBackingBean.entity.inicio} - #{showVersiculoMB.expressaoBackingBean.entity.fim}
+				'" closable="true" id="modal_expressao" styleClass="modal_expressao" size="modal-lg" >
+				
+				<b:container fluid="true">
+					<b:row>
+						<b:column span="2">
+							<h:outputText value="Texto: " />
+						</b:column>
+						<b:column span="10">
+							<b:inputText readonly="true" value="#{showVersiculoMB.expressaoBackingBean.entity.texto}" />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="2">
+							<h:outputText value="Descrição: " />
+						</b:column>
+						<b:column span="10">
+							<b:inputTextarea value="#{showVersiculoMB.expressaoBackingBean.entity.descricao}" />
+						</b:column>
+					</b:row>
+					
+					<b:row id="panel_dicionario">
+						
+						<b:column largeScreen="4" smallScreen="6" mediumScreen="6">
+							<b:inputText tabindex="15" styleClass="codigo_dic" largeScreen="10" smallScreen="10" mediumScreen="10"
+								placeholder="Código" value="#{showVersiculoMB.expressaoBackingBean.dicionario.key.id}" />
+							
+							<b:commandButton largeScreen="2" smallScreen="2" mediumScreen="2" value="" 
+								iconAwesome="plus" iconSize="1px" look="primary" oncomplete="$('.codigo_dic').focus()"
+								update="panel_dicionario" action="#{showVersiculoMB.expressaoBackingBean.addDicionario}" />
+							<b:selectOneMenu largeScreen="10" smallScreen="10" mediumScreen="10" 
+								value="#{showVersiculoMB.expressaoBackingBean.dicionario.key.idioma}">
+								<f:selectItems value="#{showVersiculoMB.expressaoBackingBean.allIdioma}" />
+							</b:selectOneMenu>
+						</b:column>
+						
+						<b:column largeScreen="8" smallScreen="12" mediumScreen="8">
+							<b:dataTable id="datatable_dicionarios" styleClass="datatable_dicionario" value="#{showVersiculoMB.expressaoBackingBean.entity.dicionarios}" var="d"
+								searching="false" paginated="true" pageLength="3" pageLengthMenu="3,6,9"
+								customLangUrl="//cdn.datatables.net/plug-ins/1.10.12/i18n/Portuguese-Brasil.json">
+								<b:dataTableColumn value="#{d.key.id}" label="CÓDIGO" />
+								<b:dataTableColumn value="#{d.key.idioma}" label="IDIOMA" />
+								<b:dataTableColumn label="AÇÕES">
+									<b:commandButton iconSize="1px" iconAwesome="trash-o" ajax="true"
+								      value="" look="danger" title="Deletar" update="@(.datatable_dicionario)"
+								      action="#{showVersiculoMB.expressaoBackingBean.delDicionario(d)}" />
+								</b:dataTableColumn>
+							</b:dataTable>
+						</b:column>
+					</b:row>
+					
+					<b:button value="Salvar" tabindex="16" look="success" size="large" onclick="salvarExpressao();" />
+				</b:container>
+
+			</b:modal>
+			
+			<div id="cabecalho_versiculo">
+			
+				<div style="display:table; width:100%; height:100%;">
+					<div style="display: table-cell; vertical-align: middle">
+						<b>#{showVersiculoMB.capitulo.livro.nome} - Capítulo #{showVersiculoMB.capitulo.key.id}</b>
+						
+						<b:icon rendered="#{showVersiculoMB.capituloKey.id > 1}" 
+							onclick="location.href = $('#beforeChapter').attr('href')" name="arrow-left" styleClass="iconLeft" style="float:left; margin-left: 5px"  />
+							
+						<b:icon rendered="#{showVersiculoMB.capituloKey.id lt showVersiculoMB.qtdCapitulo}"
+							onclick="location.href = $('#nextChapter').attr('href')" name="arrow-right" styleClass="iconRight" style="float:right; margin-right: 5px"/>
+					</div>
+				</div>
+			</div>
+			
+			<p:spacer height="50px" />
+					
+			<b:container fluid="true" style="font-size: 1.4em;">
+
+				<h:panelGroup id="panel_versiculos" styleClass="panel_versiculos">
+					<b:panel titleStyle="text-align: center" collapsed="false"
+						collapsible="false">
+<!-- 						<f:facet name="heading"> -->
+<!-- 							<b style="position: static">#{showVersiculoMB.capitulo.livro.nome} - Capítulo -->
+<!-- 								#{showVersiculoMB.capitulo.key.id}</b> -->
+<!-- 						</f:facet> -->
+						
+						<ul class="list-group">
+							<ui:repeat var="v" value="#{showVersiculoMB.versos}"
+								varStatus="status">
+								<li class="list-group-item" id="versiculo_${status.index}">
+									<div class="versiculo" json="#{v.key.json}">
+										<h:outputText value="${v.getVersiculoMontado()}" escape="false" />
+									</div>
+								</li>
+							</ui:repeat>
+						</ul>
+						
+						<ul class="list-group lista_limpa">
+							<ui:repeat var="v" value="#{showVersiculoMB.versos}"
+								varStatus="status">
+								<li class="list-group-item" id="versiculo_${status.index}">
+									<div class="versiculo" json="#{v.key.json}">
+										<h:outputText value="${v.texto}" escape="false" />
+									</div>
+								</li>
+							</ui:repeat>
+						</ul>
+						
+					</b:panel>
+				</h:panelGroup>
+			</b:container>
+
+		</h:form>
+
+		<h:outputScript library="default" name="js/selection.js" />
+		<h:outputScript library="default" name="js/selectionVersiculo.js" />
+	</ui:define>
+</ui:composition>
+
+</html>

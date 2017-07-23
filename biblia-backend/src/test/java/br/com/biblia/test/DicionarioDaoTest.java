@@ -2,25 +2,23 @@ package br.com.biblia.test;
 
 import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.collect.Lists;
-
 import br.com.biblia.Application;
-import br.com.biblia.core.dao.DicionarioDAO;
-import br.com.biblia.core.model.Dicionario;
-import br.com.biblia.core.model.DicionarioKey;
+import br.com.biblia.dao.DicionarioDAO;
+import br.com.biblia.model.Dicionario;
+import br.com.biblia.model.DicionarioKey;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
+@SpringBootTest(classes=Application.class)
 @Transactional
 @Rollback
 public class DicionarioDaoTest {
