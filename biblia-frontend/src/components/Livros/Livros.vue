@@ -1,30 +1,51 @@
 <template lang="html">
+  <div>
 
-  <div class="row">
+    <capitulos ref="capitulos" :livroId="livroId"></capitulos>
 
-    <div class="col-xs-6 testamento bg-info text-center" v-for="testamento in testamentos">
-      <div class="h4 testamento__title text-danger" v-text="testamento.nome"></div>
-      <div class="testamento__livro " v-for="livro in testamento.livros">
-        <div class="testamento__livro__nome h5 text-uppercase text-danger">
-          {{ livro.nome }}
+    <div class="row">
+
+      <div class="col-xs-13 testamento bg-info text-center" v-for="testamento in testamentos">
+        <div class="h4 testamento__title text-danger" v-text="testamento.nome"></div>
+        <div class="testamento__livro " v-for="livro in testamento.livros">
+          <div class="testamento__livro__nome h5 text-uppercase text-danger" @click="getCapitulos(livro.id)">
+            {{ livro.nome }}
+          </div>
         </div>
       </div>
+
+      <loading ref="loading"></loading>
+
     </div>
 
-    <loading ref="loading"></loading>
-
   </div>
-
 </template>
 
 <script>
+  import Capitulos from '../Capitulos'
   import params from '@/params'
 
   export default {
     data: () => ({
-      testamentos: []
+      testamentos: [],
+      capitulos: [1, 2, 3],
+      livroId: null
     }),
+    components: {
+      Capitulos
+    },
     methods: {
+      buildColumnText (c) {
+        let totalExtraSpaces = 3 - c.toString().length
+
+        let extraSpaces = ''
+
+        for (let i = 0; i < totalExtraSpaces; i++) {
+          extraSpaces += '&nbsp;'
+        }
+
+        return `${extraSpaces}${c}`
+      },
       populateTestamento (testamento) {
         return this.$http.get('/api/livros/', {
           params: {
@@ -38,6 +59,10 @@
 
           return Promise.resolve(response)
         })
+      },
+      getCapitulos (livroId) {
+        this.livroId = livroId
+        this.$refs.capitulos.$forceUpdate()
       }
     },
     mounted () {
@@ -51,5 +76,5 @@
 </script>
 
 <style lang="scss" scoped>
-  @import './livro';
+  @import './livros';
 </style>

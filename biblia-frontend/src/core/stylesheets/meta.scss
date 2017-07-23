@@ -1,1 +1,6 @@
 @import './base/helpers';
+
+$grid-columns: 26;
+
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap-compass.scss';
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
