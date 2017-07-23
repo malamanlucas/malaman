@@ -13,8 +13,8 @@ import '../node_modules/jquery/dist/jquery.min.js'
 Vue.config.productionTip = false
 
 Vue.prototype.$http = Axios
-// Axios.defaults.baseURL = 'http://162.243.173.63:9090'
-Axios.defaults.baseURL = 'http://localhost:9090'
+Axios.defaults.baseURL = 'http://162.243.173.63:9090'
+// Axios.defaults.baseURL = 'http://localhost:9090'
 
 Vue.use(VeeValidate, {
   errorBagName: 'validation'
