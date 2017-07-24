@@ -6,8 +6,6 @@ import router from './router'
 import Axios from 'axios'
 import VeeValidate from 'vee-validate'
 
-// import '../node_modules/bootstrap/dist/css/bootstrap.css'
-// import '../node_modules/bootstrap/dist/js/bootstrap.js'
 import '../node_modules/jquery/dist/jquery.min.js'
 
 Vue.config.productionTip = false

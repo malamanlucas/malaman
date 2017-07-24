@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="row" :class="{'disappear': !active}">
-    <div class="col-xs-12 wrapper">
+    <div class="col-xs-26 wrapper">
       <div class="wrapper__text">
         <h3 class="text-info alert alert-info">
           <u>Carregando...</u>
