@@ -1,0 +1,1 @@
+/usr/bin/pg_dump --host localhost --port 5432 --username "postgres" --no-password  --format plain --no-owner --encoding UTF8 --inserts --column-inserts --no-privileges --no-tablespaces --no-unlogged-table-data --file "src/main/resources/nova_arquitera.sql" "postgres"
