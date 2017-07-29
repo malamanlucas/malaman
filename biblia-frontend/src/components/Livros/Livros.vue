@@ -1,14 +1,15 @@
 <template lang="html">
   <div>
 
-    <capitulos ref="capitulos" :livroId="livroId"></capitulos>
+    <router-view name="content" ref="content"></router-view>
+    <!-- <capitulos ref="capitulos" :livroId="livroId"></capitulos> -->
 
     <div class="row">
 
       <div class="col-xs-13 testamento bg-info text-center" v-for="testamento in testamentos">
         <div class="h4 testamento__title text-danger" v-text="testamento.nome"></div>
         <div class="testamento__livro " v-for="livro in testamento.livros">
-          <div class="testamento__livro__nome h5 text-uppercase text-danger" @click="getCapitulos(livro.id)">
+          <div class="testamento__livro__nome h5 text-uppercase text-danger" @click="getCapitulos(livro)">
             {{ livro.nome }}
           </div>
         </div>
@@ -28,8 +29,7 @@
   export default {
     data: () => ({
       testamentos: [],
-      capitulos: [1, 2, 3],
-      livroId: null
+      capitulos: [1, 2, 3]
     }),
     components: {
       Capitulos
@@ -60,9 +60,9 @@
           return Promise.resolve(response)
         })
       },
-      getCapitulos (livroId) {
-        this.livroId = livroId
-        this.$refs.capitulos.$forceUpdate()
+      getCapitulos (livro) {
+        this.$store.commit('setLivro', livro)
+        this.$router.push('/capitulos')
       }
     },
     mounted () {

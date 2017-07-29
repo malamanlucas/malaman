@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import Axios from 'axios'
 import VeeValidate from 'vee-validate'
+import Vuex from 'vuex'
 
 import 'jquery'
 import 'bootstrap-sass/assets/javascripts/bootstrap'
@@ -12,11 +13,24 @@ import 'bootstrap-sass/assets/javascripts/bootstrap'
 Vue.config.productionTip = false
 
 Vue.prototype.$http = Axios
-Axios.defaults.baseURL = 'http://162.243.173.63:9090'
-// Axios.defaults.baseURL = 'http://localhost:9090'
+// Axios.defaults.baseURL = 'http://162.243.173.63:9090'
+Axios.defaults.baseURL = 'http://localhost:9090'
 
+Vue.use(Vuex)
 Vue.use(VeeValidate, {
   errorBagName: 'validation'
+})
+
+const store = new Vuex.Store({
+  state: {
+    livro: null
+  },
+  mutations: {
+    setLivro: (state, payload) => { state.livro = payload }
+  },
+  getters: {
+    getLivro: state => state.livro
+  }
 })
 
 import './core'
@@ -25,6 +39,7 @@ import './core'
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

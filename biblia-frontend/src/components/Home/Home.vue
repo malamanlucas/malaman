@@ -26,11 +26,8 @@
     </nav>
 
     <div class="container-fluid">
-
       <router-view name="home"></router-view>
-
     </div>
-
 
   </div>
 </template>
@@ -44,13 +41,6 @@
   .body {
     padding-top: 70px;
     padding-bottom: 70px;
-  }
-
-  .a {
-    border: 1px solid black;
-    width: 500px;
-    height: 500px;
-    position: relative;
   }
 
 </style>

@@ -1,18 +1,33 @@
 <template lang="html">
   <div class="row" :class="{'disappear': !active}">
-    <div class="col-xs-26 wrapper">
+    <div class="col-xs-26 wrapper" :class="{'wrapper--horizontal' : horizontal}">
       <div class="wrapper__text">
-        <h3 class="text-info alert alert-info">
+        <div class="text-info alert alert-info">
           <u>Carregando...</u>
-        </h3>
+        </div>
       </div>
-      <div class="wrapper__loader"></div>
+      <div :style="{'border-width': border, 'width': width, 'height': width}"
+        class="wrapper__loader"></div>
     </div>
   </div>
 </template>
 
 <script>
   export default {
+    props: {
+      width: {
+        type: String,
+        default: () => '20em'
+      },
+      border: {
+        type: String,
+        default: () => '1.5em'
+      },
+      horizontal: {
+        type: Boolean,
+        default: () => false
+      }
+    },
     data: () => ({
       active: false
     }),

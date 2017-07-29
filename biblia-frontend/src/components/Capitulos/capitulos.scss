@@ -1,14 +1,12 @@
 .capitulos {
+
   &__capitulo {
-    // border: 1px solid black;
     min-height: 1em;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    // padding: auto 0px !important;
-    // width: 100%;
     border: 1px solid black;
     margin: 0.5px;
 

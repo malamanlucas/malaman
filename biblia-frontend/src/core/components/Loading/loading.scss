@@ -1,5 +1,3 @@
-$border-width: 1.5em;
-$width: 20em;
 
 .wrapper {
   display: flex;
@@ -8,16 +6,17 @@ $width: 20em;
   align-items: center;
   padding: 5em 0px;
 
+  &--horizontal {
+    flex-direction: row;
+  }
+
   &__text {
-    margin-bottom: 10px;
   }
 
   &__loader {
-    border: $border-width solid #f3f3f3;
+    border: 0 solid #f3f3f3;
+    border-top: 0 solid #3498db;
     border-radius: 50%;
-    border-top: $border-width solid #3498db;
-    width: $width;
-    height: $width;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
   }

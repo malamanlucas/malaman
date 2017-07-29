@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="row capitulos">
     <div class="col-xs-26">
-      <loading ref="loading"></loading>
+      <loading ref="loading" border="0.5em" width="5em" :horizontal="true"></loading>
     </div>
     <div class="capitulos__capitulo col-xs-1 text-left" v-for="c in capitulos">
       {{ c.key.id }}
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
     props: {
       livroId: {
@@ -22,6 +24,9 @@
         if (value) {
           this.getCapitulos(value)
         }
+      },
+      getLivro (newLivro) {
+        this.getCapitulos(newLivro.id)
       }
     },
     data: () => ({
@@ -39,6 +44,11 @@
           this.$refs.loading.hide()
         })
       }
+    },
+    computed: {
+      ...mapGetters([
+        'getLivro'
+      ])
     }
   }
 </script>
