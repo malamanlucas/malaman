@@ -49,6 +49,9 @@
       ...mapGetters([
         'getLivro'
       ])
+    },
+    mounted () {
+      this.getCapitulos(this.getLivro.id)
     }
   }
 </script>
