@@ -1,8 +1,7 @@
 <template lang="html">
   <div>
 
-    <router-view name="content" ref="content"></router-view>
-    <!-- <capitulos ref="capitulos" :livroId="livroId"></capitulos> -->
+    <router-view name="capitulos"></router-view>
 
     <div class="row">
 
@@ -62,7 +61,7 @@
       },
       getCapitulos (livro) {
         this.$store.commit('setLivro', livro)
-        this.$router.push('/capitulos')
+        this.$router.push('/livros/capitulos')
       }
     },
     mounted () {

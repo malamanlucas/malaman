@@ -23,13 +23,16 @@ Vue.use(VeeValidate, {
 
 const store = new Vuex.Store({
   state: {
-    livro: null
+    livro: null,
+    capitulo: null
   },
   mutations: {
-    setLivro: (state, payload) => { state.livro = payload }
+    setLivro: (state, payload) => { state.livro = payload },
+    setCapitulo: (state, payload) => { state.capitulo = payload }
   },
   getters: {
-    getLivro: state => state.livro
+    getLivro: state => state.livro,
+    getCapitulo: state => state.capitulo
   }
 })
 

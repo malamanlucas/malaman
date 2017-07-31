@@ -3,9 +3,13 @@
     <div class="col-xs-26">
       <loading ref="loading" border="0.5em" width="5em" :horizontal="true"></loading>
     </div>
-    <div class="capitulos__capitulo col-xs-1 text-left" v-for="c in capitulos">
+    <div class="capitulos__capitulo col-xs-1 text-left" v-for="c in capitulos"
+      @click="goVersiculos(c)">
       {{ c.key.id }}
     </div>
+
+    <router-view name="versiculos"></router-view>
+    
   </div>
 </template>
 
@@ -43,6 +47,10 @@
           this.capitulos = response.data
           this.$refs.loading.hide()
         })
+      },
+      goVersiculos (capitulo) {
+        this.$store.commit('setCapitulo', capitulo)
+        this.$router.push('/livros/capitulos/versiculos')
       }
     },
     computed: {

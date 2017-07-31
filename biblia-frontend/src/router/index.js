@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Livros from '@/components/Livros'
 import Sentenca from '@/components/Sentenca'
 import Capitulos from '@/components/Capitulos'
+import Versiculos from '@/components/Versiculos'
 
 Vue.use(Router)
 
@@ -16,18 +17,24 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: '/livros',
-          name: 'livros',
+          path: 'livros',
           components: {
             home: Livros
           },
           children: [
             {
-              path: '/capitulos',
-              name: 'capitulos',
+              path: 'capitulos',
               components: {
-                content: Capitulos
-              }
+                capitulos: Capitulos
+              },
+              children: [
+                {
+                  path: 'versiculos',
+                  components: {
+                    versiculos: Versiculos
+                  }
+                }
+              ]
             }
           ]
         },
