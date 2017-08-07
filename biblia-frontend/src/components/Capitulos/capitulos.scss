@@ -1,5 +1,23 @@
 .capitulos {
 
+  position: fixed;
+  z-index: 100;
+  background: white;
+  top: 0px;
+  padding: 30px 0px 10px 0px;
+  min-width: 100%;
+
+  #capitulos {
+    width: calc(100% - 105px);
+    max-height: 10em;
+    overflow-y: auto;
+  }
+
+  &__container {
+    position: fixed !important;
+    top: 30px;
+  }
+
   &__capitulo {
     min-height: 1em;
     cursor: pointer;

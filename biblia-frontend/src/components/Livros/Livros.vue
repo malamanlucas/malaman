@@ -1,21 +1,23 @@
 <template lang="html">
-  <div>
+  <div class="livros-container">
 
-    <router-view name="capitulos"></router-view>
+    <loading ref="loading"></loading>
 
-    <div class="row">
-
-      <div class="col-xs-13 testamento bg-info text-center" v-for="testamento in testamentos">
-        <div class="h4 testamento__title text-danger" v-text="testamento.nome"></div>
-        <div class="testamento__livro " v-for="livro in testamento.livros">
-          <div class="testamento__livro__nome h5 text-uppercase text-danger" @click="getCapitulos(livro)">
-            {{ livro.nome }}
+    <div class="livros-container__sidebar">
+      <div class="livros-container__sidebar__testamentos">
+        <div class="testamento bg-info text-center" v-for="testamento in testamentos">
+          <div class="h4 testamento__title text-danger" v-text="testamento.nome"></div>
+          <div class="testamento__livro " v-for="livro in testamento.livros">
+            <div class="testamento__livro__nome text-danger" @click="getCapitulos(livro)">
+              {{ livro.nome }}
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <loading ref="loading"></loading>
-
+    <div class="livros-container__main">
+      <router-view name="capitulos"></router-view>
     </div>
 
   </div>

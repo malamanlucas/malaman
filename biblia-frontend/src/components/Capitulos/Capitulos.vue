@@ -1,15 +1,22 @@
 <template lang="html">
-  <div class="row capitulos">
-    <div class="col-xs-26">
-      <loading ref="loading" border="0.5em" width="5em" :horizontal="true"></loading>
-    </div>
-    <div class="capitulos__capitulo col-xs-1 text-left" v-for="c in capitulos"
-      @click="goVersiculos(c)">
-      {{ c.key.id }}
+  <div>
+    <div class="row capitulos">
+
+      <div class="col-xs-26">
+        <loading ref="loading" border="0.5em" width="5em" :horizontal="true"></loading>
+      </div>
+
+      <div class="col-xs-26" id="capitulos">
+        <div class="capitulos__capitulo col-xs-1 text-left" v-for="c in capitulos" @click="goVersiculos(c)">
+          {{ c.key.id }}
+        </div>
+      </div>
     </div>
 
-    <router-view name="versiculos"></router-view>
-    
+    <div id="versiculos">
+      <router-view name="versiculos" :marginTop="marginTop"></router-view>
+    </div>
+
   </div>
 </template>
 
@@ -34,7 +41,8 @@
       }
     },
     data: () => ({
-      capitulos: []
+      capitulos: [],
+      marginTop: '0px'
     }),
     methods: {
       getCapitulos (livroId) {
@@ -60,6 +68,9 @@
     },
     mounted () {
       this.getCapitulos(this.getLivro.id)
+    },
+    updated () {
+      this.marginTop = getComputedStyle(document.getElementById('capitulos')).height
     }
   }
 </script>

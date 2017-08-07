@@ -1,7 +1,28 @@
+.livros-container {
+  display: flex;
+  flex-direction: row;
+  margin: 30px 0px;
+
+  &__sidebar {
+    &__testamentos {
+      position: fixed;
+      min-width: 120px;
+      max-width: 120px;
+      height: calc(100% - 90px);
+      overflow: auto;
+      z-index: 101;
+    }
+  }
+
+  &__main {
+    overflow-x: hidden;
+    margin-left: 120px;
+  }
+}
+
 .testamento {
   border: 1px solid black;
   border-radius: 5px 0px 5px 5px;
-  margin-top: 15px;
 
   &:last-child {
     border-radius: 0px 5px 5px 0px;
@@ -17,6 +38,7 @@
 
     &__nome {
       cursor: pointer;
+      word-break: break-all;
       &:hover {
         text-decoration: underline;
         font-weight: bold;

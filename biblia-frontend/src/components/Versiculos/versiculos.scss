@@ -1,0 +1,30 @@
+li {
+  .texto {
+    color: red;
+    cursor: pointer;
+    &:hover {
+      font-weight: bolder;
+    }
+  }
+}
+
+.list-group {
+  list-style: decimal inside;
+  .list-group-item {
+    display: list-item;
+  }
+}
+
+.list-group {
+  &.lista_limpa {
+    opacity: 0.3;
+  }
+  .list-group-item {
+    .versiculo {
+      display: inline;
+    }
+  }
+}
+.texto {
+  text-decoration: underline;
+}
