@@ -1,0 +1,26 @@
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap-compass.scss';
+@import '../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+@mixin extraSmallSize {
+  @media (max-width: $screen-xs-max) {
+    @content;
+  }
+}
+
+@mixin smallSize {
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    @content;
+  }
+}
+
+@mixin mediumSize {
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    @content;
+  }
+}
+
+@mixin largeSize {
+  @media (min-width: $screen-lg-min) {
+    @content;
+  }
+}

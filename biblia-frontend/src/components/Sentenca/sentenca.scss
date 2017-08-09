@@ -1,3 +1,4 @@
+@import '../../core/stylesheets/base/mixins';
 
 .hasError {
   border-color: red !important;
@@ -11,5 +12,30 @@
 
   &__item {
     font-style: italic;
+    cursor: pointer;
+    &.list-group-item {
+      display: block;
+    }
+    &__content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      &__checkbox {
+        margin-right: 0.5em;
+        display: none;
+      }
+    }
+    &--checked {
+      font-weight: bolder;
+    }
+    &:not(&--checked) {
+      &:hover {
+        background: darken(white, 10%);
+      }
+      &:active {
+        background: darken(white, 50%);
+        color: lighten(black, 100%);
+      }
+    }
   }
 }
