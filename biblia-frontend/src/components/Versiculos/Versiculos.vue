@@ -30,7 +30,6 @@
     watch: {
       getCapitulo (newValue) {
         this.getVersiculos(newValue)
-        this.bindVersiculoSelect(this)
       }
     },
     data: () => ({
@@ -46,6 +45,7 @@
         }).then(response => {
           this.$nextTick(() => {
             this.versiculos = response.data
+            this.bindVersiculoSelect(this)
             window.scrollTo(0, 0)
           })
         }).catch(e => {
@@ -75,6 +75,8 @@
     },
     mounted () {
       this.getVersiculos(this.getCapitulo)
+    },
+    updated () {
     }
   }
 </script>
