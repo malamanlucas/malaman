@@ -8,23 +8,20 @@ li {
   }
 }
 
-.list-group {
+ul.list-group {
   list-style: decimal inside;
-  .list-group-item {
-    display: list-item;
-  }
-}
-
-.list-group {
+  margin-bottom: 80px;
   &.lista_limpa {
     opacity: 0.3;
   }
   .list-group-item {
+    display: list-item;
     .versiculo {
       display: inline;
     }
   }
 }
+
 .texto {
   text-decoration: underline;
 }
