@@ -52,7 +52,9 @@
             livroId: livroId
           }
         }).then(response => {
-          this.capitulos = response.data
+          this.$nextTick(() => {
+            this.capitulos = response.data
+          })
           this.$refs.loading.hide()
         })
       },

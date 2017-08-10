@@ -30,6 +30,7 @@
     watch: {
       getCapitulo (newValue) {
         this.getVersiculos(newValue)
+        this.bindVersiculoSelect(this)
       }
     },
     data: () => ({
@@ -43,7 +44,10 @@
             capituloId: capitulo.key.id
           }
         }).then(response => {
-          this.versiculos = response.data
+          this.$nextTick(() => {
+            this.versiculos = response.data
+            window.scrollTo(0, 0)
+          })
         }).catch(e => {
           window.console.log(e)
         })
@@ -71,10 +75,6 @@
     },
     mounted () {
       this.getVersiculos(this.getCapitulo)
-      this.bindVersiculoSelect(this)
-    },
-    updated () {
-      this.bindVersiculoSelect(this)
     }
   }
 </script>
