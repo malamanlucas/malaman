@@ -16,7 +16,7 @@ import br.com.biblia.enums.LivroEnum;
 import br.com.biblia.test.base.VersiculoBaseTest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
+@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.MOCK)
 @Transactional
 @Rollback
 public class LivroDAOTest extends VersiculoBaseTest {

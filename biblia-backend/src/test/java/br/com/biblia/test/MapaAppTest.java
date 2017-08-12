@@ -15,7 +15,7 @@ import br.com.biblia.Application;
 import br.com.biblia.apps.mapa.MapaApp;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
+@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.MOCK)
 @Transactional
 @Rollback
 public class MapaAppTest {

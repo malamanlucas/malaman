@@ -27,7 +27,7 @@ import br.com.biblia.model.versiculo.VersiculoKey;
 import br.com.biblia.test.base.VersiculoBaseTest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
+@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.MOCK)
 @Transactional
 @Rollback
 public class VersiculoAppTest extends VersiculoBaseTest {

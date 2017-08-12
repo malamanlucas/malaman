@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.biblia.apps.capitulo.CapituloApp;
 import br.com.biblia.model.Capitulo;
-import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/api/capitulos")

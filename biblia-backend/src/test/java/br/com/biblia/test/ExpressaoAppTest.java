@@ -29,7 +29,7 @@ import br.com.biblia.model.versiculo.Versiculo;
 import br.com.biblia.test.base.ExpressaoBaseTest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.NONE)
+@SpringBootTest(classes=Application.class, webEnvironment=WebEnvironment.MOCK)
 @Transactional
 @Rollback
 public class ExpressaoAppTest extends ExpressaoBaseTest {
