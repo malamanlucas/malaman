@@ -8,7 +8,7 @@
   	  <div class="panel-body">
 
   	  	<div class="btn-group-lg">
-  	     	<a class="btn btn-default" @click="goVersiculos(capitulo)" v-bind:title="capitulo.titulo"
+  	     	<a class="btn btn-default" @click="goVersiculos(capitulo)" :title="capitulo.titulo"
   	     	   v-for="capitulo in capitulos">{{capitulo.key.id}}</a>
   	  	</div>
 
