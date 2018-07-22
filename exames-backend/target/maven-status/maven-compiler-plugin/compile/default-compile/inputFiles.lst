@@ -1,0 +1,17 @@
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/apps/clinica/ClinicaFacade.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/model/Exame.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/config/SimpleCorsFilter.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/apps/clinica/ClinicaApp.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/model/Clinica.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/rest/ClinicaRestController.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/config/SwaggerConfig.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/dao/ClinicaDAO.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/rest/ExameRestController.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/model/ClinicaKey.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/apps/exame/ExameFacade.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/apps/exame/ExameApp.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/rest/GlobalRestController.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/dao/ExameDAO.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/config/AutowireHelper.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/Application.java
+/home/CIT/lucasm/projetos/malaman/exames-backend/src/main/java/br/com/exames/config/HibernateMapperForJacksonConfig.java
