@@ -1,0 +1,13 @@
+.Actions {
+  width: 100%;
+  margin: 40px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  &__button {
+    &:not(:first-child) {
+      margin-left: 15px;
+    }
+  }
+}

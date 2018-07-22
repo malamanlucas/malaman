@@ -1,0 +1,32 @@
+.ExameClinicas {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  font-size: 60%;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+
+  &__item {
+    background: darken(white, 10%);
+    border: 1px solid black;
+    border-radius: 10px;
+    // padding: 3px 6px;
+    padding: 0px 6px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 8px;
+    &:hover {
+      background: darken(white, 80%);
+      color: white;
+    }
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+  }
+
+}

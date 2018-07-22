@@ -1,0 +1,11 @@
+.ExameHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    color: white;
+    margin-right: 20px;
+  }
+}

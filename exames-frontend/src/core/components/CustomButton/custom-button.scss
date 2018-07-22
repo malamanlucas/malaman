@@ -1,0 +1,15 @@
+$background: white;
+
+.CustomButton {
+  padding: 10px 15px;
+  border: 2px solid red;
+  font-weight: bold;
+  border-radius: 10px;
+  background: $background;
+  cursor: pointer;
+  font-size: 50%;
+
+  &:hover {
+    background: darken($background, 30%);
+  }
+}
