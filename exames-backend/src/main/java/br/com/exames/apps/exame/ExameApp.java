@@ -12,4 +12,10 @@ public interface ExameApp {
 	
 	void delete(Integer id);
 	
+	Exame getExame(Integer id);
+	
+	void reset();
+	
+	void deleteAll();	
+	
 }
