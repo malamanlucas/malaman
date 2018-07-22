@@ -10,4 +10,6 @@ public interface ExameApp {
 	
 	List<Exame> findAll();
 	
+	void delete(Integer id);
+	
 }

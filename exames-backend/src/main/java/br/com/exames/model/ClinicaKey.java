@@ -1,5 +1,7 @@
 package br.com.exames.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Id;
@@ -12,9 +14,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClinicaKey {
+public class ClinicaKey implements Serializable {
 	
-	@Id
 	private Integer id;
 	@Column(name="exame_id")
 	private Integer exameId;

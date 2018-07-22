@@ -21,8 +21,8 @@ public class ExameFacade implements ExameApp {
 	public Exame save(Exame entity) {
 		if ( entity.getId() == null ) {
 			entity.setId( dao.retrieveNextId() );
-			entity.getClinicas().forEach(c -> c.getKey().setExameId(entity.getId()));
 		}
+		entity.getClinicas().forEach(c -> c.getKey().setExameId(entity.getId()));
 		dao.save( entity );
 		return entity;
 	}
@@ -30,6 +30,11 @@ public class ExameFacade implements ExameApp {
 	@Override
 	public List<Exame> findAll() {
 		return dao.findAll();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		dao.delete(id);
 	}
 	
 }
