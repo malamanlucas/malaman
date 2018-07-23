@@ -14,7 +14,7 @@
         <div class="ExameList__grid__header__acao">Ação</div>
       </div>
       <div class="ExameList__grid__body">
-        <div v-for="exame in exames" class="ExameList__grid__body__row">
+        <div v-for="exame in exames" class="ExameList__grid__body__row" :key="exame.id">
           <div class="ExameList__grid__body__row__id">{{ exame.id }}</div>
           <div class="ExameList__grid__body__row__nome">
             <truncated-text :title="exame.nome">

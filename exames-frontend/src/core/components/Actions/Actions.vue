@@ -1,14 +1,14 @@
 <template lang="html">
   <div class="Actions">
-    <custom-button v-if="isModeView" class="Actions__button" @click.native="$emit('on-edit')">
+    <custom-button v-if="isModeView" class="Actions__button edit" @click.native="$emit('on-edit')">
       EDITAR
     </custom-button>
 
     <template v-else-if="isModeEdit">
-      <custom-button class="Actions__button" @click.native="$emit('on-save')">
+      <custom-button class="Actions__button save" @click.native="$emit('on-save')">
         SALVAR
       </custom-button>
-      <custom-button class="Actions__button" @click.native="$emit('on-cancel')">
+      <custom-button class="Actions__button cancel" @click.native="$emit('on-cancel')">
         CANCELAR
       </custom-button>
     </template>

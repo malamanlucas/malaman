@@ -31,13 +31,13 @@ module.exports = {
     "eol-last": 2,
     "eqeqeq": [2, "smart"],
     "indent": 0,
+    "max-nested-callbacks": 0,
     "no-console": 0,
     "no-empty-pattern": 0,
     "key-spacing": [1, {
       "beforeColon": false,
       "afterColon": true
     }],
-    "max-nested-callbacks": [1, 4],
     "new-cap": 1,
     "new-parens": 1,
     "newline-after-var": [0, "always"],

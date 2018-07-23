@@ -2,7 +2,7 @@ import Modal from './Modal'
 
 export default {
   data: () => ({
-    showModal: true,
+    showModal: false,
     textModal: 'definir o texto'
   }),
   components: {
