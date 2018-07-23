@@ -4,11 +4,13 @@
       Tela de Listagem de exames
     </div>
 
-    <custom-button @click.native="$emit('on-reset')">
+    <custom-button class="ExameHeader__btn-reset"
+      @click.native="$emit('on-reset')">
       RESET
     </custom-button>
 
-    <custom-button @click.native="$emit('on-drop-all')">
+    <custom-button class="ExameHeader__btn-prod"
+      @click.native="$emit('on-drop-all')">
       DELETAR BANCO DE PRODUÇÃO
     </custom-button>
   </div>
