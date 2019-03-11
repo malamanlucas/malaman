@@ -1,30 +1,23 @@
 <template lang="html">
   <div class="body">
 
-    <footer>
-      <nav class="navbar navbar-inverse navbar-fixed-bottom">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#footer-body">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <router-link to="/" class="navbar-brand">Fuja dos falsos profetas!</router-link>
-          </div>
-          <div class="collapse navbar-collapse" id="footer-body">
-            <ul class="nav navbar-nav">
-              <li>
-                <router-link to="/livros">Livros</router-link>
-              </li>
-              <li>
-                <router-link to="/sentenca">Sentença</router-link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </footer>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-bottom">
+      <router-link tag="a" to="/" class="navbar-brand" href="#">Fuja dos Falsos Profetas</router-link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <router-link tag="a" class="nav-link" to="/livros">Livros</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link tag="a" class="nav-link" to="/sentenca">Sentença</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <router-view name="home"></router-view>
 
@@ -35,24 +28,3 @@
 export default {
 }
 </script>
-
-<style lang="scss" scoped>
-.body {
-}
-
-footer .navbar-collapse.in {
-  bottom: 50px;
-  position: absolute;
-  background-color:#333;
-  width: 100%;
-}
-
-@media screen and (max-width: 768px) {
-  footer .navbar-collapse {
-    position: absolute;
-    bottom: 50px;
-    width: 100%;
-    background-color: #303030;
-  }
-}
-</style>

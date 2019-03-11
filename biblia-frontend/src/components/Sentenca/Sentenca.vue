@@ -1,5 +1,5 @@
-<template lang="html">
-  <div class="sentenca">
+<template>
+  <div class="sentenca container-fluid">
 
     <button type="button" id="copy-button" class="disappear">CopyButton</button>
 
@@ -7,13 +7,22 @@
       <div class="col-xs-26">
         <div class="input-group">
 
-          <input type="text" @keyup.enter="buscar" v-validate="'required|min:3'" name="termo"
-            class="form-control" :class="{'hasError': validation.has('termo')}"  placeholder="Exemplo: sodoma" v-model="termo" />
+          <input type="text" @keyup.enter="buscar" v-validate="'required|min:2'" name="termo"
+            class="form-control" :class="{'hasError': validation.has('termo')}"  placeholder="Exemplo: sodoma" v-model="request.termo" />
 
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" @click="buscar">Buscar</button>
           </span>
 
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-26">
+        <div class="custom-control custom-switch" @click="buscar">
+          <input type="checkbox" class="custom-control-input" id="ignoreCase" v-model="request.ignoreCase">
+          <label class="custom-control-label" for="ignoreCase">IgnoreCase</label>
         </div>
       </div>
     </div>
@@ -26,12 +35,12 @@
       </div>
       <div class="col-xs-26">
         <ul class="list-group">
-          <li class="list-group-item list__item" v-for="(item, index) in sentencas.textos" @click.self="selectItem(item, index)">
+          <li class="list-group-item list__item" v-for="(item, index) in sentencas.textos" @click.self="selectItem(item, index)" :key="index">
             <div class="list__item__content" @click.stop.prevent="forceClickParent">
               <div class="list__item__content__checkbox">
                 <input type="checkbox" :id="`checkbox${index}`" >
               </div>
-              <div>{{ item }}</div>
+              <div class="sentenca__list__item__content__text" v-html="highlight(item)" />
             </div>
           </li>
         </ul>
@@ -44,16 +53,27 @@
 <script>
   import Clipboard from 'clipboard'
   import $ from 'jquery'
+  import { isEmpty } from 'lodash'
 
   export default {
     data: () => ({
       sentencas: null,
-      termo: '',
+      request: {
+        termo: '',
+        ignoreCase: true
+      },
       textsToCopy: [''],
       valuesSelected: '',
       copyButton: null
     }),
     methods: {
+      highlight (item) {
+        if (isEmpty(this.request.termo)) {
+          return item
+        }
+        let regex = new RegExp(`(${this.request.termo})`, 'gi')
+        return item.replace(regex, '<u class="text-primary"><b>$1</b></u>')
+      },
       forceClickParent (event) {
         $(event.srcElement).parents('li').click()
         event.stopPropagation()
@@ -85,7 +105,8 @@
               this.$refs.loading.show()
               this.$http.get('/api/sentencas/format', {
                 params: {
-                  'termo': this.termo
+                  'termo': this.request.termo,
+                  'ignoreCase': this.request.ignoreCase
                 }
               }).then(response => {
                 this.sentencas = response.data
