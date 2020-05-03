@@ -2,7 +2,6 @@
     <wb-module deploy-name="core">
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/test/aspect"/>
-        <wb-resource deploy-path="/" source-path="/src/main/aspect"/>
         <wb-resource deploy-path="/" source-path="/src/main/resources"/>
     </wb-module>
 </project-modules>

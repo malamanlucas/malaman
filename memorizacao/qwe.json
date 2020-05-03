@@ -1,0 +1,69 @@
+{
+  "totalAmount": 107880,
+  "channelVendorName": "Joao da Silva",
+  "fingerPrintId": "2134f733-6fb1-4cea-9953-3879400bc6eb",
+  "customer": {
+    "newCustomer": true,
+    "identity": "48140890820",
+    "identityType": "CPF",
+    "proposalId": "m7ayg2bb7c932wzai62i9pn8rjodho",
+    "amountLiquidationDay": "19"
+  },
+  "payments": [
+    {
+      "type": "CREDIT_CARD",
+      "amount": 107880,
+      "capture": false,
+      "serviceTaxAmount": 0,
+      "currency": "BRL",
+      "country": "BRA",
+      "installments": 1,
+      "interest": "ByMerchant",
+      "creditCard": {
+        "cardNumber": "qYKtvNS7JTABE+BHOzcq3+oH3F6WkPYg8WbGlcFvT30+OlQvgNOs9ik2kR0AOxNE6IBxP8AjgDy0rLW1KlIYww==",
+        "holder": "Joao da Silva",
+        "expirationDate": "12/2021",
+        "securityCode": "123",
+        "brand": "VISA"
+      }
+    }
+  ],
+  "shippings": [
+    {
+      "shippingId": 41106,
+      "shippingName": "SAME_DAY",
+      "shippingAmount": 0,
+      "serviceId": 1,
+      "minDeliveryDeadline": 1,
+      "maxDeliveryDeadline": 3,
+      "sellerId": "QUANTUM",
+      "items": [
+        {
+          "active": true,
+          "cieloPlanCode": 3,
+          "invoiceExpirationDay": 10,
+          "maxSameProduct": 3,
+          "name": "Cielo LIO",
+          "platform": "CIASHOP",
+          "portability": false,
+          "quantity": 1,
+          "risk": "HIGH",
+          "sellerSku": "8",
+          "sku": 23,
+          "crdSku": "2999",
+          "status": "APPROVED",
+          "type": "ELETRONIC_GOOD",
+          "unitPrice": 59880,
+          "velocityHedge": "LOW"
+        }
+      ]
+    }
+  ],
+  "browser": {
+    "cookiesAccepted": false,
+    "email": "comprador@braspag.com.br",
+    "hostName": "Teste",
+    "ipAddress": "127.0.0.1",
+    "type": "Chrome"
+  }
+}
