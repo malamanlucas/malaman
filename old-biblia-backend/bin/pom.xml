@@ -19,7 +19,7 @@
 		<start-class>br.com.biblia.Application</start-class>
 		<lombok.version>1.16.12</lombok.version>
 		<!-- <jackson.version>2.6.0</jackson.version> -->
-		<commons.io.version>2.5</commons.io.version>
+		<commons.io.version>2.7</commons.io.version>
 		<!-- <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> -->
 		<java.version>1.8</java.version>
 		<!-- <main.basedir>${basedir}/../..</main.basedir> -->
