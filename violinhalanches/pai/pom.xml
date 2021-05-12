@@ -16,7 +16,7 @@
 		<compiler.version>1.7</compiler.version>
 		<pagseguro.version>0.0.1-SNAPSHOT</pagseguro.version>
 		<spring.version>4.1.4.RELEASE</spring.version>
-		<spring.security.versao>3.2.5.RELEASE</spring.security.versao>
+		<spring.security.versao>5.2.10.RELEASE</spring.security.versao>
 		<spring.data.jpa.version>1.7.0.RELEASE</spring.data.jpa.version>
 		<versao>1.0.0</versao>
 		<tiles.versao>2.2.2</tiles.versao>
